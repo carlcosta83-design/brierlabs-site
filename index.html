@@ -1,80 +1,332 @@
-Brier Labs
-How it works
-Measurement
-Who it's for
-Contact
-Most market AI sounds certain. Ours keeps score.
-Brier Labs reads the market before the opening bell, then grades every one of its own calls against real closing prices. Confidence is easy to generate. We publish the record instead.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brier Labs — Market intelligence that keeps score</title>
+<meta name="description" content="Brier Labs reads the market every morning and grades its own predictions every night. Named after the Brier score, the standard metric for forecast accuracy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#022e33;
+  --ink-deep:#011c20;
+  --ink-soft:#0a4249;
+  --teal:#04bfbf;
+  --teal-mid:#038d8f;
+  --teal-dim:#02696b;
+  --paper:#ffffff;
+  --mist:#f1f6f6;
+  --rule:#d6e3e3;
+  --body:#3d5457;
+  --font:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --gut:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.5;
+  overflow-x:hidden;
+}
+img{max-width:100%}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
 
-Request early access
-See how we measure
-Prediction record
-Scored at 1 trading day
-DELL
-Hold · earnings caution outweighed backlog strength
-Correct
-TTWO
-Buy · premium pre-order mix signalled pricing power
-Correct
-GOOGL
-Sell · regulatory and cash-flow pressure
-Missed
-BLK
-Buy · ETF inflows and institutional backing
-Correct
-Every call is stored with the headlines that produced it, then re-scored at 1, 7 and 30 trading days.
-3 sources
-Headlines cross-checked across independent feeds before the model sees anything, so one bad article can't carry a call.
-1, 7, 30
-Trading-day horizons. A signal that only works on day one is a different product from one that holds for a month.
-Two baselines
-Every result is set against always-buy and always-hold. An accuracy figure without a baseline means nothing.
-From scattered headlines to a call you can audit
-The pipeline runs unattended every weekday. Nothing is hand-picked, and nothing is quietly discarded when it turns out wrong.
+/* ---------- chevron mark, echoing the logo's rotational blades ---------- */
+.mark{width:22px;height:22px;flex:none}
+.mark path{fill:var(--teal)}
 
-Step one
-Gather
-Independent news feeds are pulled for every position, deduplicated, and consolidated into a single evidence set per company.
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:40;background:var(--ink);color:#fff}
+.nav-in{display:flex;align-items:center;gap:40px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;font-size:1.05rem;text-decoration:none}
+.nav-links{display:flex;gap:30px;margin-left:auto;font-size:.9rem;font-weight:500}
+.nav-links a{text-decoration:none;opacity:.82;padding:6px 0;border-bottom:2px solid transparent}
+.nav-links a:hover,.nav-links a:focus-visible{opacity:1;border-bottom-color:var(--teal)}
+@media(max-width:860px){.nav-links{display:none}}
 
-Step two
-Judge
-A language model weighs the full set at once and returns a structured call with a sentiment score and a written rationale.
+/* ---------- hero ---------- */
+.hero{background:var(--ink);color:#fff;padding:clamp(56px,8vw,104px) 0 clamp(64px,9vw,116px);position:relative;overflow:hidden}
+.hero::after{
+  content:"";position:absolute;right:-18%;top:-30%;width:60vw;height:60vw;border-radius:50%;
+  background:radial-gradient(circle,rgba(4,191,191,.16),transparent 62%);pointer-events:none
+}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(36px,6vw,80px);align-items:center;position:relative;z-index:1}
+@media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:44px}}
+h1{
+  font-size:clamp(2.6rem,6.4vw,4.9rem);
+  line-height:1.02;letter-spacing:-.035em;font-weight:800;max-width:15ch;
+}
+.hero p.lede{margin-top:26px;font-size:clamp(1.02rem,1.7vw,1.22rem);line-height:1.55;max-width:52ch;color:#c3dcdd}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:15px 30px;font:inherit;font-weight:600;font-size:.97rem;
+  text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .15s,color .15s
+}
+.btn-solid{background:var(--teal);color:var(--ink-deep)}
+.btn-solid:hover,.btn-solid:focus-visible{background:#2ad4d4}
+.btn-ghost{border-color:rgba(255,255,255,.4);color:#fff}
+.btn-ghost:hover,.btn-ghost:focus-visible{border-color:var(--teal);color:var(--teal)}
 
-Step three
-Score
-After the close, real prices come back in. Each past call is marked correct or missed, and the record updates itself.
+/* ---------- the ledger: the characteristic artifact ---------- */
+.ledger{background:#01252a;border:1px solid rgba(4,191,191,.24)}
+.ledger-head{display:flex;justify-content:space-between;align-items:baseline;padding:18px 22px;border-bottom:1px solid rgba(4,191,191,.2);font-size:.83rem;color:#8fb5b7}
+.ledger-head strong{color:#fff;font-weight:600;font-size:.95rem;letter-spacing:-.01em}
+.row{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:15px 22px;border-bottom:1px solid rgba(255,255,255,.07)}
+.row:last-child{border-bottom:none}
+.tk{font-weight:700;font-size:.95rem;letter-spacing:-.01em}
+.call{font-size:.82rem;color:#8fb5b7}
+.call b{font-weight:600;color:#c3dcdd}
+.verdict{font-size:.8rem;font-weight:600;padding:4px 10px;white-space:nowrap}
+.hit{background:rgba(4,191,191,.16);color:var(--teal)}
+.miss{background:rgba(255,255,255,.08);color:#9db3b5}
+.ledger-foot{padding:15px 22px;font-size:.8rem;color:#7ea5a7;background:rgba(4,191,191,.05)}
 
-Named after a measurement, not a metaphor
-The Brier score is the standard way to measure how accurate a probabilistic forecast turned out to be. We took the name because grading the forecast is the harder half of the work, and the half most tools skip.
+/* ---------- stat band ---------- */
+.band{background:var(--mist);border-bottom:1px solid var(--rule)}
+.band-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule)}
+@media(max-width:760px){.band-grid{grid-template-columns:1fr}}
+.stat{background:var(--mist);padding:clamp(30px,4.5vw,50px) clamp(20px,3vw,38px)}
+.stat .n{font-size:clamp(2.1rem,3.6vw,2.9rem);font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1}
+.stat .d{margin-top:12px;font-size:.94rem;color:var(--body);max-width:34ch}
 
-The rationale is stored, not just the verdict
-Every call keeps the exact headlines behind it. When a call fails, the reason it failed is still on file.
+/* ---------- sections ---------- */
+section{padding:clamp(64px,8.5vw,112px) 0}
+.sec-head{max-width:62ch;margin-bottom:clamp(38px,5vw,60px)}
+h2{font-size:clamp(1.85rem,3.7vw,2.85rem);line-height:1.1;letter-spacing:-.03em;font-weight:700}
+.sec-head p{margin-top:18px;font-size:1.05rem;color:var(--body);max-width:58ch}
 
-Baselines run alongside
-In a rising market, always-buy scores well. We report it next to our own number so the comparison is unavoidable.
+/* steps: a genuine sequence, so it is numbered */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3vw,42px)}
+@media(max-width:860px){.steps{grid-template-columns:1fr}}
+.step{border-top:3px solid var(--teal);padding-top:22px}
+.step .idx{font-size:.82rem;font-weight:700;color:var(--teal-dim)}
+.step h3{margin-top:8px;font-size:1.24rem;font-weight:700;letter-spacing:-.02em}
+.step p{margin-top:11px;color:var(--body);font-size:.98rem}
 
-Horizons are measured separately
-Same-day accuracy and one-month accuracy answer different questions. We don't blend them into one flattering figure.
+/* dark proof section */
+.proof{background:var(--ink);color:#fff}
+.proof h2{max-width:20ch}
+.proof .sec-head p{color:#b7d4d5}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4.5vw,64px)}
+@media(max-width:860px){.cols{grid-template-columns:1fr}}
+.claim{border-left:2px solid var(--teal);padding:4px 0 4px 22px;margin-bottom:30px}
+.claim h3{font-size:1.1rem;font-weight:700;letter-spacing:-.015em}
+.claim p{margin-top:9px;color:#b7d4d5;font-size:.97rem}
 
-The record is cumulative
-Nothing resets. The history grows and stays queryable, which is what makes the system able to learn from its own misses.
+/* audience */
+.who{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media(max-width:860px){.who{grid-template-columns:1fr}}
+.who > div{background:var(--paper);padding:clamp(26px,3.4vw,38px)}
+.who h3{font-size:1.12rem;font-weight:700;letter-spacing:-.02em}
+.who p{margin-top:11px;color:var(--body);font-size:.96rem}
 
-Built for people who carry the cost of being wrong
-Market sentiment moves more than share prices. It moves input costs, freight, and the pricing decisions that follow.
+/* cta */
+.tail{background:linear-gradient(115deg,var(--ink) 0%,var(--teal-dim) 100%);color:#fff}
+.tail h2{max-width:17ch}
+.tail p{margin-top:18px;color:#cfe7e7;max-width:52ch;font-size:1.05rem}
 
-Pricing teams
-See the macro pressure building on your inputs before it reaches a quarterly review, with the reasoning attached.
+/* footer */
+footer{background:var(--ink-deep);color:#89aeb0;padding:52px 0 40px;font-size:.88rem}
+.foot-top{display:flex;flex-wrap:wrap;gap:26px;align-items:center;justify-content:space-between;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.09)}
+.foot-brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:1.02rem;letter-spacing:-.02em}
+.foot-note{margin-top:24px;max-width:78ch;line-height:1.65}
+.foot-note a{color:var(--teal)}
 
-Supply chain
-Track the sectors your suppliers sit in, and get told when the tone around them turns — not a week after it did.
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
 
-Finance and strategy
-A running record of what the market was saying, when, and whether it turned out to be right.
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="blade" viewBox="0 0 24 24"><path d="M12 1.6c2.3 0 3.4 2.1 3.1 4.1 1.6-1.3 3.9-1.1 5 .6 1.1 1.7.1 3.7-1.6 4.6 2 .4 3.3 2.2 2.7 4.1-.6 1.9-2.8 2.6-4.6 1.9.8 1.9-.2 4-2.2 4.5-2 .5-3.7-.9-4.1-2.8-1 1.7-3.2 2.3-4.8 1.1-1.6-1.2-1.7-3.5-.4-4.9-2 0-3.6-1.6-3.5-3.6.1-2 1.9-3.3 3.8-3.1C4.3 6.4 5 4.2 6.9 3.5c1.9-.7 3.8.4 4.4 2.2-.1-2.1 .5-4.1 .7-4.1z"/></symbol>
+</defs></svg>
 
-Early access opens with the first published scorecard.
-We're accumulating the record now. When there's enough of it to mean something, it gets published — good or bad — and early users see it first.
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <svg class="mark" aria-hidden="true"><use href="#blade"/></svg>
+      Brier&nbsp;Labs
+    </a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#proof">Measurement</a>
+      <a href="#who">Who it's for</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
 
-Get in touch
-Brier Labs
-Montréal, Québec
-Brier Labs produces automated analysis of publicly available market news. It is a research and analysis tool, not investment advice, and it does not constitute a recommendation to buy or sell any security. Past accuracy does not predict future accuracy.
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Most market AI sounds certain. Ours keeps score.</h1>
+      <p class="lede">Brier Labs reads the market before the opening bell, then grades every one of its own calls against real closing prices. Confidence is easy to generate. We publish the record instead.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#contact">Request early access</a>
+        <a class="btn btn-ghost" href="#proof">See how we measure</a>
+      </div>
+    </div>
+
+    <div class="ledger" aria-label="Sample prediction record">
+      <div class="ledger-head">
+        <strong>Prediction record</strong>
+        <span>Scored at 1 trading day</span>
+      </div>
+      <div class="row">
+        <span class="tk">DELL</span>
+        <span class="call"><b>Hold</b> · earnings caution outweighed backlog strength</span>
+        <span class="verdict hit">Correct</span>
+      </div>
+      <div class="row">
+        <span class="tk">TTWO</span>
+        <span class="call"><b>Buy</b> · premium pre-order mix signalled pricing power</span>
+        <span class="verdict hit">Correct</span>
+      </div>
+      <div class="row">
+        <span class="tk">GOOGL</span>
+        <span class="call"><b>Sell</b> · regulatory and cash-flow pressure</span>
+        <span class="verdict miss">Missed</span>
+      </div>
+      <div class="row">
+        <span class="tk">BLK</span>
+        <span class="call"><b>Buy</b> · ETF inflows and institutional backing</span>
+        <span class="verdict hit">Correct</span>
+      </div>
+      <div class="ledger-foot">Every call is stored with the headlines that produced it, then re-scored at 1, 7 and 30 trading days.</div>
+    </div>
+  </div>
+</header>
+
+<div class="band">
+  <div class="wrap">
+    <div class="band-grid">
+      <div class="stat">
+        <div class="n">3 sources</div>
+        <div class="d">Headlines cross-checked across independent feeds before the model sees anything, so one bad article can't carry a call.</div>
+      </div>
+      <div class="stat">
+        <div class="n">1, 7, 30</div>
+        <div class="d">Trading-day horizons. A signal that only works on day one is a different product from one that holds for a month.</div>
+      </div>
+      <div class="stat">
+        <div class="n">Two baselines</div>
+        <div class="d">Every result is set against always-buy and always-hold. An accuracy figure without a baseline means nothing.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>From scattered headlines to a call you can audit</h2>
+      <p>The pipeline runs unattended every weekday. Nothing is hand-picked, and nothing is quietly discarded when it turns out wrong.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="idx">Step one</div>
+        <h3>Gather</h3>
+        <p>Independent news feeds are pulled for every position, deduplicated, and consolidated into a single evidence set per company.</p>
+      </div>
+      <div class="step">
+        <div class="idx">Step two</div>
+        <h3>Judge</h3>
+        <p>A language model weighs the full set at once and returns a structured call with a sentiment score and a written rationale.</p>
+      </div>
+      <div class="step">
+        <div class="idx">Step three</div>
+        <h3>Score</h3>
+        <p>After the close, real prices come back in. Each past call is marked correct or missed, and the record updates itself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proof" id="proof">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Named after a measurement, not a metaphor</h2>
+      <p>The Brier score is the standard way to measure how accurate a probabilistic forecast turned out to be. We took the name because grading the forecast is the harder half of the work, and the half most tools skip.</p>
+    </div>
+    <div class="cols">
+      <div>
+        <div class="claim">
+          <h3>The rationale is stored, not just the verdict</h3>
+          <p>Every call keeps the exact headlines behind it. When a call fails, the reason it failed is still on file.</p>
+        </div>
+        <div class="claim">
+          <h3>Baselines run alongside</h3>
+          <p>In a rising market, always-buy scores well. We report it next to our own number so the comparison is unavoidable.</p>
+        </div>
+      </div>
+      <div>
+        <div class="claim">
+          <h3>Horizons are measured separately</h3>
+          <p>Same-day accuracy and one-month accuracy answer different questions. We don't blend them into one flattering figure.</p>
+        </div>
+        <div class="claim">
+          <h3>The record is cumulative</h3>
+          <p>Nothing resets. The history grows and stays queryable, which is what makes the system able to learn from its own misses.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Built for people who carry the cost of being wrong</h2>
+      <p>Market sentiment moves more than share prices. It moves input costs, freight, and the pricing decisions that follow.</p>
+    </div>
+    <div class="who">
+      <div>
+        <h3>Pricing teams</h3>
+        <p>See the macro pressure building on your inputs before it reaches a quarterly review, with the reasoning attached.</p>
+      </div>
+      <div>
+        <h3>Supply chain</h3>
+        <p>Track the sectors your suppliers sit in, and get told when the tone around them turns — not a week after it did.</p>
+      </div>
+      <div>
+        <h3>Finance and strategy</h3>
+        <p>A running record of what the market was saying, when, and whether it turned out to be right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tail" id="contact">
+  <div class="wrap">
+    <h2>Early access opens with the first published scorecard.</h2>
+    <p>We're accumulating the record now. When there's enough of it to mean something, it gets published — good or bad — and early users see it first.</p>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="mailto:hello@brierlabs.com">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <svg class="mark" aria-hidden="true"><use href="#blade"/></svg>
+        Brier Labs
+      </div>
+      <div>Montréal, Québec</div>
+    </div>
+    <p class="foot-note">
+      Brier Labs produces automated analysis of publicly available market news. It is a research and analysis tool, not investment advice, and it does not constitute a recommendation to buy or sell any security. Past accuracy does not predict future accuracy.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
