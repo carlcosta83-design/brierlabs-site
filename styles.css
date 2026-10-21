@@ -215,6 +215,45 @@ ul.plain strong{color:var(--ink);font-weight:600}
 .contact a{font-family:var(--mono);font-size:1rem;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px}
 .contact a:hover{border-bottom-color:#fff}
 
+/* --------------------- résultats en direct (page Résultats) -------------- */
+.loading{color:var(--muted);font-size:15.5px;padding:18px 0}
+
+.sigs{margin-top:38px;border-top:1px solid var(--rule)}
+.sig{
+  display:grid;grid-template-columns:1.4fr 1fr auto auto;gap:18px;align-items:baseline;
+  padding:19px 0;border-bottom:1px solid var(--rule);
+}
+.sig-k{font-size:1.05rem;font-weight:600;letter-spacing:-.01em}
+.sig-n{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.sig-v{font-family:var(--mono);font-size:1.15rem;text-align:right;min-width:74px}
+.sig-h{display:block;font-size:11px;letter-spacing:.07em;color:var(--muted);margin-top:3px}
+
+.calls{margin-top:38px;border-top:1px solid var(--rule)}
+.call{padding:20px 0;border-bottom:1px solid var(--rule)}
+.call-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.call-tk{font-family:var(--mono);font-weight:500;font-size:15px;min-width:62px}
+.call-sig{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+  padding:3px 9px;border:1px solid var(--rule);border-radius:3px;color:var(--muted);
+}
+.call-sig.s-buy{border-color:var(--navy);color:var(--navy)}
+.call-sig.s-sell{border-color:#9a3030;color:#9a3030}
+.call-sc{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.call-end{margin-left:auto;display:flex;align-items:center;gap:12px}
+.ret{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.v{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em}
+.v.ok{color:var(--navy);font-weight:500}
+.v.ko{color:#9a3030}
+.v.wait{color:var(--muted)}
+.call-why{margin-top:10px;color:var(--muted);font-size:15px;max-width:70ch}
+
+.dl{
+  display:inline-block;font-family:var(--mono);font-size:13px;letter-spacing:.04em;
+  color:var(--navy);text-decoration:none;
+  border:1px solid var(--navy);border-radius:3px;padding:11px 18px;
+}
+.dl:hover{background:var(--navy);color:#fff}
+
 /* -------------------------------- footer -------------------------------- */
 footer{background:var(--navy);color:#a8bbdd;padding:56px 0 44px;font-size:14.5px;margin-top:0}
 .foot-top{

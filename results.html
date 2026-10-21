@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daily results — Brier-Labs</title>
-<meta name="description" content="The live record of Brier-Labs market calls, scored against real outcomes at 1, 7 and 30 trading days.">
+<meta name="description" content="The live record of Brier-Labs market calls, read straight from the database and scored against real outcomes.">
 <link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,40 +29,53 @@
 
 <header class="page-head">
   <div class="wrap">
-    <p class="eyebrow"><span lang="en">Live record</span><span lang="fr">Relevé en direct</span></p>
+    <p class="eyebrow"><span lang="en">Read live from the database</span><span lang="fr">Lu en direct dans la base</span></p>
     <h1 lang="en">Daily results</h1>
     <h1 lang="fr">Résultats quotidiens</h1>
-    <p class="lede" lang="en">Every call the system has made, and whether it proved right. This page is being built — the pipeline already produces and scores these calls daily, but they are not published here yet.</p>
-    <p class="lede" lang="fr">Chaque appel produit par le système, et s’il s’est avéré juste. Cette page est en construction — le pipeline produit et note déjà ces appels chaque jour, mais ils ne sont pas encore publiés ici.</p>
+    <p class="lede" lang="en">Every call the system has made, and whether it proved right. Nothing on this page is typed by hand — it comes straight out of the same database the pipeline writes to, failures included.</p>
+    <p class="lede" lang="fr">Chaque appel produit par le système, et s’il s’est avéré juste. Rien sur cette page n’est saisi à la main — tout sort de la base où écrit le pipeline, échecs compris.</p>
   </div>
 </header>
 
-<section>
+<section class="section-tight">
   <div class="wrap">
-    <div class="notice">
-      <h3><span lang="en">Under construction</span><span lang="fr">En construction</span></h3>
-      <p lang="en">What this page will show once the measurement period produces a figure stable enough to stand behind:</p>
-      <p lang="fr">Ce que cette page affichera une fois que la période de mesure produira un chiffre assez stable pour être défendu :</p>
-      <ul>
-        <li><span lang="en">Each day’s calls, with the direction, the score, and the reasoning that produced them</span><span lang="fr">Les appels de chaque jour, avec la direction, le score et le raisonnement qui les a produits</span></li>
-        <li><span lang="en">The outcome of every past call at 1, 7 and 30 trading days</span><span lang="fr">Le résultat de chaque appel passé à 1, 7 et 30 jours de bourse</span></li>
-        <li><span lang="en">Accuracy broken down by call type, not blended into one flattering figure</span><span lang="fr">La justesse détaillée par type d’appel, plutôt que fondue en un seul chiffre avantageux</span></li>
-        <li><span lang="en">The same two baselines shown on the home page, recomputed over the same period</span><span lang="fr">Les deux mêmes références que sur la page d’accueil, recalculées sur la même période</span></li>
-        <li><span lang="en">The full history, downloadable, including the calls that failed</span><span lang="fr">L’historique complet, téléchargeable, y compris les appels manqués</span></li>
-      </ul>
+    <div id="live">
+      <p class="loading"><span lang="en">Loading the record…</span><span lang="fr">Chargement du relevé…</span></p>
     </div>
   </div>
 </section>
 
 <section class="band">
+  <div class="wrap">
+    <h2 lang="en">By call type</h2>
+    <h2 lang="fr">Par type d’appel</h2>
+    <p class="sec-intro" lang="en">Blending the three into a single figure would hide a weak category behind a strong one, so they are reported separately.</p>
+    <p class="sec-intro" lang="fr">Fondre les trois en un seul chiffre masquerait une catégorie faible derrière une catégorie forte, donc ils sont rapportés séparément.</p>
+    <div class="sigs" id="by-signal"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 lang="en">The most recent calls</h2>
+    <h2 lang="fr">Les derniers appels</h2>
+    <p class="sec-intro" lang="en">The latest batch the system produced, with the reasoning it recorded at the time — before the outcome was known.</p>
+    <p class="sec-intro" lang="fr">Le dernier lot produit par le système, avec le raisonnement enregistré sur le moment — avant que le résultat soit connu.</p>
+    <div class="calls" id="latest"></div>
+  </div>
+</section>
+
+<section class="band">
   <div class="wrap"><div class="narrow">
-    <h2 lang="en">In the meantime</h2>
-    <h2 lang="fr">D’ici là</h2>
-    <p class="sec-intro" lang="en">The first measured week is already published on the home page, baselines included. It shows no edge over a trivial strategy, which is the honest state of the research rather than a figure held back until it improves.</p>
-    <p class="sec-intro" lang="fr">La première semaine mesurée est déjà publiée sur la page d’accueil, références comprises. Elle ne montre aucun avantage sur une stratégie triviale, ce qui est l’état honnête de la recherche plutôt qu’un chiffre retenu jusqu’à ce qu’il s’améliore.</p>
-    <p class="sec-intro" style="margin-top:22px">
-      <a href="index.html"><span lang="en">See the current record →</span><span lang="fr">Voir le relevé actuel →</span></a>
+    <h2 lang="en">Take the whole record</h2>
+    <h2 lang="fr">Prendre tout le relevé</h2>
+    <p class="sec-intro" lang="en">Every call, every outcome, every horizon, as a spreadsheet file. Nothing is filtered out, and the misses are in there too — checking the figures above is the point.</p>
+    <p class="sec-intro" lang="fr">Chaque appel, chaque résultat, chaque horizon, dans un fichier tableur. Rien n’est filtré, et les échecs y sont aussi — vérifier les chiffres ci-dessus est précisément l’objectif.</p>
+    <p style="margin-top:22px">
+      <a id="download" class="dl" style="display:none" href="#"><span lang="en">Download the full record (CSV)</span><span lang="fr">Télécharger le relevé complet (CSV)</span></a>
     </p>
+    <p class="note" lang="en">The thirty-day horizon fills in slowly by nature: a call made this week cannot be scored at thirty trading days until well over a month has passed.</p>
+    <p class="note" lang="fr">L’horizon à trente jours se remplit lentement par nature : un appel produit cette semaine ne peut être noté à trente jours de bourse qu’après plus d’un mois.</p>
   </div></div>
 </section>
 
@@ -84,6 +97,8 @@
 </footer>
 
 <script src="reports.js"></script>
+<script src="config.js"></script>
 <script src="site.js"></script>
+<script src="data.js"></script>
 </body>
 </html>
