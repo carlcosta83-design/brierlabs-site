@@ -1,0 +1,208 @@
+/* ==========================================================================
+   Brier-Labs — feuille de style commune aux trois pages
+   Couleur de marque : #031d58, reprise du logo.
+   ========================================================================== */
+
+:root{
+  --navy:#031d58;
+  --navy-soft:#1b3a73;
+  --ink:#16181d;
+  --muted:#5c6472;
+  --rule:#e4e7ed;
+  --bg:#ffffff;
+  --bg-alt:#f7f8fa;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",monospace;
+  --gut:clamp(20px,5vw,56px);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--navy)}
+
+/* --- bascule de langue : on masque la version inactive ------------------- */
+html[lang="en"] [lang="fr"],
+html[lang="fr"] [lang="en"]{display:none !important}
+
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
+/* .narrow s'utilise À L'INTÉRIEUR de .wrap : il réduit la largeur de lecture
+   sans recentrer le bloc, pour que tout le site garde la même marge gauche. */
+.narrow{max-width:72ch}
+
+/* ------------------------------- en-tête -------------------------------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.93);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-in{display:flex;align-items:center;gap:clamp(16px,3vw,40px);height:74px}
+.nav-logo{flex:none}
+.nav-logo img{height:26px;width:auto}
+.nav-menu{display:flex;gap:clamp(14px,2.4vw,30px);margin-left:auto;align-items:center}
+.nav-menu a{
+  font-size:15px;font-weight:450;color:var(--muted);text-decoration:none;
+  padding:4px 0;border-bottom:1.5px solid transparent;white-space:nowrap;
+}
+.nav-menu a:hover{color:var(--navy)}
+.nav-menu a.on{color:var(--navy);border-bottom-color:var(--navy)}
+
+.lang{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;
+  background:none;border:1px solid var(--rule);border-radius:3px;
+  color:var(--muted);padding:5px 9px;cursor:pointer;
+}
+.lang:hover{border-color:var(--navy);color:var(--navy)}
+
+/* -------------------------------- hero ---------------------------------- */
+.hero{padding:clamp(64px,10vw,124px) 0 clamp(48px,7vw,80px)}
+.eyebrow{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;
+  color:var(--muted);margin-bottom:26px;
+}
+h1{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(2.6rem,6.2vw,4.5rem);
+  line-height:1.04;letter-spacing:-.012em;
+  max-width:19ch;
+}
+.hero .lede{
+  margin-top:28px;font-size:clamp(1.05rem,1.7vw,1.22rem);
+  color:var(--muted);max-width:60ch;
+}
+
+/* ------------------------------ sections -------------------------------- */
+section{padding:clamp(56px,8vw,96px) 0}
+.section-tight{padding-top:clamp(26px,3.6vw,42px)}
+.band{background:var(--bg-alt);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.dark{background:var(--navy);color:#fff}
+.dark h2,.dark h3{color:#fff}
+.dark p{color:#c3cde4}
+.dark a{color:#fff}
+
+h2{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(1.9rem,3.6vw,2.7rem);
+  line-height:1.12;letter-spacing:-.008em;max-width:22ch;
+}
+h3{font-size:1.08rem;font-weight:600;letter-spacing:-.005em}
+.sec-intro{margin-top:18px;color:var(--muted);max-width:62ch}
+
+/* ------------------------- registre de résultats ------------------------- */
+.record{margin-top:40px;max-width:680px}
+.record-meta{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;
+  color:var(--muted);padding-bottom:14px;border-bottom:1px solid var(--rule);
+}
+.dark .record-meta{color:#8ea4cc;border-bottom-color:rgba(255,255,255,.18)}
+.row{
+  display:grid;grid-template-columns:minmax(140px,1.1fr) 2.6fr 58px;
+  gap:16px;align-items:center;
+  padding:17px 0;border-bottom:1px solid var(--rule);
+}
+.dark .row{border-bottom-color:rgba(255,255,255,.12)}
+.row-name{font-size:15px;color:var(--muted)}
+.row.mine .row-name{color:var(--ink);font-weight:600}
+.dark .row-name{color:#a8bbdd}
+.dark .row.mine .row-name{color:#fff}
+.bar{height:7px;background:var(--rule);border-radius:4px;overflow:hidden}
+.dark .bar{background:rgba(255,255,255,.14)}
+.bar span{display:block;height:100%;background:var(--muted);border-radius:4px}
+.row.mine .bar span{background:var(--navy)}
+.dark .bar span{background:#5f7cb8}
+.dark .row.mine .bar span{background:#fff}
+.row-val{font-family:var(--mono);font-size:15px;text-align:right}
+.read{margin-top:26px;max-width:62ch;font-size:15.5px}
+
+/* -------------------------------- étapes -------------------------------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3.4vw,46px);margin-top:46px}
+.step{border-top:2px solid var(--navy);padding-top:20px}
+.dark .step{border-top-color:#fff}
+.step-n{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted);margin-bottom:9px}
+.dark .step-n{color:#8ea4cc}
+.step p{margin-top:9px;color:var(--muted);font-size:15.5px}
+
+/* ------------------------------- modules -------------------------------- */
+.mods{margin-top:44px;border-top:1px solid var(--rule)}
+.mod{
+  display:grid;grid-template-columns:1fr auto;gap:18px;align-items:start;
+  padding:24px 0;border-bottom:1px solid var(--rule);
+}
+.mod p{color:var(--muted);font-size:15.5px;margin-top:6px;max-width:58ch}
+.tag{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;
+  padding:4px 10px;border:1px solid var(--rule);border-radius:3px;
+  color:var(--muted);white-space:nowrap;
+}
+.tag.live{border-color:var(--navy);color:var(--navy)}
+
+/* ----------------------------- pages internes --------------------------- */
+.page-head{padding:clamp(52px,7vw,88px) 0 clamp(26px,4vw,44px);border-bottom:1px solid var(--rule)}
+.page-head h1{font-size:clamp(2.2rem,4.6vw,3.3rem);max-width:24ch}
+.page-head .lede{margin-top:20px;color:var(--muted);max-width:62ch}
+
+.notice{
+  margin-top:44px;border:1px solid var(--rule);border-left:3px solid var(--navy);
+  background:var(--bg-alt);padding:clamp(24px,3.4vw,36px);
+}
+.notice h3{margin-bottom:10px}
+.notice p{color:var(--muted);max-width:60ch}
+.notice ul{margin:18px 0 0 20px;color:var(--muted);font-size:15.5px}
+.notice li{margin-bottom:7px}
+
+/* ------------------------------- rapports ------------------------------- */
+.reports{margin-top:14px}
+.report{padding:30px 0;border-bottom:1px solid var(--rule);display:block;text-decoration:none;color:inherit}
+.report:hover h3{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
+.report-date{font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;color:var(--muted)}
+.report h3{margin-top:8px;font-size:1.3rem;font-family:var(--serif);font-weight:400;letter-spacing:-.005em}
+.report p{margin-top:9px;color:var(--muted);font-size:15.5px;max-width:62ch}
+.report-go{
+  display:inline-block;margin-top:13px;font-family:var(--mono);
+  font-size:12.5px;letter-spacing:.05em;color:var(--navy);
+}
+.empty{padding:52px 0;color:var(--muted);border-bottom:1px solid var(--rule)}
+
+/* -------------------------------- footer -------------------------------- */
+footer{background:var(--navy);color:#a8bbdd;padding:56px 0 44px;font-size:14.5px;margin-top:0}
+.foot-top{
+  display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between;
+  padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.16);
+}
+.foot-top img{height:22px;width:auto}
+.foot-links{display:flex;gap:22px}
+.foot-links a{color:#a8bbdd;text-decoration:none}
+.foot-links a:hover{color:#fff}
+.disclaimer{margin-top:24px;max-width:84ch;line-height:1.62;font-size:13.5px;color:#8ea4cc}
+
+/* ------------------------------- mobile --------------------------------- */
+@media (max-width:860px){
+  .steps{grid-template-columns:1fr;gap:26px}
+  .nav-in{height:66px}
+  .nav-menu{gap:14px}
+  .nav-menu a{font-size:14px}
+  .row{grid-template-columns:minmax(110px,1fr) 1.6fr 48px;gap:12px}
+  .mod{grid-template-columns:1fr}
+}
+/* Sous 560px la barre ne tient plus sur une ligne : logo au-dessus,
+   navigation en dessous, répartie sur toute la largeur. */
+@media (max-width:560px){
+  .nav-in{height:auto;flex-wrap:wrap;row-gap:4px;padding-top:12px;padding-bottom:10px}
+  .nav-logo{width:100%}
+  .nav-logo img{height:21px}
+  .nav-menu{margin-left:0;width:100%;justify-content:space-between;gap:10px}
+  body{font-size:16px}
+}
+
+:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}html{scroll-behavior:auto}}

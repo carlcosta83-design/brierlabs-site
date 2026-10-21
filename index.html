@@ -3,330 +3,176 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Brier Labs — Market intelligence that keeps score</title>
-<meta name="description" content="Brier Labs reads the market every morning and grades its own predictions every night. Named after the Brier score, the standard metric for forecast accuracy.">
+<title>Brier-Labs — AI systems, measured</title>
+<meta name="description" content="Brier-Labs builds AI systems for business decisions and publishes how often they are right, scored against real outcomes and against doing nothing.">
+<meta property="og:title" content="Brier-Labs — AI systems, measured">
+<meta property="og:description" content="Every system we build is scored against what actually happened. The record is public, including when it is poor.">
+<meta property="og:image" content="logo-wordmark.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#022e33;
-  --ink-deep:#011c20;
-  --ink-soft:#0a4249;
-  --teal:#04bfbf;
-  --teal-mid:#038d8f;
-  --teal-dim:#02696b;
-  --paper:#ffffff;
-  --mist:#f1f6f6;
-  --rule:#d6e3e3;
-  --body:#3d5457;
-  --font:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --gut:clamp(20px,5vw,64px);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
-body{
-  font-family:var(--font);
-  background:var(--paper);
-  color:var(--ink);
-  line-height:1.5;
-  overflow-x:hidden;
-}
-img{max-width:100%}
-a{color:inherit}
-.wrap{max-width:1240px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
-
-/* ---------- chevron mark, echoing the logo's rotational blades ---------- */
-.mark{width:22px;height:22px;flex:none}
-.mark path{fill:var(--teal)}
-
-/* ---------- nav ---------- */
-.nav{position:sticky;top:0;z-index:40;background:var(--ink);color:#fff}
-.nav-in{display:flex;align-items:center;gap:40px;height:68px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;font-size:1.05rem;text-decoration:none}
-.nav-links{display:flex;gap:30px;margin-left:auto;font-size:.9rem;font-weight:500}
-.nav-links a{text-decoration:none;opacity:.82;padding:6px 0;border-bottom:2px solid transparent}
-.nav-links a:hover,.nav-links a:focus-visible{opacity:1;border-bottom-color:var(--teal)}
-@media(max-width:860px){.nav-links{display:none}}
-
-/* ---------- hero ---------- */
-.hero{background:var(--ink);color:#fff;padding:clamp(56px,8vw,104px) 0 clamp(64px,9vw,116px);position:relative;overflow:hidden}
-.hero::after{
-  content:"";position:absolute;right:-18%;top:-30%;width:60vw;height:60vw;border-radius:50%;
-  background:radial-gradient(circle,rgba(4,191,191,.16),transparent 62%);pointer-events:none
-}
-.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(36px,6vw,80px);align-items:center;position:relative;z-index:1}
-@media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:44px}}
-h1{
-  font-size:clamp(2.6rem,6.4vw,4.9rem);
-  line-height:1.02;letter-spacing:-.035em;font-weight:800;max-width:15ch;
-}
-.hero p.lede{margin-top:26px;font-size:clamp(1.02rem,1.7vw,1.22rem);line-height:1.55;max-width:52ch;color:#c3dcdd}
-.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:15px 30px;font:inherit;font-weight:600;font-size:.97rem;
-  text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .15s,color .15s
-}
-.btn-solid{background:var(--teal);color:var(--ink-deep)}
-.btn-solid:hover,.btn-solid:focus-visible{background:#2ad4d4}
-.btn-ghost{border-color:rgba(255,255,255,.4);color:#fff}
-.btn-ghost:hover,.btn-ghost:focus-visible{border-color:var(--teal);color:var(--teal)}
-
-/* ---------- the ledger: the characteristic artifact ---------- */
-.ledger{background:#01252a;border:1px solid rgba(4,191,191,.24)}
-.ledger-head{display:flex;justify-content:space-between;align-items:baseline;padding:18px 22px;border-bottom:1px solid rgba(4,191,191,.2);font-size:.83rem;color:#8fb5b7}
-.ledger-head strong{color:#fff;font-weight:600;font-size:.95rem;letter-spacing:-.01em}
-.row{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:15px 22px;border-bottom:1px solid rgba(255,255,255,.07)}
-.row:last-child{border-bottom:none}
-.tk{font-weight:700;font-size:.95rem;letter-spacing:-.01em}
-.call{font-size:.82rem;color:#8fb5b7}
-.call b{font-weight:600;color:#c3dcdd}
-.verdict{font-size:.8rem;font-weight:600;padding:4px 10px;white-space:nowrap}
-.hit{background:rgba(4,191,191,.16);color:var(--teal)}
-.miss{background:rgba(255,255,255,.08);color:#9db3b5}
-.ledger-foot{padding:15px 22px;font-size:.8rem;color:#7ea5a7;background:rgba(4,191,191,.05)}
-
-/* ---------- stat band ---------- */
-.band{background:var(--mist);border-bottom:1px solid var(--rule)}
-.band-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule)}
-@media(max-width:760px){.band-grid{grid-template-columns:1fr}}
-.stat{background:var(--mist);padding:clamp(30px,4.5vw,50px) clamp(20px,3vw,38px)}
-.stat .n{font-size:clamp(2.1rem,3.6vw,2.9rem);font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1}
-.stat .d{margin-top:12px;font-size:.94rem;color:var(--body);max-width:34ch}
-
-/* ---------- sections ---------- */
-section{padding:clamp(64px,8.5vw,112px) 0}
-.sec-head{max-width:62ch;margin-bottom:clamp(38px,5vw,60px)}
-h2{font-size:clamp(1.85rem,3.7vw,2.85rem);line-height:1.1;letter-spacing:-.03em;font-weight:700}
-.sec-head p{margin-top:18px;font-size:1.05rem;color:var(--body);max-width:58ch}
-
-/* steps: a genuine sequence, so it is numbered */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3vw,42px)}
-@media(max-width:860px){.steps{grid-template-columns:1fr}}
-.step{border-top:3px solid var(--teal);padding-top:22px}
-.step .idx{font-size:.82rem;font-weight:700;color:var(--teal-dim)}
-.step h3{margin-top:8px;font-size:1.24rem;font-weight:700;letter-spacing:-.02em}
-.step p{margin-top:11px;color:var(--body);font-size:.98rem}
-
-/* dark proof section */
-.proof{background:var(--ink);color:#fff}
-.proof h2{max-width:20ch}
-.proof .sec-head p{color:#b7d4d5}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4.5vw,64px)}
-@media(max-width:860px){.cols{grid-template-columns:1fr}}
-.claim{border-left:2px solid var(--teal);padding:4px 0 4px 22px;margin-bottom:30px}
-.claim h3{font-size:1.1rem;font-weight:700;letter-spacing:-.015em}
-.claim p{margin-top:9px;color:#b7d4d5;font-size:.97rem}
-
-/* audience */
-.who{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
-@media(max-width:860px){.who{grid-template-columns:1fr}}
-.who > div{background:var(--paper);padding:clamp(26px,3.4vw,38px)}
-.who h3{font-size:1.12rem;font-weight:700;letter-spacing:-.02em}
-.who p{margin-top:11px;color:var(--body);font-size:.96rem}
-
-/* cta */
-.tail{background:linear-gradient(115deg,var(--ink) 0%,var(--teal-dim) 100%);color:#fff}
-.tail h2{max-width:17ch}
-.tail p{margin-top:18px;color:#cfe7e7;max-width:52ch;font-size:1.05rem}
-
-/* footer */
-footer{background:var(--ink-deep);color:#89aeb0;padding:52px 0 40px;font-size:.88rem}
-.foot-top{display:flex;flex-wrap:wrap;gap:26px;align-items:center;justify-content:space-between;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.09)}
-.foot-brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:1.02rem;letter-spacing:-.02em}
-.foot-note{margin-top:24px;max-width:78ch;line-height:1.65}
-.foot-note a{color:var(--teal)}
-
-:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;450;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<symbol id="blade" viewBox="0 0 24 24"><path d="M12 1.6c2.3 0 3.4 2.1 3.1 4.1 1.6-1.3 3.9-1.1 5 .6 1.1 1.7.1 3.7-1.6 4.6 2 .4 3.3 2.2 2.7 4.1-.6 1.9-2.8 2.6-4.6 1.9.8 1.9-.2 4-2.2 4.5-2 .5-3.7-.9-4.1-2.8-1 1.7-3.2 2.3-4.8 1.1-1.6-1.2-1.7-3.5-.4-4.9-2 0-3.6-1.6-3.5-3.6.1-2 1.9-3.3 3.8-3.1C4.3 6.4 5 4.2 6.9 3.5c1.9-.7 3.8.4 4.4 2.2-.1-2.1 .5-4.1 .7-4.1z"/></symbol>
-</defs></svg>
-
 <nav class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#top">
-      <svg class="mark" aria-hidden="true"><use href="#blade"/></svg>
-      Brier&nbsp;Labs
-    </a>
-    <div class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#proof">Measurement</a>
-      <a href="#who">Who it's for</a>
-      <a href="#contact">Contact</a>
+    <a class="nav-logo" href="index.html"><img src="logo-wordmark.png" alt="Brier-Labs"></a>
+    <div class="nav-menu">
+      <a href="index.html" class="on"><span lang="en">Home</span><span lang="fr">Accueil</span></a>
+      <a href="results.html"><span lang="en">Daily results</span><span lang="fr">Résultats</span></a>
+      <a href="research.html"><span lang="en">Research</span><span lang="fr">Recherche</span></a>
+      <button class="lang" type="button">FR</button>
     </div>
   </div>
 </nav>
 
-<header class="hero" id="top">
-  <div class="wrap hero-grid">
-    <div>
-      <h1>Most market AI sounds certain. Ours keeps score.</h1>
-      <p class="lede">Brier Labs reads the market before the opening bell, then grades every one of its own calls against real closing prices. Confidence is easy to generate. We publish the record instead.</p>
-      <div class="cta-row">
-        <a class="btn btn-solid" href="#contact">Request early access</a>
-        <a class="btn btn-ghost" href="#proof">See how we measure</a>
-      </div>
-    </div>
-
-    <div class="ledger" aria-label="Sample prediction record">
-      <div class="ledger-head">
-        <strong>Prediction record</strong>
-        <span>Scored at 1 trading day</span>
-      </div>
-      <div class="row">
-        <span class="tk">DELL</span>
-        <span class="call"><b>Hold</b> · earnings caution outweighed backlog strength</span>
-        <span class="verdict hit">Correct</span>
-      </div>
-      <div class="row">
-        <span class="tk">TTWO</span>
-        <span class="call"><b>Buy</b> · premium pre-order mix signalled pricing power</span>
-        <span class="verdict hit">Correct</span>
-      </div>
-      <div class="row">
-        <span class="tk">GOOGL</span>
-        <span class="call"><b>Sell</b> · regulatory and cash-flow pressure</span>
-        <span class="verdict miss">Missed</span>
-      </div>
-      <div class="row">
-        <span class="tk">BLK</span>
-        <span class="call"><b>Buy</b> · ETF inflows and institutional backing</span>
-        <span class="verdict hit">Correct</span>
-      </div>
-      <div class="ledger-foot">Every call is stored with the headlines that produced it, then re-scored at 1, 7 and 30 trading days.</div>
-    </div>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span lang="en">Montréal, Québec</span><span lang="fr">Montréal, Québec</span></p>
+    <h1 lang="en">We build AI systems for business decisions — and publish how often they are right.</h1>
+    <h1 lang="fr">Nous construisons des systèmes d’IA pour la décision d’entreprise — et nous publions leur taux de justesse.</h1>
+    <p class="lede" lang="en">Brier-Labs takes its name from the Brier score, the standard measure of how accurate a forecast turned out to be. Every system we build is scored against what actually happened, and against the simplest alternative: doing nothing. The record is public, including when it is poor.</p>
+    <p class="lede" lang="fr">Brier-Labs tient son nom du score de Brier, la mesure standard de la justesse d’une prévision. Chaque système que nous construisons est confronté à ce qui s’est réellement passé, et à l’option la plus simple : ne rien faire. Le relevé est public, y compris quand il est mauvais.</p>
   </div>
 </header>
 
-<div class="band">
+<section class="dark">
   <div class="wrap">
-    <div class="band-grid">
-      <div class="stat">
-        <div class="n">3 sources</div>
-        <div class="d">Headlines cross-checked across independent feeds before the model sees anything, so one bad article can't carry a call.</div>
+    <h2 lang="en">The current record</h2>
+    <h2 lang="fr">Le relevé actuel</h2>
+    <p class="sec-intro" lang="en">Share of calls that proved correct one trading day later, set beside two strategies that require no model at all.</p>
+    <p class="sec-intro" lang="fr">Part des appels qui se sont avérés justes un jour de bourse plus tard, placée à côté de deux stratégies qui ne demandent aucun modèle.</p>
+
+    <div class="record">
+      <div class="record-meta">
+        <span lang="en">Week of 18 September 2026 · 30 calls · scored at 1 trading day</span>
+        <span lang="fr">Semaine du 18 septembre 2026 · 30 appels · mesurés à 1 jour de bourse</span>
       </div>
-      <div class="stat">
-        <div class="n">1, 7, 30</div>
-        <div class="d">Trading-day horizons. A signal that only works on day one is a different product from one that holds for a month.</div>
+
+      <div class="row mine">
+        <div class="row-name"><span lang="en">Brier-Labs model</span><span lang="fr">Modèle Brier-Labs</span></div>
+        <div class="bar"><span style="width:23%"></span></div>
+        <div class="row-val"><span lang="en">23%</span><span lang="fr">23 %</span></div>
       </div>
-      <div class="stat">
-        <div class="n">Two baselines</div>
-        <div class="d">Every result is set against always-buy and always-hold. An accuracy figure without a baseline means nothing.</div>
+      <div class="row">
+        <div class="row-name"><span lang="en">Always “buy”</span><span lang="fr">Toujours « acheter »</span></div>
+        <div class="bar"><span style="width:23%"></span></div>
+        <div class="row-val"><span lang="en">23%</span><span lang="fr">23 %</span></div>
       </div>
+      <div class="row">
+        <div class="row-name"><span lang="en">Always “hold”</span><span lang="fr">Toujours « conserver »</span></div>
+        <div class="bar"><span style="width:40%"></span></div>
+        <div class="row-val"><span lang="en">40%</span><span lang="fr">40 %</span></div>
+      </div>
+
+      <p class="read" lang="en">No edge over a trivial baseline in the first measured week. The working hypothesis is that public headlines are already reflected in the opening price — a question the next tests will settle rather than assume. This figure is published exactly as measured, and updated as the record grows.</p>
+      <p class="read" lang="fr">Aucun avantage sur une stratégie triviale lors de la première semaine mesurée. L’hypothèse de travail est que les titres de presse publics sont déjà intégrés au cours d’ouverture — une question que les prochains tests trancheront plutôt que de la supposer. Ce chiffre est publié exactement tel que mesuré, et mis à jour à mesure que le relevé s’étoffe.</p>
     </div>
   </div>
-</div>
+</section>
 
-<section id="how">
+<section>
   <div class="wrap">
-    <div class="sec-head">
-      <h2>From scattered headlines to a call you can audit</h2>
-      <p>The pipeline runs unattended every weekday. Nothing is hand-picked, and nothing is quietly discarded when it turns out wrong.</p>
-    </div>
+    <h2 lang="en">How a call is made, and how it is graded</h2>
+    <h2 lang="fr">Comment un appel est produit, et comment il est noté</h2>
+    <p class="sec-intro" lang="en">The pipeline runs unattended every weekday. Nothing is hand-picked, and nothing is quietly dropped when it turns out wrong.</p>
+    <p class="sec-intro" lang="fr">Le pipeline tourne seul chaque jour ouvré. Rien n’est trié à la main, et rien n’est discrètement écarté lorsque le résultat déplaît.</p>
+
     <div class="steps">
       <div class="step">
-        <div class="idx">Step one</div>
-        <h3>Gather</h3>
-        <p>Independent news feeds are pulled for every position, deduplicated, and consolidated into a single evidence set per company.</p>
+        <div class="step-n"><span lang="en">Step one</span><span lang="fr">Étape une</span></div>
+        <h3><span lang="en">Gather</span><span lang="fr">Collecter</span></h3>
+        <p lang="en">Independent news sources are pulled for every position, deduplicated, and consolidated into a single evidence set per company.</p>
+        <p lang="fr">Des sources d’actualité indépendantes sont interrogées pour chaque position, dédupliquées, et réunies en un seul ensemble par entreprise.</p>
       </div>
       <div class="step">
-        <div class="idx">Step two</div>
-        <h3>Judge</h3>
-        <p>A language model weighs the full set at once and returns a structured call with a sentiment score and a written rationale.</p>
+        <div class="step-n"><span lang="en">Step two</span><span lang="fr">Étape deux</span></div>
+        <h3><span lang="en">Judge</span><span lang="fr">Analyser</span></h3>
+        <p lang="en">A model weighs the whole set at once and returns a structured call: a direction, a score, and the reasoning behind it.</p>
+        <p lang="fr">Un modèle pèse l’ensemble d’un seul tenant et renvoie un appel structuré : une direction, un score, et le raisonnement qui les soutient.</p>
       </div>
       <div class="step">
-        <div class="idx">Step three</div>
-        <h3>Score</h3>
-        <p>After the close, real prices come back in. Each past call is marked correct or missed, and the record updates itself.</p>
+        <div class="step-n"><span lang="en">Step three</span><span lang="fr">Étape trois</span></div>
+        <h3><span lang="en">Score</span><span lang="fr">Mesurer</span></h3>
+        <p lang="en">After the close, real prices come back in. Every past call is marked at 1, 7 and 30 trading days, against the outcome and against the baselines.</p>
+        <p lang="fr">Après la clôture, les prix réels reviennent. Chaque appel passé est noté à 1, 7 et 30 jours de bourse, contre le résultat et contre les références.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="proof" id="proof">
+<section class="band">
   <div class="wrap">
-    <div class="sec-head">
-      <h2>Named after a measurement, not a metaphor</h2>
-      <p>The Brier score is the standard way to measure how accurate a probabilistic forecast turned out to be. We took the name because grading the forecast is the harder half of the work, and the half most tools skip.</p>
-    </div>
-    <div class="cols">
-      <div>
-        <div class="claim">
-          <h3>The rationale is stored, not just the verdict</h3>
-          <p>Every call keeps the exact headlines behind it. When a call fails, the reason it failed is still on file.</p>
+    <h2 lang="en">One measurement engine, several systems</h2>
+    <h2 lang="fr">Un moteur de mesure, plusieurs systèmes</h2>
+    <p class="sec-intro" lang="en">Each system answers to one business function and writes to the same database, under the same grading discipline. A second system reuses the first one’s foundation rather than starting over.</p>
+    <p class="sec-intro" lang="fr">Chaque système répond à une fonction de l’entreprise et écrit dans la même base, sous la même discipline de notation. Un second système réutilise les fondations du premier plutôt que de repartir de zéro.</p>
+
+    <div class="mods">
+      <div class="mod">
+        <div>
+          <h3><span lang="en">Market intelligence</span><span lang="fr">Intelligence de marché</span></h3>
+          <p lang="en">Daily reading of market news, scored against outcomes. Running and under measurement.</p>
+          <p lang="fr">Lecture quotidienne de l’actualité des marchés, notée contre les résultats. En fonctionnement, en cours de mesure.</p>
         </div>
-        <div class="claim">
-          <h3>Baselines run alongside</h3>
-          <p>In a rising market, always-buy scores well. We report it next to our own number so the comparison is unavoidable.</p>
-        </div>
+        <span class="tag live"><span lang="en">Running</span><span lang="fr">En service</span></span>
       </div>
-      <div>
-        <div class="claim">
-          <h3>Horizons are measured separately</h3>
-          <p>Same-day accuracy and one-month accuracy answer different questions. We don't blend them into one flattering figure.</p>
+      <div class="mod">
+        <div>
+          <h3><span lang="en">Finance and pricing</span><span lang="fr">Finance et tarification</span></h3>
+          <p lang="en">Links macroeconomic pressure — rates, inflation, currencies, commodities — to a company’s own input costs.</p>
+          <p lang="fr">Relie la pression macroéconomique — taux, inflation, devises, matières premières — aux coûts d’approvisionnement d’une entreprise.</p>
         </div>
-        <div class="claim">
-          <h3>The record is cumulative</h3>
-          <p>Nothing resets. The history grows and stays queryable, which is what makes the system able to learn from its own misses.</p>
+        <span class="tag"><span lang="en">In development</span><span lang="fr">En développement</span></span>
+      </div>
+      <div class="mod">
+        <div>
+          <h3><span lang="en">Risk</span><span lang="fr">Risque</span></h3>
+          <p lang="en">A dashboard of market stress indicators — volatility, the yield curve, credit spreads. A reading of risk, not a prediction of crashes.</p>
+          <p lang="fr">Un tableau de bord des indicateurs de tension — volatilité, courbe des taux, écarts de crédit. Une lecture du risque, pas une prédiction de krach.</p>
         </div>
+        <span class="tag"><span lang="en">Planned</span><span lang="fr">Prévu</span></span>
+      </div>
+      <div class="mod">
+        <div>
+          <h3><span lang="en">Logistics and supply</span><span lang="fr">Logistique et approvisionnement</span></h3>
+          <p lang="en">Tracks pressure on freight, lead times and supplier sectors, graded the same way: did the warning precede the disruption?</p>
+          <p lang="fr">Suit les tensions sur le fret, les délais et les secteurs fournisseurs, notée de la même façon : l’alerte a-t-elle précédé la perturbation ?</p>
+        </div>
+        <span class="tag"><span lang="en">Planned</span><span lang="fr">Prévu</span></span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="who">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>Built for people who carry the cost of being wrong</h2>
-      <p>Market sentiment moves more than share prices. It moves input costs, freight, and the pricing decisions that follow.</p>
-    </div>
-    <div class="who">
-      <div>
-        <h3>Pricing teams</h3>
-        <p>See the macro pressure building on your inputs before it reaches a quarterly review, with the reasoning attached.</p>
-      </div>
-      <div>
-        <h3>Supply chain</h3>
-        <p>Track the sectors your suppliers sit in, and get told when the tone around them turns — not a week after it did.</p>
-      </div>
-      <div>
-        <h3>Finance and strategy</h3>
-        <p>A running record of what the market was saying, when, and whether it turned out to be right.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="tail" id="contact">
-  <div class="wrap">
-    <h2>Early access opens with the first published scorecard.</h2>
-    <p>We're accumulating the record now. When there's enough of it to mean something, it gets published — good or bad — and early users see it first.</p>
-    <div class="cta-row">
-      <a class="btn btn-solid" href="mailto:hello@brierlabs.com">Get in touch</a>
-    </div>
-  </div>
+<section>
+  <div class="wrap"><div class="narrow">
+    <h2 lang="en">Why publish a weak number</h2>
+    <h2 lang="fr">Pourquoi publier un chiffre faible</h2>
+    <p class="sec-intro" lang="en">An accuracy figure with nothing to compare it against means very little. In a rising market, buying everything scores well. Publishing the baseline beside our own number is the only way the number carries information — and the only way a reader can tell research from marketing.</p>
+    <p class="sec-intro" lang="fr">Un taux de justesse sans point de comparaison ne dit presque rien. Dans un marché haussier, tout acheter obtient un bon score. Publier la référence à côté de notre propre chiffre est la seule façon pour que ce chiffre porte une information — et la seule façon pour un lecteur de distinguer la recherche du marketing.</p>
+  </div></div>
 </section>
 
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <div class="foot-brand">
-        <svg class="mark" aria-hidden="true"><use href="#blade"/></svg>
-        Brier Labs
+      <img src="logo-wordmark-white.png" alt="Brier-Labs">
+      <div class="foot-links">
+        <a href="index.html"><span lang="en">Home</span><span lang="fr">Accueil</span></a>
+        <a href="results.html"><span lang="en">Daily results</span><span lang="fr">Résultats</span></a>
+        <a href="research.html"><span lang="en">Research</span><span lang="fr">Recherche</span></a>
       </div>
-      <div>Montréal, Québec</div>
     </div>
-    <p class="foot-note">
-      Brier Labs produces automated analysis of publicly available market news. It is a research and analysis tool, not investment advice, and it does not constitute a recommendation to buy or sell any security. Past accuracy does not predict future accuracy.
-    </p>
+    <p class="disclaimer" lang="en">Brier-Labs produces automated analysis of publicly available information. It is a research and analysis project, not investment advice, and nothing here is a recommendation to buy or sell any security. Past accuracy does not predict future accuracy. © 2026 Brier-Labs, Montréal.</p>
+    <p class="disclaimer" lang="fr">Brier-Labs produit une analyse automatisée d’informations publiquement disponibles. Il s’agit d’un projet de recherche et d’analyse, non d’un conseil en investissement, et rien ici ne constitue une recommandation d’achat ou de vente. La justesse passée ne préjuge pas de la justesse future. © 2026 Brier-Labs, Montréal.</p>
   </div>
 </footer>
 
+<script src="reports.js"></script>
+<script src="site.js"></script>
 </body>
 </html>
