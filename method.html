@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Method — Brier-Labs</title>
+<meta name="description" content="How Brier-Labs grades its own predictions: the neutral band, the trading-day horizons, the baselines, and the known limits of the measurement.">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;450;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="nav-logo" href="index.html"><img src="logo-wordmark.png" alt="Brier-Labs"></a>
+    <div class="nav-menu">
+      <a href="index.html"><span lang="en">Home</span><span lang="fr">Accueil</span></a>
+      <a href="results.html"><span lang="en">Results</span><span lang="fr">Résultats</span></a>
+      <a href="research.html"><span lang="en">Research</span><span lang="fr">Recherche</span></a>
+      <a href="method.html" class="on"><span lang="en">Method</span><span lang="fr">Méthode</span></a>
+      <a href="about.html"><span lang="en">About</span><span lang="fr">À propos</span></a>
+      <button class="lang" type="button">FR</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow"><span lang="en">How we grade ourselves</span><span lang="fr">Comment nous nous notons</span></p>
+    <h1 lang="en">Method</h1>
+    <h1 lang="fr">Méthode</h1>
+    <p class="lede" lang="en">An accuracy figure is only worth what the rule behind it is worth. This page sets out the rule in full — including the parts that work against us.</p>
+    <p class="lede" lang="fr">Un taux de justesse ne vaut que ce que vaut la règle qui le produit. Cette page expose la règle en entier — y compris les parties qui jouent contre nous.</p>
+  </div>
+</header>
+
+<section class="section-tight">
+  <div class="wrap"><div class="narrow">
+
+    <h2 lang="en">What counts as correct</h2>
+    <h2 lang="fr">Ce qui compte comme juste</h2>
+    <p class="sec-intro" lang="en">A share price almost never sits perfectly still. Counting any upward tick as a win for “buy” would make the system look far better than it is, so movements smaller than half a percent are treated as no movement at all.</p>
+    <p class="sec-intro" lang="fr">Le cours d’une action ne reste presque jamais parfaitement immobile. Compter la moindre hausse comme une victoire pour « acheter » rendrait le système bien meilleur qu’il n’est, donc tout mouvement inférieur à un demi-point de pourcentage est traité comme une absence de mouvement.</p>
+
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-k"><span lang="en">Buy</span><span lang="fr">Acheter</span></div>
+        <div class="rule-v"><span lang="en">Correct if the return is above <strong>+0.5%</strong></span><span lang="fr">Juste si le rendement dépasse <strong>+0,5 %</strong></span></div>
+      </div>
+      <div class="rule">
+        <div class="rule-k"><span lang="en">Hold</span><span lang="fr">Conserver</span></div>
+        <div class="rule-v"><span lang="en">Correct if the return stays between <strong>−0.5%</strong> and <strong>+0.5%</strong></span><span lang="fr">Juste si le rendement reste entre <strong>−0,5 %</strong> et <strong>+0,5 %</strong></span></div>
+      </div>
+      <div class="rule">
+        <div class="rule-k"><span lang="en">Sell</span><span lang="fr">Vendre</span></div>
+        <div class="rule-v"><span lang="en">Correct if the return falls below <strong>−0.5%</strong></span><span lang="fr">Juste si le rendement descend sous <strong>−0,5 %</strong></span></div>
+      </div>
+    </div>
+
+    <p class="note" lang="en">The half-percent band is calibrated for a single day. It would have to widen for longer horizons — a stock that moves half a percent over a year has not held steady, it has gone nowhere for a very long time.</p>
+    <p class="note" lang="fr">La bande d’un demi-point est calibrée pour une seule journée. Elle devra s’élargir pour les horizons plus longs — une action qui bouge d’un demi-point sur un an n’est pas restée stable, elle a stagné très longtemps.</p>
+
+  </div></div>
+</section>
+
+<section class="band">
+  <div class="wrap"><div class="narrow">
+
+    <h2 lang="en">Where the measurement starts</h2>
+    <h2 lang="fr">Où commence la mesure</h2>
+    <p class="sec-intro" lang="en">Calls are produced before the opening bell. Anyone acting on one would therefore buy at the opening price, not at yesterday’s close. The return is measured from that opening price to the closing price, because that is the only window a reader could actually have captured.</p>
+    <p class="sec-intro" lang="fr">Les appels sont produits avant l’ouverture des marchés. Quiconque agirait sur l’un d’eux achèterait donc au cours d’ouverture, et non à la clôture de la veille. Le rendement est mesuré de ce cours d’ouverture au cours de clôture, parce que c’est la seule fenêtre qu’un lecteur aurait réellement pu saisir.</p>
+    <p class="sec-intro" lang="en">This choice is deliberately unflattering. Measuring from the previous close would quietly credit the system with overnight moves it never saw, and would inflate the figure.</p>
+    <p class="sec-intro" lang="fr">Ce choix est volontairement défavorable. Mesurer depuis la clôture de la veille créditerait discrètement le système de mouvements nocturnes qu’il n’a jamais vus, et gonflerait le chiffre.</p>
+
+  </div></div>
+</section>
+
+<section>
+  <div class="wrap"><div class="narrow">
+
+    <h2 lang="en">Three horizons, counted in trading days</h2>
+    <h2 lang="fr">Trois horizons, comptés en jours de bourse</h2>
+    <p class="sec-intro" lang="en">Every call is graded three times. Weekends and holidays are skipped, so the seventh horizon is the seventh session the market was actually open, not the same weekday a week later.</p>
+    <p class="sec-intro" lang="fr">Chaque appel est noté trois fois. Les fins de semaine et les jours fériés sont ignorés, donc le septième horizon correspond à la septième séance réellement ouverte, et non au même jour de la semaine suivante.</p>
+
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-k">1</div>
+        <div class="rule-v"><span lang="en">Same-day close. Did the news move the price that day?</span><span lang="fr">Clôture du jour même. L’actualité a-t-elle déplacé le cours ce jour-là ?</span></div>
+      </div>
+      <div class="rule">
+        <div class="rule-k">7</div>
+        <div class="rule-v"><span lang="en">Does the effect persist, or was the first day noise?</span><span lang="fr">L’effet persiste-t-il, ou le premier jour n’était-il que du bruit ?</span></div>
+      </div>
+      <div class="rule">
+        <div class="rule-k">30</div>
+        <div class="rule-v"><span lang="en">Is this a trading signal or a planning signal?</span><span lang="fr">S’agit-il d’un signal de marché ou d’un signal de planification ?</span></div>
+      </div>
+    </div>
+
+    <p class="note" lang="en">The three answers point to different products. A signal that only works on day one belongs nowhere near a monthly planning decision, and a signal that only appears at thirty days is wasted on a daily report.</p>
+    <p class="note" lang="fr">Les trois réponses mènent à des produits différents. Un signal qui ne fonctionne qu’au premier jour n’a rien à faire dans une décision de planification mensuelle, et un signal qui n’apparaît qu’à trente jours est gaspillé dans un rapport quotidien.</p>
+
+  </div></div>
+</section>
+
+<section class="dark">
+  <div class="wrap"><div class="narrow">
+
+    <h2 lang="en">The baselines, and why they decide everything</h2>
+    <h2 lang="fr">Les références, et pourquoi elles décident de tout</h2>
+    <p class="sec-intro" lang="en">A raw accuracy figure carries almost no information. In a rising market, a system that says “buy” every single day on every single stock will score well — and it contains no intelligence whatsoever.</p>
+    <p class="sec-intro" lang="fr">Un taux de justesse brut ne porte presque aucune information. Dans un marché haussier, un système qui dit « acheter » chaque jour sur chaque titre obtiendra un bon score — et il ne contient absolument aucune intelligence.</p>
+    <p class="sec-intro" lang="en">So every figure we publish is recomputed beside two strategies that need no model at all, over the exact same days and the exact same stocks: always buy, and always hold. If our number does not clear both, the system has demonstrated nothing, whatever the number looks like on its own.</p>
+    <p class="sec-intro" lang="fr">Chaque chiffre que nous publions est donc recalculé à côté de deux stratégies qui ne demandent aucun modèle, sur exactement les mêmes jours et les mêmes titres : toujours acheter, et toujours conserver. Si notre chiffre ne dépasse pas les deux, le système n’a rien démontré, quelle que soit l’allure du chiffre pris isolément.</p>
+
+  </div></div>
+</section>
+
+<section>
+  <div class="wrap"><div class="narrow">
+
+    <h2 lang="en">What we do not do</h2>
+    <h2 lang="fr">Ce que nous ne faisons pas</h2>
+    <ul class="plain">
+      <li><span lang="en">No call is removed, edited or re-dated after the fact. The reasoning behind each one is stored at the moment it is made, and kept whether it proves right or wrong.</span><span lang="fr">Aucun appel n’est retiré, modifié ou redaté après coup. Le raisonnement de chacun est enregistré au moment où il est produit, et conservé qu’il se révèle juste ou faux.</span></li>
+      <li><span lang="en">No period is selected because it reads well. The record covers every day the system ran.</span><span lang="fr">Aucune période n’est retenue parce qu’elle se lit bien. Le relevé couvre chaque jour où le système a tourné.</span></li>
+      <li><span lang="en">Accuracy is reported separately for each call type. Blending them hides a weak category behind a strong one.</span><span lang="fr">La justesse est rapportée séparément pour chaque type d’appel. Les fondre masquerait une catégorie faible derrière une catégorie forte.</span></li>
+      <li><span lang="en">Nothing is published as a result that was produced by hand. Every figure comes out of the same automated pipeline.</span><span lang="fr">Rien n’est publié comme résultat s’il a été produit à la main. Chaque chiffre sort du même pipeline automatisé.</span></li>
+    </ul>
+
+  </div></div>
+</section>
+
+<section class="band">
+  <div class="wrap"><div class="narrow">
+
+    <h2 lang="en">Known limits</h2>
+    <h2 lang="fr">Limites connues</h2>
+    <p class="sec-intro" lang="en">Three weaknesses in the current measurement, stated here rather than left to be discovered.</p>
+    <p class="sec-intro" lang="fr">Trois faiblesses de la mesure actuelle, énoncées ici plutôt que laissées à découvrir.</p>
+    <ul class="plain">
+      <li><span lang="en"><strong>The sample is small.</strong> A few dozen calls over a few weeks cannot separate skill from luck. Several hundred are needed before any figure here should be taken as stable.</span><span lang="fr"><strong>L’échantillon est petit.</strong> Quelques dizaines d’appels sur quelques semaines ne permettent pas de séparer la compétence de la chance. Il en faut plusieurs centaines avant qu’un chiffre d’ici puisse être tenu pour stable.</span></li>
+      <li><span lang="en"><strong>The stocks move together.</strong> Positions in the same sector rise and fall as a group, so the real number of independent observations is smaller than the count of calls suggests.</span><span lang="fr"><strong>Les titres bougent ensemble.</strong> Des positions d’un même secteur montent et descendent en groupe, donc le nombre réel d’observations indépendantes est plus petit que le décompte des appels ne le laisse croire.</span></li>
+      <li><span lang="en"><strong>The input may already be priced in.</strong> The system reads public headlines, which markets have had time to absorb before the opening bell. Whether anything is left to extract is an open question, and the one the current tests are designed to settle.</span><span lang="fr"><strong>L’information d’entrée est peut-être déjà intégrée.</strong> Le système lit des titres de presse publics, que les marchés ont eu le temps d’absorber avant l’ouverture. Savoir s’il reste quelque chose à en extraire est une question ouverte, et c’est celle que les tests en cours doivent trancher.</span></li>
+    </ul>
+
+  </div></div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <img src="logo-wordmark-white.png" alt="Brier-Labs">
+      <div class="foot-links">
+        <a href="index.html"><span lang="en">Home</span><span lang="fr">Accueil</span></a>
+        <a href="results.html"><span lang="en">Results</span><span lang="fr">Résultats</span></a>
+        <a href="research.html"><span lang="en">Research</span><span lang="fr">Recherche</span></a>
+        <a href="method.html"><span lang="en">Method</span><span lang="fr">Méthode</span></a>
+        <a href="about.html"><span lang="en">About</span><span lang="fr">À propos</span></a>
+      </div>
+    </div>
+    <p class="disclaimer" lang="en">Brier-Labs produces automated analysis of publicly available information. It is a research and analysis project, not investment advice, and nothing here is a recommendation to buy or sell any security. Past accuracy does not predict future accuracy. © 2026 Brier-Labs, Montréal.</p>
+    <p class="disclaimer" lang="fr">Brier-Labs produit une analyse automatisée d’informations publiquement disponibles. Il s’agit d’un projet de recherche et d’analyse, non d’un conseil en investissement, et rien ici ne constitue une recommandation d’achat ou de vente. La justesse passée ne préjuge pas de la justesse future. © 2026 Brier-Labs, Montréal.</p>
+  </div>
+</footer>
+
+<script src="reports.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
