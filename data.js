@@ -65,11 +65,108 @@
     return total ? Math.round((bons / total) * 100) : null;
   }
 
+  /* ------------------- corrélation entre score et rendement --------------
+     Le taux de justesse jette de l'information : il réduit chaque appel à
+     « juste » ou « faux ». La corrélation de rang utilise l'ordre complet
+     des scores, elle détecte donc un avantage plus faible, et plus tôt.
+     ---------------------------------------------------------------------- */
+
+  /* Rangs avec égalités moyennées (1, 2.5, 2.5, 4...). */
+  function rangs(v) {
+    var ordre = [], i;
+    for (i = 0; i < v.length; i++) ordre.push(i);
+    ordre.sort(function (a, b) { return v[a] - v[b]; });
+    var r = new Array(v.length);
+    i = 0;
+    while (i < ordre.length) {
+      var j = i;
+      while (j + 1 < ordre.length && v[ordre[j + 1]] === v[ordre[i]]) j++;
+      var moyen = (i + j) / 2 + 1;
+      for (var k = i; k <= j; k++) r[ordre[k]] = moyen;
+      i = j + 1;
+    }
+    return r;
+  }
+
+  function pearson(xs, ys) {
+    var n = xs.length, i;
+    if (n < 2) return null;
+    var mx = 0, my = 0;
+    for (i = 0; i < n; i++) { mx += xs[i]; my += ys[i]; }
+    mx /= n; my /= n;
+    var num = 0, dx = 0, dy = 0;
+    for (i = 0; i < n; i++) {
+      var a = xs[i] - mx, b = ys[i] - my;
+      num += a * b; dx += a * a; dy += b * b;
+    }
+    if (!dx || !dy) return null;
+    return num / Math.sqrt(dx * dy);
+  }
+
+  function spearman(paires) {
+    var s = [], r = [];
+    paires.forEach(function (p) { s.push(p.s); r.push(p.r); });
+    return pearson(rangs(s), rangs(r));
+  }
+
+  /* Rendement moyen et proportion de séances en hausse, par cinquième de
+     score. C'est la façon la plus lisible de voir s'il y a du signal. */
+  function quintiles(paires) {
+    var tri = paires.slice().sort(function (a, b) { return a.s - b.s; });
+    var n = tri.length;
+    if (n < 25) return [];
+
+    /* Les scores sont arrondis au vingtième : il y a beaucoup d'ex aequo.
+       On ne coupe jamais à l'intérieur d'un groupe d'ex aequo. Sinon deux
+       appels portant le même score tomberaient dans des cinquièmes
+       différents selon l'ordre de lecture, et les bornes affichées se
+       chevaucheraient. Les groupes sont donc un peu inégaux — leur taille
+       est affichée — mais chaque tranche de score est nette. */
+    var groupes = [], i = 0;
+    while (i < n) {
+      var j = i;
+      while (j + 1 < n && tri[j + 1].s === tri[i].s) j++;
+      groupes.push(tri.slice(i, j + 1));
+      i = j + 1;
+    }
+
+    var tranches = [], courant = [], vus = 0, cible = 1;
+    groupes.forEach(function (g) {
+      courant = courant.concat(g);
+      vus += g.length;
+      if (tranches.length < 4 && vus >= Math.round((cible * n) / 5)) {
+        tranches.push(courant); courant = []; cible++;
+      }
+    });
+    if (courant.length) tranches.push(courant);
+
+    /* Moins de trois tranches veut dire que les scores sont trop concentrés
+       pour que le découpage ait un sens : on préfère ne rien afficher. */
+    if (tranches.length < 3) return [];
+
+    return tranches.map(function (g) {
+      var somme = 0, hausses = 0;
+      g.forEach(function (x) { somme += x.r; if (x.r > 0) hausses++; });
+      return {
+        bas: g[0].s,
+        haut: g[g.length - 1].s,
+        n: g.length,
+        rendement: somme / g.length,
+        hausses: Math.round((hausses / g.length) * 100)
+      };
+    });
+  }
+
+  /* En dessous de ce nombre d'appels notés, afficher une corrélation
+     induirait en erreur : on s'abstient. */
+  var MIN_CORRELATION = 30;
+
   function calculer(lignes) {
     var evaluees = lignes.filter(function (l) { return l.correct_t1 !== null && l.correct_t1 !== undefined; });
 
-    var bons = 0, refAchat = 0, refConserve = 0, avecRendement = 0;
+    var bons = 0, refAchat = 0, refConserve = 0, refVente = 0, avecRendement = 0;
     var parSignal = {};
+    var paires = [];
 
     evaluees.forEach(function (l) {
       if (l.correct_t1) bons++;
@@ -85,8 +182,14 @@
         avecRendement++;
         if (justeSelonRegle("BUY", l.return_t1)) refAchat++;
         if (justeSelonRegle("HOLD", l.return_t1)) refConserve++;
+        if (justeSelonRegle("SELL", l.return_t1)) refVente++;
+        if (l.sentiment_score !== null && l.sentiment_score !== undefined) {
+          paires.push({ s: Number(l.sentiment_score), r: Number(l.return_t1) });
+        }
       }
     });
+
+    var assez = paires.length >= MIN_CORRELATION;
 
     var dates = lignes.map(function (l) { return l.prediction_date; }).filter(Boolean).sort();
 
@@ -96,7 +199,12 @@
       ia: pourcent(bons, evaluees.length),
       achat: pourcent(refAchat, avecRendement),
       conserve: pourcent(refConserve, avecRendement),
+      vente: pourcent(refVente, avecRendement),
       parSignal: parSignal,
+      nPaires: paires.length,
+      rho: assez ? spearman(paires) : null,
+      seuil: assez ? 1.96 / Math.sqrt(paires.length) : null,
+      quintiles: assez ? quintiles(paires) : [],
       premiere: dates[0] || null,
       derniere: dates[dates.length - 1] || null,
       titres: Object.keys(lignes.reduce(function (acc, l) { acc[l.ticker] = 1; return acc; }, {})).length
@@ -133,6 +241,19 @@
       : dateLisible(s.premiere, l) + " – " + dateLisible(s.derniere, l);
   }
 
+  /* Version texte brut, à utiliser à l'intérieur d'une chaîne qui sera
+     elle-même passée à bilingue(). */
+  function nombreBrut(x, dec, avecSigne) {
+    var t = Number(x).toFixed(dec === undefined ? 2 : dec);
+    return ((avecSigne && Number(x) >= 0) ? "+" : "") + t;
+  }
+
+  /* Le français écrit la virgule décimale, l'anglais le point. */
+  function nombre(x, dec, avecSigne) {
+    var t = nombreBrut(x, dec, avecSigne);
+    return bilingue(t, t.replace(".", ","));
+  }
+
   function val(n) {
     return n === null ? "—" : bilingue(n + "%", n + " %");
   }
@@ -146,9 +267,21 @@
         '<div class="bar"><span style="width:' + l + '%"></span></div>' +
         '<div class="row-val">' + val(valeur) + "</div></div>";
     }
+    /* Les trois références triviales sont toutes affichées, y compris celle
+       qui bat le modèle : en cacher une rendrait le relevé flatteur. */
     return ligne("Brier-Labs model", "Modèle Brier-Labs", s.ia, true) +
       ligne("Always “buy”", "Toujours « acheter »", s.achat, false) +
-      ligne("Always “hold”", "Toujours « conserver »", s.conserve, false);
+      ligne("Always “hold”", "Toujours « conserver »", s.conserve, false) +
+      ligne("Always “sell”", "Toujours « vendre »", s.vente, false);
+  }
+
+  /* La meilleure des trois règles triviales — c'est elle qu'il faut battre. */
+  function meilleureReference(s) {
+    return Math.max(
+      s.achat === null ? 0 : s.achat,
+      s.conserve === null ? 0 : s.conserve,
+      s.vente === null ? 0 : s.vente
+    );
   }
 
   function entete(s) {
@@ -174,14 +307,14 @@
     for (var i = 0; i < anciennes.length; i++) anciennes[i].remove();
 
     if (lecture) {
-      var ecart = s.ia - Math.max(s.achat, s.conserve);
+      var ecart = s.ia - meilleureReference(s);
       var verdictEn, verdictFr;
       if (ecart > 3) {
-        verdictEn = "The model is currently ahead of both trivial strategies. With a sample this size that is encouraging rather than conclusive.";
-        verdictFr = "Le modèle devance actuellement les deux stratégies triviales. Sur un échantillon de cette taille, c’est encourageant plutôt que concluant.";
+        verdictEn = "The model is currently ahead of all three trivial strategies. With a sample this size that is encouraging rather than conclusive.";
+        verdictFr = "Le modèle devance actuellement les trois stratégies triviales. Sur un échantillon de cette taille, c’est encourageant plutôt que concluant.";
       } else if (ecart < -3) {
-        verdictEn = "The model is currently behind the better of the two trivial strategies. The working hypothesis is that public headlines are already reflected in the opening price.";
-        verdictFr = "Le modèle est actuellement derrière la meilleure des deux stratégies triviales. L’hypothèse de travail est que les titres de presse publics sont déjà intégrés au cours d’ouverture.";
+        verdictEn = "The model is currently behind the best of the three trivial strategies. The working hypothesis is that public headlines are already reflected in the opening price.";
+        verdictFr = "Le modèle est actuellement derrière la meilleure des trois stratégies triviales. L’hypothèse de travail est que les titres de presse publics sont déjà intégrés au cours d’ouverture.";
       } else {
         verdictEn = "The model is level with the trivial strategies — no edge detected so far.";
         verdictFr = "Le modèle est au même niveau que les stratégies triviales — aucun avantage détecté à ce stade.";
@@ -212,6 +345,83 @@
         "</div>";
     });
     return out;
+  }
+
+  /* --------------- bloc « le score porte-t-il de l'information ? » -------- */
+
+  function blocSignal(s) {
+    if (s.nPaires < MIN_CORRELATION) {
+      return '<p class="read">' + bilingue(
+        "This measure needs at least " + MIN_CORRELATION + " scored calls; there are " + s.nPaires + " so far.",
+        "Cette mesure demande au moins " + MIN_CORRELATION + " appels notés ; il y en a " + s.nPaires + " pour l’instant."
+      ) + "</p>";
+    }
+
+    /* Peut arriver si le modèle attribue le même score à tout : il n'y a
+       alors aucun classement à mettre en regard des résultats. */
+    if (s.rho === null || s.rho === undefined) {
+      return '<p class="read">' + bilingue(
+        "Every scored call carries the same sentiment score, so there is no ordering to compare against outcomes.",
+        "Tous les appels notés portent le même score de sentiment : il n’y a aucun classement à mettre en regard des résultats."
+      ) + "</p>";
+    }
+
+    var r = s.rho, seuil = s.seuil, verdictEn, verdictFr;
+
+    if (Math.abs(r) <= seuil) {
+      verdictEn = "The correlation sits inside the detection threshold for a sample this size, so nothing is demonstrated — a value this small is what noise alone produces. The sign is still worth watching, and the fifths below show whether the tendency is orderly or scattered.";
+      verdictFr = "La corrélation reste à l’intérieur du seuil de détection pour un échantillon de cette taille : rien n’est démontré, une valeur aussi faible est ce que produit le bruit seul. Le signe mérite tout de même d’être suivi, et les cinquièmes ci-dessous montrent si la tendance est ordonnée ou dispersée.";
+    } else if (r > 0) {
+      verdictEn = "The correlation is above the detection threshold: the score carries information about what follows. That is a statistical result, not a trading result — it says the ordering beats chance, not that the effect is large enough to act on.";
+      verdictFr = "La corrélation dépasse le seuil de détection : le score porte de l’information sur ce qui suit. C’est un résultat statistique, pas un résultat de marché — il dit que le classement fait mieux que le hasard, pas que l’effet soit assez fort pour agir dessus.";
+    } else {
+      verdictEn = "The correlation is below the negative threshold: higher scores have systematically preceded worse returns. If it holds, the model is reading the news backwards — which is itself information, and more useful than no signal at all.";
+      verdictFr = "La corrélation est sous le seuil négatif : les scores élevés ont systématiquement précédé de moins bons rendements. Si cela tient, le modèle lit les nouvelles à l’envers — ce qui est en soi une information, et plus utile qu’une absence de signal.";
+    }
+
+    var html =
+      '<div class="corr">' +
+        '<div class="corr-v">' + nombre(r, 3, true) + "</div>" +
+        '<div class="corr-x">' +
+          '<div class="corr-k">' + bilingue(
+            "Rank correlation between the sentiment score and the next-day return",
+            "Corrélation de rang entre le score de sentiment et le rendement du lendemain") + "</div>" +
+          '<div class="corr-s">' + bilingue(
+            "Detection threshold at " + s.nPaires + " scored calls: ±" + Number(seuil).toFixed(3),
+            "Seuil de détection à " + s.nPaires + " appels notés : ±" + Number(seuil).toFixed(3).replace(".", ",")) + "</div>" +
+        "</div>" +
+      "</div>" +
+      '<p class="read">' + bilingue(verdictEn, verdictFr) + "</p>";
+
+    if (s.quintiles.length >= 3) {
+      var q = s.quintiles;
+      var ecart = q[q.length - 1].rendement - q[0].rendement;
+      html += '<h3 class="corr-h">' + bilingue(
+        "Next-day outcome, by band of score",
+        "Résultat du lendemain, par tranche de score") + "</h3>" +
+        '<p class="corr-n">' + bilingue(
+          "Share of calls followed by a rising session. If the score were meaningless these bars would all be the same height. Bands are cut into roughly equal fifths, never through a group of identical scores — so their sizes differ slightly.",
+          "Part des appels suivis d’une séance en hausse. Si le score ne voulait rien dire, ces barres seraient toutes de même hauteur. Les tranches visent des cinquièmes, mais ne coupent jamais un groupe de scores identiques — leurs tailles diffèrent donc un peu.") + "</p>" +
+        q.map(function (g, i) {
+          var l = Math.max(0, Math.min(100, g.hausses));
+          var bornes = g.bas.toFixed(2) + (g.bas === g.haut ? "" : " … " + g.haut.toFixed(2));
+          return '<div class="row">' +
+            '<div class="row-name">' +
+              bilingue("Q" + (i + 1) + " · " + bornes + " · n=" + g.n,
+                       "Q" + (i + 1) + " · " + bornes.replace(/\./g, ",") + " · n=" + g.n) +
+            "</div>" +
+            '<div class="bar"><span style="width:' + l + '%"></span></div>' +
+            '<div class="row-val">' + val(g.hausses) + "</div></div>";
+        }).join("") +
+        '<p class="corr-n">' + bilingue(
+          "Gap between the highest and lowest band: " + nombreBrut(ecart, 2, true) +
+            " percentage points of average next-day return.",
+          "Écart entre la tranche haute et la tranche basse : " +
+            nombreBrut(ecart, 2, true).replace(".", ",") +
+            " point de pourcentage de rendement moyen du lendemain.") + "</p>";
+    }
+
+    return html;
   }
 
   function listeAppels(lignes) {
@@ -267,6 +477,13 @@
         "No data yet", "Aucune donnée pour l’instant",
         "The database returned no rows. Either the pipeline has not written anything yet, or the public read rule has not been created in Supabase.",
         "La base n’a renvoyé aucune ligne. Soit le pipeline n’a encore rien écrit, soit la règle de lecture publique n’a pas été créée dans Supabase.");
+      /* Sans quoi les autres sections resteraient sur « Chargement… ». */
+      ["by-signal", "signal", "latest"].forEach(function (id) {
+        var e = document.getElementById(id);
+        if (e) e.innerHTML = "";
+      });
+      var dlVide = document.getElementById("download");
+      if (dlVide) dlVide.style.display = "none";
       return;
     }
 
@@ -285,6 +502,10 @@
     /* Détail par type d'appel */
     var parType = document.getElementById("by-signal");
     if (parType && s.evaluees) parType.innerHTML = tableauParSignal(s);
+
+    /* Le score porte-t-il de l'information ? */
+    var zoneSignal = document.getElementById("signal");
+    if (zoneSignal) zoneSignal.innerHTML = blocSignal(s);
 
     /* Derniers appels produits */
     var recents = document.getElementById("latest");
@@ -353,7 +574,7 @@
     /* Page Résultats : on ajoute le détail du dernier jour, avec les justifications */
     var p2 = interroger(
       "select=prediction_date,ticker,signal,sentiment_score,rationale,return_t1,correct_t1" +
-      "&order=prediction_date.desc,ticker.asc&limit=40");
+      "&order=prediction_date.desc,ticker.asc&limit=60");   /* 60 : de quoi couvrir un portefeuille de 30 titres */
 
     Promise.all([p1, p2]).then(function (res) {
       var stats = res[0], recents = res[1];

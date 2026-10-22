@@ -45,33 +45,40 @@
   <div class="wrap">
     <h2 lang="en">The current record</h2>
     <h2 lang="fr">Le relevé actuel</h2>
-    <p class="sec-intro" lang="en">Share of calls that proved correct one trading day later, set beside two strategies that require no model at all.</p>
-    <p class="sec-intro" lang="fr">Part des appels qui se sont avérés justes un jour de bourse plus tard, placée à côté de deux stratégies qui ne demandent aucun modèle.</p>
+    <p class="sec-intro" lang="en">Share of calls that proved correct one trading day later, set beside three strategies that require no model at all.</p>
+    <p class="sec-intro" lang="fr">Part des appels qui se sont avérés justes un jour de bourse plus tard, placée à côté de trois stratégies qui ne demandent aucun modèle.</p>
 
+    <!-- Chiffres remplaces en direct par data.js. Ils ne restent visibles
+         que si la base est injoignable : on les tient donc a jour ici. -->
     <div class="record">
       <div class="record-meta">
-        <span lang="en">Week of 18 September 2026 · 30 calls · scored at 1 trading day</span>
-        <span lang="fr">Semaine du 18 septembre 2026 · 30 appels · mesurés à 1 jour de bourse</span>
+        <span lang="en">30 August – 21 October 2026 · 222 calls scored · 6 tickers</span>
+        <span lang="fr">30 août – 21 octobre 2026 · 222 appels notés · 6 titres</span>
       </div>
 
       <div class="row mine">
         <div class="row-name"><span lang="en">Brier-Labs model</span><span lang="fr">Modèle Brier-Labs</span></div>
-        <div class="bar"><span style="width:23%"></span></div>
-        <div class="row-val"><span lang="en">23%</span><span lang="fr">23 %</span></div>
+        <div class="bar"><span style="width:35%"></span></div>
+        <div class="row-val"><span lang="en">35%</span><span lang="fr">35 %</span></div>
       </div>
       <div class="row">
         <div class="row-name"><span lang="en">Always “buy”</span><span lang="fr">Toujours « acheter »</span></div>
-        <div class="bar"><span style="width:23%"></span></div>
-        <div class="row-val"><span lang="en">23%</span><span lang="fr">23 %</span></div>
+        <div class="bar"><span style="width:32%"></span></div>
+        <div class="row-val"><span lang="en">32%</span><span lang="fr">32 %</span></div>
       </div>
       <div class="row">
         <div class="row-name"><span lang="en">Always “hold”</span><span lang="fr">Toujours « conserver »</span></div>
-        <div class="bar"><span style="width:40%"></span></div>
-        <div class="row-val"><span lang="en">40%</span><span lang="fr">40 %</span></div>
+        <div class="bar"><span style="width:32%"></span></div>
+        <div class="row-val"><span lang="en">32%</span><span lang="fr">32 %</span></div>
+      </div>
+      <div class="row">
+        <div class="row-name"><span lang="en">Always “sell”</span><span lang="fr">Toujours « vendre »</span></div>
+        <div class="bar"><span style="width:36%"></span></div>
+        <div class="row-val"><span lang="en">36%</span><span lang="fr">36 %</span></div>
       </div>
 
-      <p class="read" lang="en">No edge over a trivial baseline in the first measured week. The working hypothesis is that public headlines are already reflected in the opening price — a question the next tests will settle rather than assume. This figure is published exactly as measured, and updated as the record grows.</p>
-      <p class="read" lang="fr">Aucun avantage sur une stratégie triviale lors de la première semaine mesurée. L’hypothèse de travail est que les titres de presse publics sont déjà intégrés au cours d’ouverture — une question que les prochains tests trancheront plutôt que de la supposer. Ce chiffre est publié exactement tel que mesuré, et mis à jour à mesure que le relevé s’étoffe.</p>
+      <p class="read" lang="en">No edge over a trivial baseline so far: the best of the three, always “sell”, is still slightly ahead of the model. The working hypothesis is that public headlines are already reflected in the opening price — a question the next tests will settle rather than assume. These figures are read live from the database and update themselves as the record grows.</p>
+      <p class="read" lang="fr">Aucun avantage sur une stratégie triviale à ce stade : la meilleure des trois, toujours « vendre », devance encore légèrement le modèle. L’hypothèse de travail est que les titres de presse publics sont déjà intégrés au cours d’ouverture — une question que les prochains tests trancheront plutôt que de la supposer. Ces chiffres sont lus en direct dans la base et se mettent à jour d’eux-mêmes à mesure que le relevé s’étoffe.</p>
     </div>
   </div>
 </section>
