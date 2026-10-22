@@ -22,5 +22,5 @@
        Le site refuse de démarrer si tu colles une clé secrète par erreur.
    ========================================================================== */
 
-const SUPABASE_URL = "COLLE-ICI-TON-URL";
-const SUPABASE_PUBLIC_KEY = "COLLE-ICI-TA-CLE-PUBLISHABLE";
+const SUPABASE_URL = "https://xcbhyuzvqvxgzecjltpw.supabase.co";
+const SUPABASE_PUBLIC_KEY = "sb_publishable_M5ED8Sqo_ODqDhCFZQweLg_XsYo9jFW";
