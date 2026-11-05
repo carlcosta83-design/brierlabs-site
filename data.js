@@ -316,8 +316,8 @@
         verdictEn = "The model is currently behind the best of the three trivial strategies. The working hypothesis is that public headlines are already reflected in the opening price.";
         verdictFr = "Le modèle est actuellement derrière la meilleure des trois stratégies triviales. L’hypothèse de travail est que les titres de presse publics sont déjà intégrés au cours d’ouverture.";
       } else {
-        verdictEn = "The model is level with the trivial strategies — no edge detected so far.";
-        verdictFr = "Le modèle est au même niveau que les stratégies triviales — aucun avantage détecté à ce stade.";
+        verdictEn = "The model is level with the trivial strategies, no edge detected so far.";
+        verdictFr = "Le modèle est au même niveau que les stratégies triviales, aucun avantage détecté à ce stade.";
       }
       lecture.innerHTML = bilingue(
         verdictEn + " These figures are read live from the database and update themselves as the record grows.",
@@ -369,14 +369,14 @@
     var r = s.rho, seuil = s.seuil, verdictEn, verdictFr;
 
     if (Math.abs(r) <= seuil) {
-      verdictEn = "The correlation sits inside the detection threshold for a sample this size, so nothing is demonstrated — a value this small is what noise alone produces. The sign is still worth watching, and the fifths below show whether the tendency is orderly or scattered.";
+      verdictEn = "The correlation sits inside the detection threshold for a sample this size, so nothing is demonstrated, a value this small is what noise alone produces. The sign is still worth watching, and the fifths below show whether the tendency is orderly or scattered.";
       verdictFr = "La corrélation reste à l’intérieur du seuil de détection pour un échantillon de cette taille : rien n’est démontré, une valeur aussi faible est ce que produit le bruit seul. Le signe mérite tout de même d’être suivi, et les cinquièmes ci-dessous montrent si la tendance est ordonnée ou dispersée.";
     } else if (r > 0) {
-      verdictEn = "The correlation is above the detection threshold: the score carries information about what follows. That is a statistical result, not a trading result — it says the ordering beats chance, not that the effect is large enough to act on.";
-      verdictFr = "La corrélation dépasse le seuil de détection : le score porte de l’information sur ce qui suit. C’est un résultat statistique, pas un résultat de marché — il dit que le classement fait mieux que le hasard, pas que l’effet soit assez fort pour agir dessus.";
+      verdictEn = "The correlation is above the detection threshold: the score carries information about what follows. That is a statistical result, not a trading result, it says the ordering beats chance, not that the effect is large enough to act on.";
+      verdictFr = "La corrélation dépasse le seuil de détection : le score porte de l’information sur ce qui suit. C’est un résultat statistique, pas un résultat de marché, il dit que le classement fait mieux que le hasard, pas que l’effet soit assez fort pour agir dessus.";
     } else {
-      verdictEn = "The correlation is below the negative threshold: higher scores have systematically preceded worse returns. If it holds, the model is reading the news backwards — which is itself information, and more useful than no signal at all.";
-      verdictFr = "La corrélation est sous le seuil négatif : les scores élevés ont systématiquement précédé de moins bons rendements. Si cela tient, le modèle lit les nouvelles à l’envers — ce qui est en soi une information, et plus utile qu’une absence de signal.";
+      verdictEn = "The correlation is below the negative threshold: higher scores have systematically preceded worse returns. If it holds, the model is reading the news backwards, which is itself information, and more useful than no signal at all.";
+      verdictFr = "La corrélation est sous le seuil négatif : les scores élevés ont systématiquement précédé de moins bons rendements. Si cela tient, le modèle lit les nouvelles à l’envers, ce qui est en soi une information, et plus utile qu’une absence de signal.";
     }
 
     var html =
@@ -400,8 +400,8 @@
         "Next-day outcome, by band of score",
         "Résultat du lendemain, par tranche de score") + "</h3>" +
         '<p class="corr-n">' + bilingue(
-          "Share of calls followed by a rising session. If the score were meaningless these bars would all be the same height. Bands are cut into roughly equal fifths, never through a group of identical scores — so their sizes differ slightly.",
-          "Part des appels suivis d’une séance en hausse. Si le score ne voulait rien dire, ces barres seraient toutes de même hauteur. Les tranches visent des cinquièmes, mais ne coupent jamais un groupe de scores identiques — leurs tailles diffèrent donc un peu.") + "</p>" +
+          "Share of calls followed by a rising session. If the score were meaningless these bars would all be the same height. Bands are cut into roughly equal fifths, never through a group of identical scores, so their sizes differ slightly.",
+          "Part des appels suivis d’une séance en hausse. Si le score ne voulait rien dire, ces barres seraient toutes de même hauteur. Les tranches visent des cinquièmes, mais ne coupent jamais un groupe de scores identiques, leurs tailles diffèrent donc un peu.") + "</p>" +
         q.map(function (g, i) {
           var l = Math.max(0, Math.min(100, g.hausses));
           var bornes = g.bas.toFixed(2) + (g.bas === g.haut ? "" : " … " + g.haut.toFixed(2));
@@ -494,8 +494,8 @@
       '<div class="record-meta">' + entete(s) + "</div>" +
       (s.evaluees ? barres(s) :
         '<p class="read">' + bilingue(
-          "Calls are recorded but none has been scored yet — scoring happens after the market closes.",
-          "Des appels sont enregistrés mais aucun n’a encore été noté — la notation a lieu après la clôture des marchés.") + "</p>") +
+          "Calls are recorded but none has been scored yet, scoring happens after the market closes.",
+          "Des appels sont enregistrés mais aucun n’a encore été noté, la notation a lieu après la clôture des marchés.") + "</p>") +
       "</div>";
     zone.innerHTML = html;
 
