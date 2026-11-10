@@ -44,6 +44,28 @@
     return rapport[champ + "_" + lang] || rapport[champ + "_en"] || rapport[champ + "_fr"] || "";
   }
 
+  /* Un rapport peut exister en deux versions. On sert celle qui correspond à
+     la langue du site ; à défaut le fichier unique ; à défaut l'autre langue
+     — et dans ce dernier cas on le dit dans le libellé, plutôt que de laisser
+     le lecteur tomber sur un document qu'il n'attendait pas. */
+  function fichierDe(r, lang) {
+    var voulu = r["file_" + lang];
+    if (voulu) return { chemin: voulu, autre: null };
+    if (r.file) return { chemin: r.file, autre: null };
+    if (r.file_fr) return { chemin: r.file_fr, autre: "fr" };
+    if (r.file_en) return { chemin: r.file_en, autre: "en" };
+    return { chemin: "", autre: null };
+  }
+
+  function libelleLien(autre, lang) {
+    if (lang === "fr") {
+      return autre === "en" ? "Lire le rapport (PDF, en anglais) →"
+                            : "Lire le rapport (PDF) →";
+    }
+    return autre === "fr" ? "Read the report (PDF, in French) →"
+                          : "Read the report (PDF) →";
+  }
+
   function dateLisible(iso, lang) {
     var p = String(iso).split("-");
     if (p.length !== 3) return iso;
@@ -81,8 +103,9 @@
     zone.innerHTML = liste.map(function (r) {
       var titre = echapper(texte(r, "title", lang));
       var resume = echapper(texte(r, "summary", lang));
-      var fichier = encodeURI(String(r.file || ""));
-      var lire = lang === "fr" ? "Lire le rapport (PDF) →" : "Read the report (PDF) →";
+      var cible = fichierDe(r, lang);
+      var fichier = encodeURI(String(cible.chemin));
+      var lire = libelleLien(cible.autre, lang);
       return (
         '<a class="report" href="' + fichier + '" target="_blank" rel="noopener">' +
         '<div class="report-date">' + echapper(dateLisible(r.date, lang)) + "</div>" +
