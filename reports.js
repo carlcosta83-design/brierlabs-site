@@ -1,35 +1,30 @@
 /* ==========================================================================
-   LISTE DES RAPPORTS — c'est le SEUL fichier à modifier pour en publier un.
+   LISTE DES RAPPORTS
 
-   Pour ajouter un rapport :
-     1. Dépose ton PDF dans le dossier  reports/
-     2. Copie le bloc d'exemple ci-dessous entre les crochets [ ]
-     3. Remplis les champs, enregistre, et commit
+   Fichier produit par l'outil « Publier un rapport ». Tu peux le modifier
+   à la main, mais le plus sûr est de repasser par l'outil : il reprend
+   cette liste, y ajoute le nouveau rapport et te rend le fichier complet.
 
    Règles :
-     - date   : toujours au format AAAA-MM-JJ (ex : 2026-11-03)
-     - file   : le chemin vers ton PDF, en partant de la racine du site
-     - les champs _en et _fr sont les deux langues du site.
-       Si tu n'en remplis qu'un, il s'affichera dans les deux langues.
-     - sépare chaque bloc par une virgule
-     - le plus récent remonte automatiquement en haut, peu importe l'ordre ici
+     - date : toujours au format AAAA-MM-JJ
+     - file : le chemin du PDF, quand il n'existe qu'une seule version
+     - file_fr / file_en : les deux versions, quand elles existent ;
+       le site sert alors celle qui correspond à la langue du visiteur
+     - si une langue manque, l'autre s'affiche à la place
+     - le plus récent remonte automatiquement en haut
    ========================================================================== */
 
 const REPORTS = [
-
-  /* ---- MODÈLE À COPIER (retire les barres obliques pour l'activer) -------
-
   {
-    date: "2026-11-03",
-    file: "reports/2026-11-inflation-canada.pdf",
+    date: "2026-11-11",
+    file_fr: "reports/2026-11-11-le-canada-a-t-il-la-dette-la-plus-faible-du-g7-fr.pdf",
+    file_en: "reports/2026-11-11-does-canada-have-the-lowest-debt-in-the-g7-en.pdf",
 
-    title_en: "Canadian inflation: what the October print changes",
-    title_fr: "Inflation canadienne : ce que change le chiffre d'octobre",
+    title_en: "Does Canada have the lowest debt in the G7?",
+    title_fr: "Le Canada a-t-il la dette la plus faible du G7 ?",
 
-    summary_en: "Two or three sentences on what the report covers and why it matters. This is what shows up in the list.",
-    summary_fr: "Deux ou trois phrases sur le contenu du rapport et son intérêt. C'est ce qui s'affiche dans la liste."
+    summary_en: "Canada is often described as the least indebted country in the G7, but it all depends on how debt is measured. This report looks at what lies behind that claim and what it really says about the strength of Canada’s public finances.",
+    summary_fr: "Le Canada est souvent présenté comme le pays le moins endetté du G7, mais tout dépend de la façon dont on mesure la dette. Ce rapport examine ce qui se cache derrière ce chiffre et ce qu’il révèle vraiment sur la solidité des finances publiques canadiennes."
   },
-
-  ------------------------------------------------------------------------ */
 
 ];
