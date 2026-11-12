@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Updates — Brier-Labs</title>
+<meta name="description" content="What changes at Brier-Labs, when, and why. Every change to the method is announced here with its date.">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;450;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="nav-logo" href="index.html"><img src="logo-wordmark.png" alt="Brier-Labs"></a>
+    <div class="nav-menu">
+      <a href="index.html"><span lang="en">Home</span><span lang="fr">Accueil</span></a>
+      <div class="nav-groupe">
+        <button class="nav-deroule" type="button" aria-expanded="false" aria-controls="sous-resultats"><span lang="en">Results</span><span lang="fr">Résultats</span><span class="nav-fleche" aria-hidden="true">▾</span></button>
+        <div class="nav-sous" id="sous-resultats" hidden>
+          <a href="results.html"><span lang="en">Daily results</span><span lang="fr">Résultats quotidiens</span></a>
+          <a href="method.html"><span lang="en">Method</span><span lang="fr">Méthode</span></a>
+        </div>
+      </div>
+      <a href="research.html"><span lang="en">Research</span><span lang="fr">Recherche</span></a>
+      <a href="newsletter.html"><span lang="en">Newsletter</span><span lang="fr">Newsletter</span></a>
+      <a href="updates.html" class="on" aria-current="page"><span lang="en">Updates</span><span lang="fr">Mises à jour</span></a>
+      <a href="about.html"><span lang="en">About</span><span lang="fr">À propos</span></a>
+      <button class="lang" type="button">FR</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <p class="eyebrow"><span lang="en">What changes, and why</span><span lang="fr">Ce qui change, et pourquoi</span></p>
+    <h1 lang="en">Updates</h1>
+    <h1 lang="fr">Mises à jour</h1>
+    <p class="lede" lang="en">Every change to how Brier-Labs makes or measures its calls is announced here, with its date and its reason. A record that quietly changes its rules cannot be trusted.</p>
+    <p class="lede" lang="fr">Chaque changement dans la façon dont Brier-Labs produit ou mesure ses appels est annoncé ici, avec sa date et sa raison. Un relevé qui change ses règles en silence ne mérite aucune confiance.</p>
+  </div>
+</header>
+
+<section class="section-tight">
+  <div class="wrap"><div class="narrow">
+
+    <article class="maj" id="2026-11-12">
+      <div class="record-meta"><span lang="en">12 November 2026</span><span lang="fr">12 novembre 2026</span></div>
+      <h2 lang="en">We changed our model and restarted the record</h2>
+      <h2 lang="fr">Nous avons changé de modèle et remis le relevé à zéro</h2>
+
+      <p lang="en">Until now, almost every call on this site was produced after the market had opened. The daily run was scheduled for early morning, but GitHub, the service that runs it, started every scheduled run between four and ten hours late. The calls were still dated that same day and measured from the opening price, so the model was reading headlines that already described the session it was meant to predict. Of the 714 calls recorded between 30 August and 12 November 2026, 678 (95%) were produced after the open.</p>
+      <p lang="fr">Jusqu’ici, presque tous les appels de ce site ont été produits après l’ouverture du marché. Le run quotidien était programmé tôt le matin, mais GitHub, le service qui le lance, a démarré chaque run programmé avec quatre à dix heures de retard. Les appels restaient pourtant datés du jour même et mesurés depuis le cours d’ouverture : le modèle lisait donc des titres qui décrivaient déjà la séance qu’il devait prédire. Sur les 714 appels enregistrés entre le 30 août et le 12 novembre 2026, 678 (95 %) ont été produits après l’ouverture.</p>
+
+      <p lang="en">That flatters the results, including the most encouraging ones this site had shown. Those figures should be set aside. We found the problem by checking the time each run actually started, not the time it was scheduled for.</p>
+      <p lang="fr">Cela flatte les résultats, y compris les plus encourageants que ce site avait affichés. Ces chiffres sont à écarter. Le problème a été trouvé en vérifiant l’heure à laquelle chaque run a réellement démarré, et non celle à laquelle il était prévu.</p>
+
+      <h3 lang="en">What we did</h3>
+      <h3 lang="fr">Ce que nous avons fait</h3>
+      <p lang="en">The old calls are not deleted. They stay in the database and in the downloadable file, marked as an archive, but no figure on this site counts them any more. The record starts again from zero on 13 November 2026, with the first call produced before the opening bell. Each run is now launched on request around 6 a.m., and the system refuses to date a call for a session that has already opened: a run that comes in late either stops or is dated for the next session.</p>
+      <p lang="fr">Les anciens appels ne sont pas effacés. Ils restent dans la base et dans le fichier téléchargeable, marqués comme archive, mais plus aucun chiffre du site n’en tient compte. Le relevé repart de zéro le 13 novembre 2026, avec le premier appel produit avant l’ouverture. Chaque run est désormais lancé sur commande vers 6 h, et le système refuse de dater un appel d’une séance déjà ouverte : un run en retard s’arrête, ou est daté de la séance suivante.</p>
+
+      <h3 lang="en">A new model</h3>
+      <h3 lang="fr">Un nouveau modèle</h3>
+      <p lang="en">We used the restart to change the model itself. It now gives four separate verdicts for each stock: one for the next session, one for the week, one for the month and one for the year. Each is scored against its own neutral band, which widens with time: ±0.50%, ±1.32%, ±2.74% and ±7.94%. A move of half a percent means something over a day and nothing over a year.</p>
+      <p lang="fr">Nous avons profité de la remise à zéro pour changer le modèle lui-même. Il rend désormais quatre verdicts distincts pour chaque titre : un pour la prochaine séance, un pour la semaine, un pour le mois et un pour l’année. Chacun est noté contre sa propre zone neutre, qui s’élargit avec le temps : ±0,50 %, ±1,32 %, ±2,74 % et ±7,94 %. Un mouvement d’un demi-point veut dire quelque chose sur une journée, et rien sur une année.</p>
+
+      <h3 lang="en">Also new</h3>
+      <h3 lang="fr">Aussi nouveau</h3>
+      <p lang="en">A newsletter every trading day before the open, with the day’s major news and the sectors each story could move. Each of its calls is tied to a listed sector fund, so that it can be checked against what the market actually did.</p>
+      <p lang="fr">Une newsletter chaque jour de bourse avant l’ouverture, avec les nouvelles majeures du jour et les secteurs que chacune pourrait faire bouger. Chacune de ses prévisions est rattachée à un fonds sectoriel coté, pour pouvoir être vérifiée contre ce que le marché a réellement fait.</p>
+
+      <p class="maj-liens">
+        <a href="results.html"><span lang="en">The new record →</span><span lang="fr">Le nouveau relevé →</span></a>
+        <a href="method.html"><span lang="en">The method in full →</span><span lang="fr">La méthode en entier →</span></a>
+        <a href="newsletter.html"><span lang="en">The newsletter →</span><span lang="fr">La newsletter →</span></a>
+      </p>
+    </article>
+
+  </div></div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <img src="logo-wordmark-white.png" alt="Brier-Labs">
+      <div class="foot-links">
+        <a href="index.html"><span lang="en">Home</span><span lang="fr">Accueil</span></a>
+        <a href="results.html"><span lang="en">Results</span><span lang="fr">Résultats</span></a>
+        <a href="method.html"><span lang="en">Method</span><span lang="fr">Méthode</span></a>
+        <a href="research.html"><span lang="en">Research</span><span lang="fr">Recherche</span></a>
+        <a href="newsletter.html"><span lang="en">Newsletter</span><span lang="fr">Newsletter</span></a>
+        <a href="updates.html"><span lang="en">Updates</span><span lang="fr">Mises à jour</span></a>
+        <a href="about.html"><span lang="en">About</span><span lang="fr">À propos</span></a>
+      </div>
+    </div>
+    <p class="disclaimer" lang="en">Brier-Labs produces automated analysis of publicly available information. It is a research and analysis project, not investment advice, and nothing here is a recommendation to buy or sell any security. Past accuracy does not predict future accuracy. © 2026 Brier-Labs, Montréal.</p>
+    <p class="disclaimer" lang="fr">Brier-Labs produit une analyse automatisée d’informations publiquement disponibles. Il s’agit d’un projet de recherche et d’analyse, non d’un conseil en investissement, et rien ici ne constitue une recommandation d’achat ou de vente. La justesse passée ne préjuge pas de la justesse future. © 2026 Brier-Labs, Montréal.</p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
