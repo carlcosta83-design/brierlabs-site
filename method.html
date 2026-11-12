@@ -42,26 +42,53 @@
 
     <h2 lang="en">What counts as correct</h2>
     <h2 lang="fr">Ce qui compte comme juste</h2>
-    <p class="sec-intro" lang="en">A share price almost never sits perfectly still. Counting any upward tick as a win for “buy” would make the system look far better than it is, so movements smaller than half a percent are treated as no movement at all.</p>
-    <p class="sec-intro" lang="fr">Le cours d’une action ne reste presque jamais parfaitement immobile. Compter la moindre hausse comme une victoire pour « acheter » rendrait le système bien meilleur qu’il n’est, donc tout mouvement inférieur à un demi-point de pourcentage est traité comme une absence de mouvement.</p>
+    <p class="sec-intro" lang="en">A share price almost never sits perfectly still. Counting any upward tick as a win for “buy” would make the system look far better than it is, so movements smaller than the neutral band are treated as no movement at all.</p>
+    <p class="sec-intro" lang="fr">Le cours d’une action ne reste presque jamais parfaitement immobile. Compter la moindre hausse comme une victoire pour « acheter » rendrait le système bien meilleur qu’il n’est, donc tout mouvement inférieur à la zone neutre est traité comme une absence de mouvement.</p>
 
     <div class="rules">
       <div class="rule">
         <div class="rule-k"><span lang="en">Buy</span><span lang="fr">Acheter</span></div>
-        <div class="rule-v"><span lang="en">Correct if the return is above <strong>+0.5%</strong></span><span lang="fr">Juste si le rendement dépasse <strong>+0,5 %</strong></span></div>
+        <div class="rule-v"><span lang="en">Correct if the return rises <strong>above the band</strong></span><span lang="fr">Juste si le rendement <strong>dépasse la bande</strong></span></div>
       </div>
       <div class="rule">
         <div class="rule-k"><span lang="en">Hold</span><span lang="fr">Conserver</span></div>
-        <div class="rule-v"><span lang="en">Correct if the return stays between <strong>−0.5%</strong> and <strong>+0.5%</strong></span><span lang="fr">Juste si le rendement reste entre <strong>−0,5 %</strong> et <strong>+0,5 %</strong></span></div>
+        <div class="rule-v"><span lang="en">Correct if the return stays <strong>inside the band</strong></span><span lang="fr">Juste si le rendement <strong>reste dans la bande</strong></span></div>
       </div>
       <div class="rule">
         <div class="rule-k"><span lang="en">Sell</span><span lang="fr">Vendre</span></div>
-        <div class="rule-v"><span lang="en">Correct if the return falls below <strong>−0.5%</strong></span><span lang="fr">Juste si le rendement descend sous <strong>−0,5 %</strong></span></div>
+        <div class="rule-v"><span lang="en">Correct if the return falls <strong>below the band</strong></span><span lang="fr">Juste si le rendement <strong>descend sous la bande</strong></span></div>
       </div>
     </div>
 
-    <p class="note" lang="en">The half-percent band is calibrated for a single day. It would have to widen for longer horizons, a stock that moves half a percent over a year has not held steady, it has gone nowhere for a very long time.</p>
-    <p class="note" lang="fr">La bande d’un demi-point est calibrée pour une seule journée. Elle devra s’élargir pour les horizons plus longs, une action qui bouge d’un demi-point sur un an n’est pas restée stable, elle a stagné très longtemps.</p>
+    <h3 class="sub" lang="en">The band widens with time</h3>
+    <h3 class="sub" lang="fr">La bande s’élargit avec le temps</h3>
+    <p class="sec-intro" lang="en">Half a percent is the right size for one day. It is absurd for a year: a stock that ends twelve months half a percent from where it started has not held steady, it has gone nowhere for a very long time. So the band grows with the square root of the number of sessions, because that is how the spread of accumulated returns grows.</p>
+    <p class="sec-intro" lang="fr">Un demi-point est la bonne taille pour une journée. C’est absurde pour un an : une action qui termine douze mois à un demi-point de son point de départ n’est pas restée stable, elle a stagné très longtemps. La bande grandit donc comme la racine carrée du nombre de séances, parce que c’est ainsi que grandit la dispersion des rendements cumulés.</p>
+
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-k"><span lang="en">One day</span><span lang="fr">Un jour</span></div>
+        <div class="rule-v"><span lang="en"><strong>±0.50%</strong> over 1 session</span><span lang="fr"><strong>±0,50 %</strong> sur 1 séance</span></div>
+      </div>
+      <div class="rule">
+        <div class="rule-k"><span lang="en">One week</span><span lang="fr">Une semaine</span></div>
+        <div class="rule-v"><span lang="en"><strong>±1.32%</strong> over 7 sessions</span><span lang="fr"><strong>±1,32 %</strong> sur 7 séances</span></div>
+      </div>
+      <div class="rule">
+        <div class="rule-k"><span lang="en">One month</span><span lang="fr">Un mois</span></div>
+        <div class="rule-v"><span lang="en"><strong>±2.74%</strong> over 30 sessions</span><span lang="fr"><strong>±2,74 %</strong> sur 30 séances</span></div>
+      </div>
+      <div class="rule">
+        <div class="rule-k"><span lang="en">One year</span><span lang="fr">Un an</span></div>
+        <div class="rule-v"><span lang="en"><strong>±7.94%</strong> over 252 sessions</span><span lang="fr"><strong>±7,94 %</strong> sur 252 séances</span></div>
+      </div>
+    </div>
+
+    <p class="note" lang="en">This is an assumption, not a fact, and it has a consequence that can be checked: if it holds, the share of calls landing inside the band should be about the same at all four horizons. If the monthly band swallows half the calls while the daily band swallows a quarter, the exponent is wrong and it will be changed in public, with the date of the change recorded.</p>
+    <p class="note" lang="fr">C’est une hypothèse, pas un fait, et elle a une conséquence vérifiable : si elle tient, la part des appels tombant dans la bande doit être à peu près la même aux quatre horizons. Si la bande du mois en avale la moitié quand celle du jour en avale un quart, l’exposant est faux et il sera changé publiquement, avec la date du changement inscrite.</p>
+
+    <p class="note" lang="en">Before November 2026 the model issued a single verdict, scored against a fixed ±0.5% band at every horizon. Those calls stay in the database, still scored under the rule they were made under, but they are archived and count nowhere in the record (the next section explains why). Each row carries the rule it was born with, which is what makes it possible to change the method without quietly rewriting the past.</p>
+    <p class="note" lang="fr">Avant novembre 2026, le modèle rendait un verdict unique, noté contre une bande fixe de ±0,5 % à tous les horizons. Ces appels restent dans la base, toujours notés sous la règle qui les a vus naître, mais ils sont archivés et ne comptent nulle part dans le relevé (la section suivante explique pourquoi). Chaque ligne porte sa règle d’origine, et c’est ce qui permet de changer de méthode sans réécrire le passé en douce.</p>
 
   </div></div>
 </section>
@@ -76,16 +103,19 @@
     <p class="sec-intro" lang="en">This choice is deliberately unflattering. Measuring from the previous close would quietly credit the system with overnight moves it never saw, and would inflate the figure.</p>
     <p class="sec-intro" lang="fr">Ce choix est volontairement défavorable. Mesurer depuis la clôture de la veille créditerait discrètement le système de mouvements nocturnes qu’il n’a jamais vus, et gonflerait le chiffre.</p>
 
+    <p class="note" lang="en">Until November 2026 this rule was not actually respected. The runs were scheduled on GitHub for early morning, but GitHub started every one of them between four and ten hours late, after the market had opened, and the calls were still dated that same day. The model was therefore reading headlines that already described the session it was meant to predict, which flatters the results. That was found by checking the time each run really started, not the time it was scheduled for. Those calls are archived and excluded, and the record restarted from zero. Each run is now launched on request around 6 a.m., and the script refuses to date a call for a session that has already opened: a late run either stops or is dated for the next session.</p>
+    <p class="note" lang="fr">Jusqu’en novembre 2026, cette règle n’était pas réellement respectée. Les runs étaient programmés sur GitHub tôt le matin, mais GitHub les a tous lancés avec quatre à dix heures de retard, après l’ouverture, et les appels restaient datés du jour même. Le modèle lisait donc des titres qui décrivaient déjà la séance qu’il devait prédire, ce qui flatte les résultats. Le problème a été trouvé en vérifiant l’heure à laquelle chaque run a vraiment démarré, et non celle à laquelle il était prévu. Ces appels sont archivés et exclus, et le relevé est reparti de zéro. Chaque run est désormais lancé sur commande vers 6 h, et le script refuse de dater un appel d’une séance déjà ouverte : un run en retard s’arrête, ou est daté de la séance suivante.</p>
+
   </div></div>
 </section>
 
 <section>
   <div class="wrap"><div class="narrow">
 
-    <h2 lang="en">Three horizons, counted in trading days</h2>
-    <h2 lang="fr">Trois horizons, comptés en jours de bourse</h2>
-    <p class="sec-intro" lang="en">Every call is graded three times. Weekends and holidays are skipped, so the seventh horizon is the seventh session the market was actually open, not the same weekday a week later.</p>
-    <p class="sec-intro" lang="fr">Chaque appel est noté trois fois. Les fins de semaine et les jours fériés sont ignorés, donc le septième horizon correspond à la septième séance réellement ouverte, et non au même jour de la semaine suivante.</p>
+    <h2 lang="en">Four horizons, counted in trading days</h2>
+    <h2 lang="fr">Quatre horizons, comptés en jours de bourse</h2>
+    <p class="sec-intro" lang="en">The model issues a separate verdict for each horizon, and each is graded on its own. The four are allowed to disagree: that is the point of asking for four rather than stretching one across all of them. Weekends and holidays are skipped, so the seventh horizon is the seventh session the market was actually open, not the same weekday a week later.</p>
+    <p class="sec-intro" lang="fr">Le modèle rend un verdict distinct par horizon, et chacun est noté pour lui-même. Les quatre ont le droit de se contredire : c’est précisément l’intérêt d’en demander quatre plutôt que d’en étirer un seul sur toutes les échéances. Les fins de semaine et les jours fériés sont ignorés, donc le septième horizon correspond à la septième séance réellement ouverte, et non au même jour de la semaine suivante.</p>
 
     <div class="rules">
       <div class="rule">
@@ -100,10 +130,17 @@
         <div class="rule-k">30</div>
         <div class="rule-v"><span lang="en">Is this a trading signal or a planning signal?</span><span lang="fr">S’agit-il d’un signal de marché ou d’un signal de planification ?</span></div>
       </div>
+      <div class="rule">
+        <div class="rule-k">252</div>
+        <div class="rule-v"><span lang="en">Does reading the news tell you anything about a year from now?</span><span lang="fr">Lire l’actualité apprend-il quoi que ce soit sur l’année à venir ?</span></div>
+      </div>
     </div>
 
-    <p class="note" lang="en">The three answers point to different products. A signal that only works on day one belongs nowhere near a monthly planning decision, and a signal that only appears at thirty days is wasted on a daily report.</p>
-    <p class="note" lang="fr">Les trois réponses mènent à des produits différents. Un signal qui ne fonctionne qu’au premier jour n’a rien à faire dans une décision de planification mensuelle, et un signal qui n’apparaît qu’à trente jours est gaspillé dans un rapport quotidien.</p>
+    <p class="note" lang="en">The four answers point to different products. A signal that only works on day one belongs nowhere near a monthly planning decision, and a signal that only appears at thirty days is wasted on a daily report.</p>
+    <p class="note" lang="fr">Les quatre réponses mènent à des produits différents. Un signal qui ne fonctionne qu’au premier jour n’a rien à faire dans une décision de planification mensuelle, et un signal qui n’apparaît qu’à trente jours est gaspillé dans un rapport quotidien.</p>
+
+    <p class="note" lang="en">The yearly horizon is the least promising of the four and is reported anyway. Shares tend to drift upward over a year, so “always buy” is a hard baseline to beat there, and the first yearly verdict cannot be scored before the autumn of 2027. Until then the column stays empty on the results page rather than being hidden.</p>
+    <p class="note" lang="fr">L’horizon annuel est le moins prometteur des quatre et il est rapporté quand même. Les actions ont tendance à monter sur un an, donc « toujours acheter » y est une référence difficile à battre, et le premier verdict annuel ne pourra être noté avant l’automne 2027. D’ici là, la colonne reste vide sur la page des résultats plutôt que masquée.</p>
 
   </div></div>
 </section>

@@ -12,9 +12,45 @@
 (function () {
   "use strict";
 
-  /* La même règle que celle du script d'évaluation : un mouvement de moins
-     d'un demi-point de pourcentage compte comme une absence de mouvement. */
-  var BANDE = 0.5;
+  /* ------------------------------ horizons -------------------------------
+
+     Le modèle rend quatre verdicts par titre, un par échéance, et chacun est
+     noté contre sa propre zone neutre. Celle-ci s'élargit comme la racine du
+     temps : l'amplitude cumulée d'une marche aléatoire grandit en racine du
+     nombre de pas. Garder ±0,5 % à un an reviendrait à déclarer « conserver »
+     faux d'avance, puisque presque aucune action ne finit l'année à un
+     demi-point de son point de départ.
+
+     Les mêmes nombres sont calculés à l'identique dans evaluate.py.
+     ---------------------------------------------------------------------- */
+
+  var BANDE_JOUR = 0.5;
+
+  var HORIZONS = [
+    { cle: "t1",   seances: 1,   col: "signal",   en: "One day",   fr: "Un jour" },
+    { cle: "t7",   seances: 7,   col: "signal_w", en: "One week",  fr: "Une semaine" },
+    { cle: "t30",  seances: 30,  col: "signal_m", en: "One month", fr: "Un mois" },
+    { cle: "t252", seances: 252, col: "signal_y", en: "One year",  fr: "Un an" }
+  ];
+
+  function bandeDe(seances, regle) {
+    return regle >= 2 ? BANDE_JOUR * Math.sqrt(seances) : BANDE_JOUR;
+  }
+
+  /* 1 = un signal unique noté avec une bande fixe (jusqu'au 20 novembre 2026).
+     2 = un signal par horizon, bande élargie. Une ligne sans la colonne vaut 1. */
+  function regleDe(l) {
+    var r = Number(l.scoring_rule);
+    return isFinite(r) && r >= 2 ? 2 : 1;
+  }
+
+  /* Quel verdict juger à cet horizon. null quand la ligne n'en porte aucun :
+     une prédiction de septembre n'a jamais été interrogée sur l'année, et on
+     ne lui en attribue pas une après coup. */
+  function signalPour(l, h) {
+    if (regleDe(l) >= 2) return l[h.col] || null;
+    return h.cle === "t252" ? null : (l.signal || null);
+  }
 
   /* ------------------------- garde-fous de config ------------------------ */
 
@@ -47,17 +83,44 @@
   }
 
   var COLONNES_STATS =
+    "prediction_date,ticker,signal,signal_w,signal_m,signal_y,scoring_rule,sentiment_score," +
+    "return_t1,correct_t1,return_t7,correct_t7,return_t30,correct_t30,return_t252,correct_t252";
+
+  /* Jeu de colonnes d'avant la migration. Sert de repli : si le site est mis
+     en ligne avant que supabase_horizons.sql ait été passé, la page continue
+     d'afficher l'ancien relevé au lieu de tomber en panne. */
+  var COLONNES_ANCIENNES =
     "prediction_date,ticker,signal,sentiment_score,return_t1,correct_t1,return_t7,correct_t7,return_t30,correct_t30";
+
+  var COLONNES_RECENTS =
+    "prediction_date,ticker,signal,signal_w,signal_m,signal_y,scoring_rule," +
+    "sentiment_score,rationale,horizon_notes,return_t1,correct_t1";
+
+  var COLONNES_RECENTS_ANCIENNES =
+    "prediction_date,ticker,signal,sentiment_score,rationale,return_t1,correct_t1";
+
+  /* Tente le jeu complet, retombe sur l'ancien si la base ne connaît pas
+     encore les nouvelles colonnes. */
+  function interrogerAvecRepli(colonnes, repli, suite) {
+    return interroger("select=" + colonnes + suite).catch(function (e) {
+      if (String(e.message).indexOf("400") === -1) throw e;
+      if (window.console) console.info(
+        "Brier-Labs : colonnes d'horizon absentes de la base : affichage de " +
+        "l'ancien relevé. Passe supabase_horizons.sql dans Supabase.");
+      return interroger("select=" + repli + suite);
+    });
+  }
 
   /* ------------------------------ calculs -------------------------------- */
 
-  function justeSelonRegle(signal, rendement) {
+  function justeSelonRegle(signal, rendement, bande) {
     if (rendement === null || rendement === undefined) return null;
+    var b = bande === undefined ? BANDE_JOUR : bande;
     var s = String(signal || "").toUpperCase();
     var r = Number(rendement);
-    if (s === "BUY") return r > BANDE;
-    if (s === "SELL") return r < -BANDE;
-    if (s === "HOLD") return r >= -BANDE && r <= BANDE;
+    if (s === "BUY") return r > b;
+    if (s === "SELL") return r < -b;
+    if (s === "HOLD") return r >= -b && r <= b;
     return false;
   }
 
@@ -161,23 +224,111 @@
      induirait en erreur : on s'abstient. */
   var MIN_CORRELATION = 30;
 
-  function calculer(lignes) {
+  /* ------------------------ relevé d'un seul horizon ---------------------
+
+     `regleVoulue` vaut 1, 2, ou null pour ne pas filtrer. On ne mélange
+     jamais les deux régimes de notation dans une même moyenne : la bande
+     n'est pas la même de part et d'autre du 21 novembre 2026, et la moyenne
+     des deux ne voudrait rien dire.
+
+     Les trois références triviales sont recalculées sur EXACTEMENT les mêmes
+     lignes que le modèle — mêmes jours, mêmes titres, même bande. C'est la
+     seule façon pour que la comparaison dise quelque chose.
+     ---------------------------------------------------------------------- */
+
+  function statsHorizon(lignes, h, regleVoulue) {
+    var n = 0, bons = 0, achat = 0, conserve = 0, vente = 0;
+    var paires = [];
+    var bande = bandeDe(h.seances, regleVoulue === null ? 2 : regleVoulue);
+
+    lignes.forEach(function (l) {
+      var regle = regleDe(l);
+      if (regleVoulue !== null && regle !== regleVoulue) return;
+
+      var rendement = l["return_" + h.cle];
+      if (rendement === null || rendement === undefined) return;
+
+      var b = bandeDe(h.seances, regle);
+      var verdict = l["correct_" + h.cle];
+
+      if (verdict !== null && verdict !== undefined) {
+        n++;
+        if (verdict) bons++;
+        if (justeSelonRegle("BUY", rendement, b)) achat++;
+        if (justeSelonRegle("HOLD", rendement, b)) conserve++;
+        if (justeSelonRegle("SELL", rendement, b)) vente++;
+      }
+      if (l.sentiment_score !== null && l.sentiment_score !== undefined) {
+        paires.push({ s: Number(l.sentiment_score), r: Number(rendement) });
+      }
+    });
+
+    var assez = paires.length >= MIN_CORRELATION;
+    return {
+      cle: h.cle, en: h.en, fr: h.fr, seances: h.seances, bande: bande,
+      n: n,
+      ia: pourcent(bons, n),
+      achat: pourcent(achat, n),
+      conserve: pourcent(conserve, n),
+      vente: pourcent(vente, n),
+      nPaires: paires.length,
+      rho: assez ? spearman(paires) : null,
+      seuil: assez ? 1.96 / Math.sqrt(paires.length) : null
+    };
+  }
+
+  /* ------------------------- relevé et archive ---------------------------
+
+     Le relevé public ne compte que les appels de la méthode actuelle
+     (scoring_rule = 2) : quatre verdicts par titre, produits avant
+     l'ouverture. Les appels de l'ancienne méthode (scoring_rule = 1) ont
+     presque tous été produits après l'ouverture — GitHub lançait les runs
+     planifiés avec 4 à 10 heures de retard — et lisaient donc des nouvelles
+     qui contenaient déjà le mouvement de la séance. Ils restent dans la base
+     et dans le fichier téléchargeable, mais hors de tout calcul.
+     ---------------------------------------------------------------------- */
+
+  function calculer(toutes) {
+    var releve = toutes.filter(function (l) { return regleDe(l) >= 2; });
+    var archive = toutes.filter(function (l) { return regleDe(l) < 2; });
+    var s = calculerSur(releve);
+    var datesArchive = archive.map(function (l) { return l.prediction_date; })
+      .filter(Boolean).sort();
+    s.archive = {
+      n: archive.length,
+      premiere: datesArchive[0] || null,
+      derniere: datesArchive[datesArchive.length - 1] || null
+    };
+    return s;
+  }
+
+  function calculerSur(lignes) {
     var evaluees = lignes.filter(function (l) { return l.correct_t1 !== null && l.correct_t1 !== undefined; });
 
     var bons = 0, refAchat = 0, refConserve = 0, refVente = 0, avecRendement = 0;
     var parSignal = {};
     var paires = [];
 
+    /* Le détail par type d'appel se lit horizon par horizon, et chaque
+       colonne regroupe les lignes selon le verdict DE CET HORIZON. Classer
+       la réussite à sept jours sous le verdict du jour n'aurait aucun sens
+       depuis que le modèle en rend quatre. */
+    lignes.forEach(function (l) {
+      HORIZONS.forEach(function (h) {
+        if (h.cle !== "t1" && regleDe(l) < 2) return;
+        var verdict = l["correct_" + h.cle];
+        if (verdict === null || verdict === undefined) return;
+        var s = String(signalPour(l, h) || "").toUpperCase();
+        if (!s) return;
+        if (!parSignal[s]) parSignal[s] = {};
+        if (!parSignal[s][h.cle]) parSignal[s][h.cle] = { n: 0, bons: 0 };
+        parSignal[s][h.cle].n++;
+        if (verdict) parSignal[s][h.cle].bons++;
+      });
+    });
+
     evaluees.forEach(function (l) {
       if (l.correct_t1) bons++;
-      var sig = String(l.signal || "?").toUpperCase();
-      if (!parSignal[sig]) parSignal[sig] = { n: 0, bons: 0, n7: 0, bons7: 0 };
-      parSignal[sig].n++;
-      if (l.correct_t1) parSignal[sig].bons++;
-      if (l.correct_t7 !== null && l.correct_t7 !== undefined) {
-        parSignal[sig].n7++;
-        if (l.correct_t7) parSignal[sig].bons7++;
-      }
       if (l.return_t1 !== null && l.return_t1 !== undefined) {
         avecRendement++;
         if (justeSelonRegle("BUY", l.return_t1)) refAchat++;
@@ -193,7 +344,12 @@
 
     var dates = lignes.map(function (l) { return l.prediction_date; }).filter(Boolean).sort();
 
+    var parHorizon = HORIZONS.map(function (h) {
+      return statsHorizon(lignes, h, 2);
+    });
+
     return {
+      parHorizon: parHorizon,
       total: lignes.length,
       evaluees: evaluees.length,
       ia: pourcent(bons, evaluees.length),
@@ -293,13 +449,41 @@
 
   /* --------------------------- page d'accueil ---------------------------- */
 
+  /* L'accueil a deux paragraphes de commentaire, un par langue. On les
+     remplace par un seul paragraphe bilingue : sinon seul l'anglais est mis
+     à jour et les visiteurs francophones voient le texte figé de la page. */
+  function ecrireLecture(zone, html) {
+    var ps = zone.querySelectorAll(".read");
+    if (!ps.length) return;
+    ps[0].removeAttribute("lang");
+    ps[0].innerHTML = html;
+    for (var i = 1; i < ps.length; i++) ps[i].remove();
+  }
+
   function remplirAccueil(s) {
     var zone = document.querySelector(".record");
-    if (!zone || s.evaluees === 0) return;   /* on garde les chiffres écrits en dur */
+    if (!zone) return;
     var meta = zone.querySelector(".record-meta");
     var lecture = zone.querySelector(".read");
     var anciennes = zone.querySelectorAll(".row");
     if (!meta || anciennes.length === 0) return;
+
+    /* Rien de noté dans le nouveau relevé : on le dit, et on laisse les
+       barres vides. Jamais de chiffres de l'archive à la place. */
+    if (s.evaluees === 0) {
+      meta.innerHTML = s.premiere
+        ? bilingue("Record started " + dateLisible(s.premiere, "en") + " · " + s.total +
+                     (s.total === 1 ? " call" : " calls") + " made, none scored yet",
+                   "Relevé commencé le " + dateLisible(s.premiere, "fr") + " · " + s.total +
+                     (s.total === 1 ? " appel produit" : " appels produits") + ", aucun encore noté")
+        : bilingue("New record starting", "Nouveau relevé en cours de démarrage");
+      if (lecture) {
+        ecrireLecture(zone, bilingue(
+          "The record restarted from zero: until November 2026 the calls were produced after the market had opened, which flattered the results. Calls are scored every evening after the close, and the first figures will appear here then.",
+          "Le relevé est reparti de zéro : jusqu’en novembre 2026, les appels étaient produits après l’ouverture du marché, ce qui flattait les résultats. Les appels sont notés chaque soir après la clôture, et les premiers chiffres apparaîtront alors ici."));
+      }
+      return;
+    }
 
     meta.innerHTML = entete(s);
     var html = barres(s);
@@ -319,10 +503,10 @@
         verdictEn = "The model is level with the trivial strategies, no edge detected so far.";
         verdictFr = "Le modèle est au même niveau que les stratégies triviales, aucun avantage détecté à ce stade.";
       }
-      lecture.innerHTML = bilingue(
+      ecrireLecture(zone, bilingue(
         verdictEn + " These figures are read live from the database and update themselves as the record grows.",
         verdictFr + " Ces chiffres sont lus en direct dans la base et se mettent à jour d’eux-mêmes à mesure que le relevé s’étoffe."
-      );
+      ));
     }
   }
 
@@ -333,18 +517,114 @@
     var noms = { BUY: ["Buy", "Acheter"], HOLD: ["Hold", "Conserver"], SELL: ["Sell", "Vendre"] };
     var out = "";
     ordre.forEach(function (sig) {
-      var d = s.parSignal[sig];
-      var n = d ? d.n : 0;
-      var t1 = d && d.n ? pourcent(d.bons, d.n) : null;
-      var t7 = d && d.n7 ? pourcent(d.bons7, d.n7) : null;
-      out += '<div class="sig">' +
+      var d = s.parSignal[sig] || {};
+      var cellules = HORIZONS.map(function (h) {
+        var c = d[h.cle];
+        var taux = c && c.n ? pourcent(c.bons, c.n) : null;
+        return '<div class="sig-v">' + (taux === null ? "—" : val(taux)) +
+          '<span class="sig-h">' + bilingue(h.en, h.fr) +
+          (c && c.n ? " · n=" + c.n : "") + "</span></div>";
+      }).join("");
+      out += '<div class="sig sig-4">' +
         '<div class="sig-k">' + bilingue(noms[sig][0], noms[sig][1]) + "</div>" +
-        '<div class="sig-n">' + n + " " + bilingue(n === 1 ? "call" : "calls", n === 1 ? "appel" : "appels") + "</div>" +
-        '<div class="sig-v">' + val(t1) + '<span class="sig-h">T+1</span></div>' +
-        '<div class="sig-v">' + (t7 === null ? "—" : val(t7)) + '<span class="sig-h">T+7</span></div>' +
-        "</div>";
+        cellules + "</div>";
     });
     return out;
+  }
+
+  /* ------------------------ relevé par horizon ---------------------------- */
+
+  function bandeTexte(b) {
+    var t = "±" + Number(b).toFixed(2);
+    return bilingue(t + "%", t.replace(".", ",") + "&nbsp;%");
+  }
+
+  var NOMS_REF = {
+    achat:    ["Always “buy”",  "Toujours « acheter »"],
+    conserve: ["Always “hold”", "Toujours « conserver »"],
+    vente:    ["Always “sell”", "Toujours « vendre »"]
+  };
+
+  function meilleureDe(h) {
+    var meilleure = null;
+    ["achat", "conserve", "vente"].forEach(function (k) {
+      if (h[k] !== null && (meilleure === null || h[k] > h[meilleure])) meilleure = k;
+    });
+    return meilleure;
+  }
+
+  function ligneHorizon(h) {
+    var titre = '<div class="sig-k">' + bilingue(h.en, h.fr) +
+      '<span class="sig-band">' + bandeTexte(h.bande) + "</span></div>";
+
+    if (!h.n) {
+      return '<div class="sig sig-vide">' + titre +
+        '<div class="sig-n">' + bilingue("no call has reached this horizon yet",
+                                         "aucun appel n’a encore atteint cette échéance") + "</div>" +
+        '<div class="sig-v">—<span class="sig-h">' +
+          bilingue("not measurable yet", "pas encore mesurable") + "</span></div>" +
+        /* Cellule vide : garde le tiret aligné sous la colonne « Modèle ». */
+        '<div class="sig-v sig-ref"></div>' +
+        "</div>";
+    }
+
+    var k = meilleureDe(h);
+    var detail = bilingue(
+      h.n + (h.n === 1 ? " call scored" : " calls scored"),
+      h.n + (h.n === 1 ? " appel noté" : " appels notés"));
+    if (h.rho !== null && h.rho !== undefined) {
+      detail += bilingue(" · ρ " + nombreBrut(h.rho, 3, true),
+                         " · ρ " + nombreBrut(h.rho, 3, true).replace(".", ","));
+    }
+
+    /* Le modèle est mis en avant seulement quand il devance réellement la
+       meilleure des trois règles triviales. Un écart d'un point n'en est pas
+       un sur quelques centaines d'appels. */
+    var devance = k !== null && h.ia !== null && h.ia - h[k] > 3;
+
+    return '<div class="sig' + (devance ? " sig-devance" : "") + '">' + titre +
+      '<div class="sig-n">' + detail + "</div>" +
+      '<div class="sig-v">' + val(h.ia) + '<span class="sig-h">' +
+        bilingue("Model", "Modèle") + "</span></div>" +
+      '<div class="sig-v sig-ref">' + (k === null ? "—" : val(h[k])) +
+        '<span class="sig-h">' + (k === null ? "" : bilingue(NOMS_REF[k][0], NOMS_REF[k][1])) +
+        "</span></div>" +
+      "</div>";
+  }
+
+  /* Pourquoi le relevé commence où il commence. Affichée sous le tableau
+     par horizon et en tête de la page quand le relevé est encore vide. */
+  function texteArchive(s) {
+    var a = s.archive;
+    if (!a || !a.n) return null;
+    var debutEn = s.premiere
+      ? "The record starts on " + dateLisible(s.premiere, "en") + ". "
+      : "The record restarts with the first call produced under the current method. ";
+    var debutFr = s.premiere
+      ? "Le relevé commence le " + dateLisible(s.premiere, "fr") + ". "
+      : "Le relevé repart avec le premier appel produit sous la méthode actuelle. ";
+    var plage = function (l) {
+      return a.premiere === a.derniere ? dateLisible(a.premiere, l)
+        : dateLisible(a.premiere, l) + " – " + dateLisible(a.derniere, l);
+    };
+    return bilingue(
+      debutEn + "The " + a.n + " earlier calls (" + plage("en") + ") followed an older " +
+        "method and were, almost all of them, produced after the market opened: GitHub " +
+        "started the scheduled runs four to ten hours late, so the model was reading " +
+        "headlines that already reported the day’s move. They are kept in the database " +
+        "and in the downloadable file, but left out of every figure on this page.",
+      debutFr + "Les " + a.n + " appels antérieurs (" + plage("fr") + ") suivaient une " +
+        "ancienne méthode et ont presque tous été produits après l’ouverture du marché : " +
+        "GitHub lançait les runs planifiés avec quatre à dix heures de retard, si bien que " +
+        "le modèle lisait des titres qui rapportaient déjà le mouvement de la séance. Ils " +
+        "restent dans la base et dans le fichier téléchargeable, mais aucun chiffre de " +
+        "cette page n’en tient compte.");
+  }
+
+  function tableauHorizons(s) {
+    var html = s.parHorizon.map(ligneHorizon).join("");
+    var note = texteArchive(s);
+    return html + (note ? '<p class="corr-n">' + note + "</p>" : "");
   }
 
   /* --------------- bloc « le score porte-t-il de l'information ? » -------- */
@@ -424,6 +704,24 @@
     return html;
   }
 
+  /* Les trois échéances plus lointaines, sous l'appel du jour. Le verdict du
+     jour reste la pastille en tête de ligne : c'est celui qui sera noté dès
+     demain soir. Les lignes d'avant le changement n'en portent qu'un, et la
+     rangée disparaît alors d'elle-même. */
+  function horizonsDeLAppel(l) {
+    if (regleDe(l) < 2) return "";
+    var notes = l.horizon_notes || {};
+    var items = HORIZONS.slice(1).map(function (h) {
+      var sig = String(l[h.col] || "").toUpperCase();
+      if (!sig) return "";
+      var note = notes[h.cle === "t7" ? "w" : (h.cle === "t30" ? "m" : "y")];
+      return '<span class="call-hz-i"' + (note ? ' title="' + echapper(note) + '"' : "") + ">" +
+        '<span class="call-hz-k">' + bilingue(h.en, h.fr) + "</span>" +
+        '<span class="call-sig s-' + sig.toLowerCase() + '">' + echapper(sig) + "</span></span>";
+    }).join("");
+    return items ? '<div class="call-hz">' + items + "</div>" : "";
+  }
+
   function listeAppels(lignes) {
     if (!lignes.length) return "";
     return lignes.map(function (l) {
@@ -439,19 +737,26 @@
       return '<div class="call">' +
         '<div class="call-top">' +
         '<span class="call-tk">' + echapper(l.ticker) + "</span>" +
+        /* Sur les lignes à quatre verdicts, on nomme celui-ci : c'est celui
+           du jour, noté dès le soir. Les anciennes lignes n'en ont qu'un. */
+        (regleDe(l) >= 2 ? '<span class="call-hz-k">' + bilingue("One day", "Un jour") + "</span>" : "") +
         '<span class="call-sig s-' + sig.toLowerCase() + '">' + echapper(sig) + "</span>" +
         '<span class="call-sc">' + (l.sentiment_score === null || l.sentiment_score === undefined
           ? "" : Number(l.sentiment_score).toFixed(2)) + "</span>" +
         '<span class="call-end">' + rend + verdict + "</span>" +
         "</div>" +
+        horizonsDeLAppel(l) +
         (l.rationale ? '<p class="call-why">' + echapper(l.rationale) + "</p>" : "") +
         "</div>";
     }).join("");
   }
 
   function csv(lignes) {
-    var cols = ["prediction_date", "ticker", "signal", "sentiment_score",
-      "return_t1", "correct_t1", "return_t7", "correct_t7", "return_t30", "correct_t30"];
+    var cols = ["prediction_date", "ticker", "scoring_rule", "sentiment_score",
+      "signal", "return_t1", "correct_t1",
+      "signal_w", "return_t7", "correct_t7",
+      "signal_m", "return_t30", "correct_t30",
+      "signal_y", "return_t252", "correct_t252"];
     var l = [cols.join(",")];
     lignes.forEach(function (r) {
       l.push(cols.map(function (c) {
@@ -472,13 +777,13 @@
     if (!zone) return;
     var s = calculer(statsLignes);
 
-    if (s.total === 0) {
+    if (s.total === 0 && !s.archive.n) {
       message(zone,
         "No data yet", "Aucune donnée pour l’instant",
         "The database returned no rows. Either the pipeline has not written anything yet, or the public read rule has not been created in Supabase.",
         "La base n’a renvoyé aucune ligne. Soit le pipeline n’a encore rien écrit, soit la règle de lecture publique n’a pas été créée dans Supabase.");
       /* Sans quoi les autres sections resteraient sur « Chargement… ». */
-      ["by-signal", "signal", "latest"].forEach(function (id) {
+      ["horizons", "by-signal", "signal", "latest"].forEach(function (id) {
         var e = document.getElementById(id);
         if (e) e.innerHTML = "";
       });
@@ -490,18 +795,36 @@
     var html = "";
 
     /* Bandeau de synthèse */
-    html += '<div class="record">' +
-      '<div class="record-meta">' + entete(s) + "</div>" +
-      (s.evaluees ? barres(s) :
+    if (s.total === 0) {
+      /* Le nouveau relevé n'a encore aucun appel : seule l'archive existe. */
+      html += '<div class="record">' +
+        '<div class="record-meta">' + bilingue("New record starting", "Nouveau relevé en cours de démarrage") + "</div>" +
         '<p class="read">' + bilingue(
-          "Calls are recorded but none has been scored yet, scoring happens after the market closes.",
-          "Des appels sont enregistrés mais aucun n’a encore été noté, la notation a lieu après la clôture des marchés.") + "</p>") +
-      "</div>";
+          "The record starts with the next call produced before the opening bell. Until then, no figure is shown rather than an unreliable one.",
+          "Le relevé commence avec le prochain appel produit avant l’ouverture. D’ici là, aucun chiffre n’est affiché plutôt qu’un chiffre peu fiable.") + "</p>" +
+        "</div>";
+    } else {
+      html += '<div class="record">' +
+        '<div class="record-meta">' + entete(s) + "</div>" +
+        (s.evaluees ? barres(s) :
+          '<p class="read">' + bilingue(
+            "Calls are recorded but none has been scored yet, scoring happens after the market closes.",
+            "Des appels sont enregistrés mais aucun n’a encore été noté, la notation a lieu après la clôture des marchés.") + "</p>") +
+        "</div>";
+    }
     zone.innerHTML = html;
+
+    /* Relevé par horizon */
+    var zoneHorizons = document.getElementById("horizons");
+    if (zoneHorizons) zoneHorizons.innerHTML = tableauHorizons(s);
 
     /* Détail par type d'appel */
     var parType = document.getElementById("by-signal");
-    if (parType && s.evaluees) parType.innerHTML = tableauParSignal(s);
+    if (parType) {
+      parType.innerHTML = s.evaluees ? tableauParSignal(s) :
+        '<p class="read">' + bilingue("Nothing scored yet in the new record.",
+                                      "Rien n’a encore été noté dans le nouveau relevé.") + "</p>";
+    }
 
     /* Le score porte-t-il de l'information ? */
     var zoneSignal = document.getElementById("signal");
@@ -512,8 +835,13 @@
     if (recents) {
       if (dernierJour && dernierJour.length) {
         var j = dernierJour[0].prediction_date;
+        /* Tant que le nouveau relevé n'a rien produit, le dernier lot est
+           un lot d'archive : on le montre, mais signalé comme tel. */
+        var archiveEn = regleDe(dernierJour[0]) < 2 ? " · archive, not part of the record" : "";
+        var archiveFr = regleDe(dernierJour[0]) < 2 ? " · archive, hors du relevé" : "";
         recents.innerHTML = '<div class="record-meta">' +
-          bilingue("Calls of " + dateLisible(j, "en"), "Appels du " + dateLisible(j, "fr")) +
+          bilingue("Calls of " + dateLisible(j, "en") + archiveEn,
+                   "Appels du " + dateLisible(j, "fr") + archiveFr) +
           "</div>" + listeAppels(dernierJour);
       } else {
         recents.innerHTML = "";
@@ -563,7 +891,8 @@
     }
 
     /* Requête légère pour les statistiques sur tout l'historique */
-    var p1 = interroger("select=" + COLONNES_STATS + "&order=prediction_date.desc&limit=5000");
+    var p1 = interrogerAvecRepli(COLONNES_STATS, COLONNES_ANCIENNES,
+      "&order=prediction_date.desc&limit=5000");
 
     if (surAccueil && !surResultats) {
       p1.then(function (lignes) { remplirAccueil(calculer(lignes)); })
@@ -572,8 +901,7 @@
     }
 
     /* Page Résultats : on ajoute le détail du dernier jour, avec les justifications */
-    var p2 = interroger(
-      "select=prediction_date,ticker,signal,sentiment_score,rationale,return_t1,correct_t1" +
+    var p2 = interrogerAvecRepli(COLONNES_RECENTS, COLONNES_RECENTS_ANCIENNES,
       "&order=prediction_date.desc,ticker.asc&limit=60");   /* 60 : de quoi couvrir un portefeuille de 30 titres */
 
     Promise.all([p1, p2]).then(function (res) {
