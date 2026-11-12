@@ -302,6 +302,33 @@ footer{background:var(--navy);color:#a8bbdd;padding:56px 0 44px;font-size:14.5px
 .foot-links a:hover{color:#fff}
 .disclaimer{margin-top:24px;max-width:84ch;line-height:1.62;font-size:13.5px;color:#8ea4cc}
 
+/* ------------------------------- Newsletter ------------------------------ */
+.lettre-titre{margin-top:10px;font-size:clamp(1.7rem,3.4vw,2.3rem);max-width:34ch}
+.nouvelle{padding:30px 0;border-bottom:1px solid var(--rule)}
+.nouvelle:first-of-type{border-top:1px solid var(--rule);margin-top:30px}
+.nouvelle h3{font-size:1.12rem;letter-spacing:-.01em;margin-bottom:9px}
+.nouvelle > p{font-size:15.5px;max-width:68ch}
+.impacts{list-style:none;margin:16px 0 0;padding:0}
+.impact{
+  display:grid;grid-template-columns:auto minmax(150px,auto) 1fr;gap:6px 14px;
+  align-items:baseline;padding:9px 0;
+}
+.impact .call-sig{white-space:nowrap}
+.impact-k{font-weight:600;font-size:14.5px}
+.impact-etf{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--muted);margin-left:4px}
+.impact-why{color:var(--muted);font-size:14.5px}
+.nouvelle-src{margin-top:12px;font-size:13px;color:var(--muted)}
+.nouvelle-src a{color:var(--muted);text-underline-offset:2px}
+.nouvelle-src a:hover{color:var(--navy)}
+.a-surveiller{padding:26px 0 6px}
+.a-surveiller h3{font-size:1.02rem;margin-bottom:8px}
+.a-surveiller ul{margin:0 0 0 20px;color:var(--muted);font-size:15px}
+.a-surveiller li{margin-bottom:5px}
+.lettre-sig{margin-top:22px;font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--muted)}
+.lettre-ancienne{border-bottom:1px solid var(--rule);padding:14px 0}
+.lettre-ancienne summary{cursor:pointer;font-size:15px}
+.lettre-ancienne .lettre{margin-top:12px}
+
 /* ------------------------------- mobile --------------------------------- */
 @media (max-width:860px){
   .steps{grid-template-columns:1fr;gap:26px}
@@ -337,6 +364,9 @@ footer{background:var(--navy);color:#a8bbdd;padding:56px 0 44px;font-size:14.5px
   .sig-k,.sig-n{grid-column:1/-1}
   .sig-v{text-align:left;min-width:0}
   .sig-4{grid-template-columns:1fr 1fr}
+  /* Lettre : flèche et secteur sur une ligne, raisonnement en dessous. */
+  .impact{grid-template-columns:auto 1fr}
+  .impact-why{grid-column:1/-1}
 }
 
 :focus-visible{outline:2px solid var(--navy);outline-offset:3px}
