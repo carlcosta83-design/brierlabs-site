@@ -1,0 +1,111 @@
+{
+  "editions": [
+    {
+      "date": "2026-11-12",
+      "horizon": {
+        "du": "2026-11-16",
+        "au": "2026-11-20"
+      },
+      "pilote": true,
+      "redige_par": "Claude (Anthropic)",
+      "titre_fr": "Inflation tenace, pétrole suspendu à l’Iran, Nvidia sans patron",
+      "titre_en": "Sticky inflation, oil hanging on Iran, Nvidia without its chief",
+      "intro_fr": "Édition pilote, publiée un jeudi pour tester le format avant le premier lundi. Trois nouvelles ont dominé la semaine : une inflation américaine plus forte que prévu, un pétrole ballotté entre espoir de paix et attaques dans le détroit d’Ormuz, et le départ soudain du patron de Nvidia. Les prévisions portent sur la semaine du 16 au 20 novembre.",
+      "intro_en": "Pilot issue, published on a Thursday to test the format before the first Monday. Three stories dominated the week: hotter than expected US inflation, oil swinging between hopes of peace and attacks in the Strait of Hormuz, and the sudden departure of Nvidia’s chief executive. The calls cover the week of 16 to 20 November.",
+      "nouvelles": [
+        {
+          "titre_fr": "L’inflation américaine accélère, la Fed pourrait relever ses taux en décembre",
+          "titre_en": "US inflation picks up, and the Fed could raise rates in December",
+          "resume_fr": "Les prix à la consommation ont augmenté de 0,4 % en octobre aux États-Unis, et de 0,3 % hors alimentation et énergie, deux chiffres au-dessus des prévisions (0,3 % et 0,2 %). Sur trois mois, l’inflation de fond tourne à 3,75 % en rythme annuel. Le marché s’attend désormais à une hausse des taux en décembre, et le gouverneur de la Fed Christopher Waller a évoqué une hausse d’un demi-point. Le taux des obligations américaines à 10 ans est monté à près de 5 %.",
+          "resume_en": "US consumer prices rose 0.4% in October, and 0.3% excluding food and energy, both above forecasts (0.3% and 0.2%). Over three months, underlying inflation is running at a 3.75% annual pace. Markets now expect a rate rise in December, and Fed Governor Christopher Waller raised the possibility of a half-point move. The 10-year US Treasury yield climbed to almost 5%.",
+          "sources": [
+            {
+              "nom": "Bureau of Labor Statistics",
+              "url": "https://www.bls.gov/news.release/cpi.nr0.htm"
+            },
+            {
+              "nom": "UBS",
+              "url": "https://www.ubs.com/global/en/wealthmanagement/insights/chief-investment-office/house-view/daily/2026/latest-11112026.html"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLRE",
+              "direction": "baisse",
+              "raison_fr": "L’immobilier coté vit d’emprunts et de loyers stables : avec des obligations qui rapportent près de 5 %, il coûte plus cher à financer et paraît moins attrayant.",
+              "raison_en": "Listed real estate runs on borrowing and steady rents: with bonds paying close to 5%, it costs more to finance and looks less attractive."
+            },
+            {
+              "etf": "XLU",
+              "direction": "baisse",
+              "raison_fr": "Les services publics sont achetés pour leur dividende régulier, que des obligations sans risque à 5 % concurrencent directement.",
+              "raison_en": "Utilities are bought for their steady dividends, which risk-free bonds at 5% now compete with directly."
+            },
+            {
+              "etf": "XLF",
+              "direction": "hausse",
+              "raison_fr": "Des taux plus élevés augmentent ce que les banques gagnent sur leurs prêts, tant que l’économie tient et que les défauts de paiement restent bas.",
+              "raison_en": "Higher rates raise what banks earn on their loans, as long as the economy holds up and defaults stay low."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Pétrole : l’espoir d’un accord avec l’Iran fait plonger le baril, Ormuz le fait rebondir",
+          "titre_en": "Oil: hopes of a deal with Iran sink the price, Hormuz pushes it back up",
+          "resume_fr": "Le Brent, qui avait frôlé 118 dollars, est tombé sous 95 dollars, son plus bas niveau en deux mois, sur une proposition de paix soutenue par le Qatar pour mettre fin à la guerre entre les États-Unis et l’Iran. Il a rebondi mercredi après que des responsables iraniens ont refusé de laisser sortir leur uranium enrichi du pays. Les frappes iraniennes contre des pétroliers dans le détroit d’Ormuz se poursuivent, sans perturber l’approvisionnement jusqu’ici, et l’OPEP a augmenté sa production de 2 millions de barils par jour en octobre.",
+          "resume_en": "Brent, which had come close to $118, fell below $95, a two-month low, on a Qatari-backed peace proposal to end the war between the United States and Iran. It rebounded on Wednesday after Iranian officials refused to let their enriched uranium leave the country. Iranian strikes on tankers in the Strait of Hormuz continue, so far without disrupting supply, and OPEC raised output by 2 million barrels a day in October.",
+          "sources": [
+            {
+              "nom": "DTN",
+              "url": "https://www.dtnpf.com/agriculture/web/ag/news/world-policy/article/2026/11/11/oil-futures-halt-sell-rebound-two"
+            },
+            {
+              "nom": "SWBC",
+              "url": "https://blog.swbc.com/investmenthub/market-commentary-week-of-november-9-2026"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLE",
+              "direction": "baisse",
+              "raison_fr": "L’OPEP pompe davantage et les attaques n’ont pas réduit l’approvisionnement : sans nouvelle escalade, le baril a plus de place pour baisser que pour monter. Un échec des pourparlers renverserait cette prévision.",
+              "raison_en": "OPEC is pumping more and the attacks have not reduced supply: barring a new escalation, oil has more room to fall than to rise. A collapse of the talks would reverse this call."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Le patron de Nvidia démissionne, la technologie reste fébrile",
+          "titre_en": "Nvidia’s chief executive resigns, and tech stays jittery",
+          "resume_fr": "Nvidia a annoncé jeudi que Jensen Huang quittait ses fonctions de directeur général et son siège au conseil d’administration, avec effet immédiat. La directrice financière Colette Kress assure l’intérim. L’action a perdu jusqu’à 14 % à l’ouverture avant de réduire sa baisse, et recule d’environ 30 % sur un mois. Le secteur sortait déjà d’une période agitée : une chute brutale des valeurs de l’intelligence artificielle la semaine précédente, sur des doutes quant à leurs dépenses, puis un fort rebond lundi.",
+          "resume_en": "Nvidia announced on Thursday that Jensen Huang had resigned as chief executive and from its board, with immediate effect. Chief financial officer Colette Kress is interim chief executive. The shares fell as much as 14% at the open before paring losses, and are down about 30% over a month. Tech was already coming off a turbulent stretch: a sharp sell-off in artificial intelligence stocks the week before, on doubts about their spending, then a strong rebound on Monday.",
+          "sources": [
+            {
+              "nom": "Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-12-sp-500-nasdaq-dow-nvidia-invest-110027430.html"
+            },
+            {
+              "nom": "TheStreet",
+              "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-09-202"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLK",
+              "direction": "baisse",
+              "raison_fr": "Nvidia est l’un des plus gros poids du fonds technologique : une direction intérimaire et les doutes sur les dépenses en intelligence artificielle devraient peser sur le secteur. De bons résultats d’autres entreprises du secteur pourraient le relancer.",
+              "raison_en": "Nvidia is one of the largest holdings in the technology fund: interim leadership and doubts about artificial intelligence spending should weigh on the sector. Strong results from other companies in the sector could revive it."
+            }
+          ]
+        }
+      ],
+      "a_surveiller_fr": [
+        "Vendredi 13 novembre : les prix à la production d’octobre, un autre indicateur d’inflation.",
+        "Les pourparlers entre les États-Unis et l’Iran, qui décideront de la direction du pétrole."
+      ],
+      "a_surveiller_en": [
+        "Friday 13 November: October producer prices, another inflation gauge.",
+        "The talks between the United States and Iran, which will set the direction for oil."
+      ]
+    }
+  ]
+}
