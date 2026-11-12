@@ -303,11 +303,6 @@ ul.plain strong{color:var(--ink);font-weight:600}
 .v.ok{color:var(--navy);font-weight:500}
 .v.ko{color:#9a3030}
 .v.wait{color:var(--muted)}
-/* Les trois échéances plus lointaines, sous l'appel du jour. */
-.call-hz{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:11px}
-.call-hz-i{display:flex;align-items:center;gap:7px}
-.call-hz-k{font-size:12.5px;color:var(--muted)}
-.call-hz .call-sig{font-size:10.5px;padding:2px 7px}
 .call-why{margin-top:10px;color:var(--muted);font-size:15px;max-width:70ch}
 
 .dl{
@@ -328,6 +323,71 @@ footer{background:var(--navy);color:#a8bbdd;padding:56px 0 44px;font-size:14.5px
 .foot-links a{color:#a8bbdd;text-decoration:none}
 .foot-links a:hover{color:#fff}
 .disclaimer{margin-top:24px;max-width:84ch;line-height:1.62;font-size:13.5px;color:#8ea4cc}
+
+/* --------------------------- Mosaïque des appels -------------------------
+   Une ligne par titre, une tuile par horizon. Les couleurs disent le
+   verdict, le texte le répète : la couleur n'est jamais le seul indice. */
+.appels-section .sec-intro{max-width:62ch}
+.appels-section #latest{margin-top:34px}
+.dark .appels-aide{color:#8ea4cc;font-size:13.5px;margin:22px 0 26px}
+
+.lot{display:grid;gap:11px;max-width:780px;margin-top:30px}
+.lot-h{display:grid;grid-template-columns:84px minmax(0,1fr) 230px;gap:18px;align-items:center}
+.lot-k{color:#fff;font-size:14.5px;font-weight:500}
+.lot-barre{display:flex;gap:2px;height:12px}
+.lot-barre i{display:block;height:100%;flex-basis:0;border-radius:2px}
+.lot-barre .t-neutre{background:rgba(255,255,255,.26)}
+.lot-n{color:#a8bbdd;font-size:13.5px}
+
+.t-achat{background:#1f7a5c;color:#fff}
+.t-vente{background:#b04141;color:#fff}
+.t-neutre{background:rgba(255,255,255,.11);color:#dfe5f2}
+.t-vide{color:rgba(255,255,255,.46);border:1px dashed rgba(255,255,255,.2);font-weight:400}
+
+.appels-tete,.appel summary{
+  display:grid;grid-template-columns:64px 176px minmax(0,1fr) 168px 14px;gap:18px;align-items:center;
+}
+.sans-seance .appels-tete,.sans-seance .appel summary{grid-template-columns:64px 176px minmax(0,1fr) 14px}
+.appels-tete{padding:0 8px 10px;font-size:12.5px;color:#8ea4cc}
+.appels-tete-h{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;text-align:center}
+.appels{border-top:1px solid rgba(255,255,255,.2)}
+.appel{border-bottom:1px solid rgba(255,255,255,.12)}
+.appel summary{list-style:none;cursor:pointer;padding:9px 8px}
+.appel summary::-webkit-details-marker{display:none}
+.appel summary:hover{background:rgba(255,255,255,.045)}
+.appel summary:focus-visible{outline:2px solid #fff;outline-offset:-2px}
+.appel[open] summary{background:rgba(255,255,255,.06)}
+
+.appel-tk{font-family:var(--mono);font-weight:500;font-size:15px;line-height:1;color:#fff}
+.appel-tuiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.tuile{display:flex;align-items:center;justify-content:center;gap:2px;height:34px;border-radius:3px;font-size:13.5px;font-weight:600}
+.tuile-h{display:none}
+
+.reglette{display:flex;align-items:center;gap:12px}
+.reglette-rail{position:relative;flex:1;max-width:104px;height:2px;background:rgba(255,255,255,.22)}
+.reglette-rail::after{content:"";position:absolute;left:50%;top:-4px;width:1px;height:10px;background:rgba(255,255,255,.4)}
+.reglette-rail i{position:absolute;top:50%;width:10px;height:10px;border-radius:50%;transform:translate(-50%,-50%);background:#c3cde4;z-index:1}
+.r-pos .reglette-rail i{background:#55c597}
+.r-neg .reglette-rail i{background:#e58585}
+.reglette-n{font-family:var(--mono);font-size:12.5px;color:#c3cde4;min-width:44px}
+
+.seance{font-size:13px}
+.s-juste{color:#86dbb5}
+.s-manque{color:#f2a7a7}
+.s-attente{color:rgba(255,255,255,.46)}
+
+.appel-ouvrir::before{
+  content:"";display:block;width:7px;height:7px;margin-top:-4px;
+  border-right:1.5px solid #a8bbdd;border-bottom:1.5px solid #a8bbdd;transform:rotate(45deg);transition:transform .15s;
+}
+.appel[open] .appel-ouvrir::before{transform:rotate(225deg);margin-top:4px}
+
+.appel-pourquoi{padding:8px 8px 24px;max-width:80ch}
+.dark .appel-pourquoi p{color:#e4e9f3;font-size:15px;margin-bottom:12px}
+.appel-pourquoi ul{list-style:none;margin:0;padding:0}
+.appel-pourquoi li{display:grid;grid-template-columns:168px 1fr;gap:14px;padding:7px 0;color:#c3cde4;font-size:14.5px;border-top:1px solid rgba(255,255,255,.07)}
+.pq-h{color:#fff;font-weight:500;display:flex;gap:9px;align-items:center}
+.pq-v{font-size:11.5px;font-weight:600;padding:2px 7px;border-radius:3px}
 
 /* ------------------------------- Newsletter ------------------------------ */
 .lettre-titre{margin-top:10px;font-size:clamp(1.7rem,3.4vw,2.3rem);max-width:34ch}
@@ -407,3 +467,27 @@ footer{background:var(--navy);color:#a8bbdd;padding:56px 0 44px;font-size:14.5px
 
 :focus-visible{outline:2px solid var(--navy);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}html{scroll-behavior:auto}}
+
+/* Mosaïque sur petit écran : le titre et son ton en haut, les quatre tuiles
+   en dessous, chacune avec le nom de son horizon. */
+@media (max-width:760px){
+  .appels-tete{display:none}
+  .appel summary{
+    grid-template-columns:58px minmax(0,1fr) 14px;gap:10px 12px;
+    grid-template-areas:"tk rg ch" "tu tu tu" "se se se";
+  }
+  .sans-seance .appel summary{grid-template-columns:58px minmax(0,1fr) 14px;grid-template-areas:"tk rg ch" "tu tu tu"}
+  .appel-tk{grid-area:tk}
+  .reglette{grid-area:rg}
+  .appel-ouvrir{grid-area:ch}
+  .appel-tuiles{grid-area:tu}
+  .seance{grid-area:se;font-size:12.5px}
+  .tuile{flex-direction:column;height:auto;padding:6px 2px 7px}
+  .tuile-h{display:block;font-size:10.5px;font-weight:400;opacity:.82}
+  .tuile-v{font-size:12.5px}
+  .lot-h{grid-template-columns:auto 1fr;grid-template-areas:"k n" "b b";gap:6px 12px}
+  .lot-k{grid-area:k}
+  .lot-n{grid-area:n;text-align:right;font-size:12.5px}
+  .lot-barre{grid-area:b}
+  .appel-pourquoi li{grid-template-columns:1fr;gap:4px}
+}

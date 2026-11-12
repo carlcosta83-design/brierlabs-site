@@ -704,51 +704,165 @@
     return html;
   }
 
-  /* Les trois échéances plus lointaines, sous l'appel du jour. Le verdict du
-     jour reste la pastille en tête de ligne : c'est celui qui sera noté dès
-     demain soir. Les lignes d'avant le changement n'en portent qu'un, et la
-     rangée disparaît alors d'elle-même. */
-  function horizonsDeLAppel(l) {
-    if (regleDe(l) < 2) return "";
-    var notes = l.horizon_notes || {};
-    var items = HORIZONS.slice(1).map(function (h) {
-      var sig = String(l[h.col] || "").toUpperCase();
-      if (!sig) return "";
-      var note = notes[h.cle === "t7" ? "w" : (h.cle === "t30" ? "m" : "y")];
-      return '<span class="call-hz-i"' + (note ? ' title="' + echapper(note) + '"' : "") + ">" +
-        '<span class="call-hz-k">' + bilingue(h.en, h.fr) + "</span>" +
-        '<span class="call-sig s-' + sig.toLowerCase() + '">' + echapper(sig) + "</span></span>";
-    }).join("");
-    return items ? '<div class="call-hz">' + items + "</div>" : "";
+  /* ------------------------- la mosaïque des appels ----------------------
+
+     Une ligne par titre, une colonne par horizon, une tuile colorée par
+     verdict : on lit le lot entier d'un coup d'œil, et on voit comment le
+     modèle change d'avis avec l'échéance. Un clic sur une ligne déplie le
+     raisonnement qu'il a enregistré avant de connaître le résultat.
+     ---------------------------------------------------------------------- */
+
+  var VERDICTS = {
+    BUY:  { c: "t-achat",  en: "Buy",  fr: "Acheter" },
+    HOLD: { c: "t-neutre", en: "Hold", fr: "Conserver" },
+    SELL: { c: "t-vente",  en: "Sell", fr: "Vendre" }
+  };
+
+  /* Intitulés courts pour les colonnes, et clé de chaque horizon dans
+     horizon_notes. */
+  var COLONNES = {
+    t1:   { en: "Day",   fr: "Jour",    note: "d" },
+    t7:   { en: "Week",  fr: "Semaine", note: "w" },
+    t30:  { en: "Month", fr: "Mois",    note: "m" },
+    t252: { en: "Year",  fr: "Année",   note: "y" }
+  };
+
+  /* Le verdict d'un horizon. Les lignes de l'archive n'en portent qu'un,
+     celui du jour : les trois autres cases restent vides. */
+  function verdictPour(l, h) {
+    if (regleDe(l) >= 2) return String(l[h.col] || "").toUpperCase();
+    return h.cle === "t1" ? String(l.signal || "").toUpperCase() : "";
   }
 
-  function listeAppels(lignes) {
-    if (!lignes.length) return "";
-    return lignes.map(function (l) {
-      var sig = String(l.signal || "").toUpperCase();
-      var verdict = "";
-      if (l.correct_t1 === true) verdict = '<span class="v ok">' + bilingue("Correct", "Juste") + "</span>";
-      else if (l.correct_t1 === false) verdict = '<span class="v ko">' + bilingue("Missed", "Manqué") + "</span>";
-      else verdict = '<span class="v wait">' + bilingue("Not scored yet", "Pas encore noté") + "</span>";
+  function tuile(sig, h) {
+    var c = COLONNES[h.cle];
+    /* L'horizon est rappelé dans chaque tuile : invisible sur grand écran,
+       où l'en-tête de colonne suffit, il réapparaît sur téléphone. */
+    var horizon = '<span class="tuile-h">' + bilingue(c.en, c.fr) + "</span>";
+    var v = VERDICTS[sig];
+    /* Les appels d'archive n'avaient pas d'horizons longs : la tuile le dit. */
+    if (!v) return '<span class="tuile t-vide">' + horizon + '<span class="tuile-v">' + bilingue("None", "Aucun") + "</span></span>";
+    return '<span class="tuile ' + v.c + '">' + horizon +
+      '<span class="tuile-v">' + bilingue(v.en, v.fr) + "</span></span>";
+  }
 
-      var rend = (l.return_t1 === null || l.return_t1 === undefined)
-        ? "" : '<span class="ret">' + (Number(l.return_t1) >= 0 ? "+" : "") + Number(l.return_t1).toFixed(2) + "%</span>";
+  /* Le ton des nouvelles, de −1 à +1, sur une petite réglette. */
+  function reglette(score) {
+    if (score === null || score === undefined || isNaN(Number(score))) {
+      return '<span class="reglette r-vide"></span>';
+    }
+    var x = Math.max(-1, Math.min(1, Number(score)));
+    var ton = x > 0.15 ? "r-pos" : (x < -0.15 ? "r-neg" : "r-neu");
+    return '<span class="reglette ' + ton + '">' +
+      '<span class="reglette-rail" aria-hidden="true"><i style="left:' + ((x + 1) * 50).toFixed(1) + '%"></i></span>' +
+      '<span class="reglette-n">' + nombre(x, 2, true) + "</span></span>";
+  }
 
-      return '<div class="call">' +
-        '<div class="call-top">' +
-        '<span class="call-tk">' + echapper(l.ticker) + "</span>" +
-        /* Sur les lignes à quatre verdicts, on nomme celui-ci : c'est celui
-           du jour, noté dès le soir. Les anciennes lignes n'en ont qu'un. */
-        (regleDe(l) >= 2 ? '<span class="call-hz-k">' + bilingue("One day", "Un jour") + "</span>" : "") +
-        '<span class="call-sig s-' + sig.toLowerCase() + '">' + echapper(sig) + "</span>" +
-        '<span class="call-sc">' + (l.sentiment_score === null || l.sentiment_score === undefined
-          ? "" : Number(l.sentiment_score).toFixed(2)) + "</span>" +
-        '<span class="call-end">' + rend + verdict + "</span>" +
-        "</div>" +
-        horizonsDeLAppel(l) +
-        (l.rationale ? '<p class="call-why">' + echapper(l.rationale) + "</p>" : "") +
+  /* Le résultat de la séance, une fois notée après la clôture. */
+  function resultatSeance(l) {
+    if (estNotee(l)) {
+      var r = nombreBrut(l.return_t1, 2, true);
+      return '<span class="seance ' + (l.correct_t1 ? "s-juste" : "s-manque") + '">' +
+        bilingue(r + "% · " + (l.correct_t1 ? "correct" : "missed"),
+                 r.replace(".", ",") + " % · " + (l.correct_t1 ? "juste" : "manqué")) + "</span>";
+    }
+    return '<span class="seance s-attente">' + bilingue("not scored yet", "pas encore notée") + "</span>";
+  }
+
+  function pourquoi(l) {
+    var notes = l.horizon_notes || {};
+    var lignes = HORIZONS.map(function (h) {
+      var n = notes[COLONNES[h.cle].note];
+      if (!n) return "";
+      var v = VERDICTS[verdictPour(l, h)];
+      return "<li><span class=\"pq-h\">" + bilingue(COLONNES[h.cle].en, COLONNES[h.cle].fr) +
+        (v ? ' <span class="pq-v ' + v.c + '">' + bilingue(v.en, v.fr) + "</span>" : "") +
+        "</span><span>" + echapper(n) + "</span></li>";
+    }).join("");
+    return '<div class="appel-pourquoi">' +
+      (l.rationale ? "<p>" + echapper(l.rationale) + "</p>" : "") +
+      (lignes ? "<ul>" + lignes + "</ul>" : "") +
+      "</div>";
+  }
+
+  function ligneAppel(l, avecSeance) {
+    var tuiles = HORIZONS.map(function (h) { return tuile(verdictPour(l, h), h); }).join("");
+    return '<details class="appel">' +
+      "<summary>" +
+        '<span class="appel-tk">' + echapper(l.ticker) + "</span>" +
+        reglette(l.sentiment_score) +
+        '<span class="appel-tuiles">' + tuiles + "</span>" +
+        (avecSeance ? resultatSeance(l) : "") +
+        '<span class="appel-ouvrir" aria-hidden="true"></span>' +
+      "</summary>" +
+      pourquoi(l) +
+      "</details>";
+  }
+
+  /* Vue d'ensemble : la part d'achats, de neutres et de ventes à chaque
+     horizon. C'est là que se voit le glissement vers l'achat avec le temps. */
+  function resumeLot(lignes) {
+    var html = HORIZONS.map(function (h) {
+      var c = { BUY: 0, HOLD: 0, SELL: 0 }, n = 0;
+      lignes.forEach(function (l) {
+        var v = verdictPour(l, h);
+        if (c[v] !== undefined) { c[v]++; n++; }
+      });
+      if (!n) return "";
+      /* Un segment vide n'est pas dessiné : il laisserait un trait parasite. */
+      function part(k, classe) {
+        return c[k] ? '<i class="' + classe + '" style="flex-grow:' + c[k] + '"></i>' : "";
+      }
+      return '<div class="lot-h">' +
+        '<span class="lot-k">' + bilingue(COLONNES[h.cle].en, COLONNES[h.cle].fr) + "</span>" +
+        '<span class="lot-barre" aria-hidden="true">' +
+          part("BUY", "t-achat") + part("HOLD", "t-neutre") + part("SELL", "t-vente") +
+        "</span>" +
+        '<span class="lot-n">' + bilingue(
+          c.BUY + " buy, " + c.HOLD + " hold, " + c.SELL + " sell",
+          c.BUY + " acheter, " + c.HOLD + " conserver, " + c.SELL + " vendre") + "</span>" +
         "</div>";
     }).join("");
+    return html ? '<div class="lot">' + html + "</div>" : "";
+  }
+
+  function estNotee(l) { return l.correct_t1 === true || l.correct_t1 === false; }
+
+  function grilleAppels(lignes) {
+    if (!lignes.length) return "";
+    var tries = lignes.slice().sort(function (a, b) {
+      return String(a.ticker).localeCompare(String(b.ticker));
+    });
+    /* Tant que la séance n'est pas notée, la colonne « Séance » répéterait
+       trente fois « pas encore notée » : on la retire et on le dit une fois. */
+    var notee = tries.some(estNotee);
+    var tete = '<div class="appels-tete" aria-hidden="true">' +
+      "<span>" + bilingue("Stock", "Titre") + "</span>" +
+      "<span>" + bilingue("Tone of the news", "Ton des nouvelles") + "</span>" +
+      '<span class="appels-tete-h">' + HORIZONS.map(function (h) {
+        return "<span>" + bilingue(COLONNES[h.cle].en, COLONNES[h.cle].fr) + "</span>";
+      }).join("") + "</span>" +
+      (notee ? "<span>" + bilingue("Session", "Séance") + "</span>" : "") +
+      "</div>";
+    var aide = notee ?
+      bilingue("Open a row to read the model’s reasoning, recorded before the outcome was known.",
+               "Ouvre une ligne pour lire le raisonnement du modèle, enregistré avant que le résultat soit connu.") :
+      bilingue("Open a row to read the model’s reasoning. The session’s results will appear here after the close.",
+               "Ouvre une ligne pour lire le raisonnement du modèle. Les résultats de la séance s’afficheront ici après la clôture.");
+    return '<div class="mosaique' + (notee ? "" : " sans-seance") + '">' +
+      resumeLot(tries) +
+      '<p class="appels-aide">' + aide + "</p>" +
+      tete + '<div class="appels">' + tries.map(function (l) { return ligneAppel(l, notee); }).join("") + "</div>" +
+      "</div>";
+  }
+
+  /* « vendredi 13 novembre 2026 » */
+  function dateAvecJour(iso, l) {
+    var p = String(iso || "").split("-");
+    var d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2]));
+    if (isNaN(d)) return echapper(iso);
+    return d.toLocaleDateString(l === "fr" ? "fr-CA" : "en-CA",
+      { weekday: "long", year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
   }
 
   function csv(lignes) {
@@ -839,10 +953,11 @@
            un lot d'archive : on le montre, mais signalé comme tel. */
         var archiveEn = regleDe(dernierJour[0]) < 2 ? " · archive, not part of the record" : "";
         var archiveFr = regleDe(dernierJour[0]) < 2 ? " · archive, hors du relevé" : "";
+        var n = dernierJour.length;
         recents.innerHTML = '<div class="record-meta">' +
-          bilingue("Calls of " + dateLisible(j, "en") + archiveEn,
-                   "Appels du " + dateLisible(j, "fr") + archiveFr) +
-          "</div>" + listeAppels(dernierJour);
+          bilingue("For the session of " + dateAvecJour(j, "en") + " · " + n + (n === 1 ? " stock" : " stocks") + archiveEn,
+                   "Pour la séance du " + dateAvecJour(j, "fr") + " · " + n + (n === 1 ? " titre" : " titres") + archiveFr) +
+          "</div>" + grilleAppels(dernierJour);
       } else {
         recents.innerHTML = "";
       }
