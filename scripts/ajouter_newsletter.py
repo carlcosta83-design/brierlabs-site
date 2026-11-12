@@ -1,12 +1,13 @@
-"""Valide une édition de la Lettre du lundi et l'ajoute à lettres.json.
+"""Valide une édition de la newsletter et l'ajoute à newsletter.json.
 
-    python3 scripts/ajouter_lettre.py edition.json            ajoute l'édition
-    python3 scripts/ajouter_lettre.py edition.json --remplacer remplace celle du même jour
-    python3 scripts/ajouter_lettre.py --verifier              vérifie lettres.json seul
+    python3 scripts/ajouter_newsletter.py edition.json             ajoute l'édition
+    python3 scripts/ajouter_newsletter.py edition.json --remplacer remplace celle du même jour
+    python3 scripts/ajouter_newsletter.py --verifier               vérifie newsletter.json seul
 
 Rien n'est écrit si une seule règle est enfreinte : le script affiche toutes
 les erreurs et s'arrête avec un code 1. C'est le garde-fou de la publication
-automatique du lundi : une édition incomplète ne doit jamais atteindre le site.
+automatique de chaque matin : une édition incomplète, ou qui viserait une
+séance déjà ouverte, un week-end ou un jour férié, n'atteint jamais le site.
 """
 
 import json
@@ -16,11 +17,35 @@ from datetime import date
 from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
-FICHIER = RACINE / "lettres.json"
+FICHIER = RACINE / "newsletter.json"
 
-# Les onze fonds sectoriels SPDR : la même liste que dans lettre.js.
+# Les onze fonds sectoriels SPDR : la même liste que dans newsletter.js.
 FONDS = {"XLE", "XLF", "XLK", "XLV", "XLI", "XLY", "XLP", "XLU", "XLB", "XLRE", "XLC"}
 DIRECTIONS = {"hausse", "baisse", "incertain"}
+
+# Jours fériés de la Bourse de New York, calendrier officiel publié par NYSE
+# Group le 23 décembre 2025 (même liste que stock_ai_report.py). À compléter
+# fin 2028 : le script refuse toute séance d'une année qu'il ne connaît pas.
+JOURS_FERIES_NYSE = {
+    "2026-01-01", "2026-01-19", "2026-02-16", "2026-04-03", "2026-05-25",
+    "2026-06-19", "2026-07-03", "2026-09-07", "2026-11-26", "2026-12-25",
+    "2027-01-01", "2027-01-18", "2027-02-15", "2027-03-26", "2027-05-31",
+    "2027-06-18", "2027-07-05", "2027-09-06", "2027-11-25", "2027-12-24",
+    "2028-01-17", "2028-02-21", "2028-04-14", "2028-05-29", "2028-06-19",
+    "2028-07-04", "2028-09-04", "2028-11-23", "2028-12-25",
+}
+ANNEES_CONNUES = {2026, 2027, 2028}
+
+
+def pourquoi_pas_une_seance(j):
+    """None si j est un jour de bourse, sinon la raison."""
+    if j.year not in ANNEES_CONNUES:
+        return f"jours fériés de {j.year} inconnus : complète JOURS_FERIES_NYSE"
+    if j.weekday() >= 5:
+        return "c'est un week-end"
+    if j.isoformat() in JOURS_FERIES_NYSE:
+        return "la Bourse de New York est fermée ce jour-là"
+    return None
 
 CLES_EDITION = {"date", "horizon", "titre_fr", "titre_en", "intro_fr", "intro_en",
                 "nouvelles", "a_surveiller_fr", "a_surveiller_en", "redige_par", "pilote"}
@@ -88,8 +113,13 @@ def valider_edition(e, ou="edition"):
         elif d and du < d:
             # Même principe que le run du matin : une prévision ne porte jamais
             # sur une période déjà entamée au moment de la publication.
-            err.ajouter(f"{ou}.horizon", f"la semaine visée commence le {du}, avant la "
+            err.ajouter(f"{ou}.horizon", f"la période visée commence le {du}, avant la "
                                          f"publication du {d} : prévision sur une période déjà entamée")
+        else:
+            for nom, j in (("du", du), ("au", au)):
+                raison = pourquoi_pas_une_seance(j)
+                if raison:
+                    err.ajouter(f"{ou}.horizon.{nom}", f"{j} n'est pas une séance : {raison}")
 
     texte(err, ou, e, "titre", LONGUEURS["titre"])
     texte(err, ou, e, "intro", LONGUEURS["intro"])
@@ -192,7 +222,7 @@ def main(args):
         err = Erreurs()
         dates = [e.get("date") for e in donnees["editions"]]
         for d in {d for d in dates if dates.count(d) > 1}:
-            err.ajouter("lettres.json", f"deux éditions datées du {d}")
+            err.ajouter("newsletter.json", f"deux éditions datées du {d}")
         for i, e in enumerate(donnees["editions"]):
             err += valider_edition(e, f"editions[{i}]")
         if err:
@@ -224,7 +254,7 @@ def main(args):
     m = sum(len(x["impacts"]) for x in nouvelle["nouvelles"])
     print(f"OK : édition du {nouvelle['date']} {'remplacée' if existantes else 'ajoutée'} "
           f"({n} nouvelles, {m} prévisions sectorielles). "
-          f"{len(donnees['editions'])} édition(s) dans lettres.json.")
+          f"{len(donnees['editions'])} édition(s) dans newsletter.json.")
 
 
 if __name__ == "__main__":

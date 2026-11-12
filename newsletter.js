@@ -1,14 +1,14 @@
 /* ==========================================================================
-   Brier-Labs — affichage de la Lettre du lundi.
+   Brier-Labs — affichage de la newsletter.
 
-   Lit lettres.json et affiche la dernière édition en entier, puis les
+   Lit newsletter.json et affiche la dernière édition en entier, puis les
    précédentes repliées. Les deux langues sont toujours écrites dans la page :
    c'est la feuille de style qui masque l'inactive, comme partout sur le site.
 
-   lettres.json est écrit chaque lundi par une tâche automatique, après
-   validation par scripts/ajouter_lettre.py. Si le fichier manque ou est
-   abîmé, seule cette page affiche un message : le reste du site n'en dépend
-   pas.
+   newsletter.json est écrit chaque jour de bourse, avant l'ouverture, par une
+   tâche automatique, après validation par scripts/ajouter_newsletter.py. Si
+   le fichier manque ou est abîmé, seule cette page affiche un message : le
+   reste du site n'en dépend pas.
    ========================================================================== */
 
 (function () {
@@ -105,11 +105,22 @@
     return '<div class="a-surveiller"><h3>' + bilingue("Coming up", "À surveiller") + "</h3><ul>" + items + "</ul></div>";
   }
 
+  /* « pour la séance du 13 novembre » quand l'horizon tient en un jour,
+     « du … au … » sinon. */
+  function horizonTexte(h, l) {
+    if (!h || !h.du || !h.au) return "";
+    if (h.du === h.au) {
+      return l === "fr" ? " · pour la séance du " + dateLisible(h.du, "fr")
+                        : " · for the session of " + dateLisible(h.du, "en");
+    }
+    return l === "fr" ? " · du " + dateLisible(h.du, "fr") + " au " + dateLisible(h.au, "fr")
+                      : " · from " + dateLisible(h.du, "en") + " to " + dateLisible(h.au, "en");
+  }
+
   function edition(e) {
-    var h = e.horizon || {};
     var entete = bilingue(
-      dateLisible(e.date, "en") + (h.du && h.au ? " · for the week of " + dateLisible(h.du, "en") + " to " + dateLisible(h.au, "en") : ""),
-      dateLisible(e.date, "fr") + (h.du && h.au ? " · pour la semaine du " + dateLisible(h.du, "fr") + " au " + dateLisible(h.au, "fr") : ""));
+      dateLisible(e.date, "en") + horizonTexte(e.horizon, "en"),
+      dateLisible(e.date, "fr") + horizonTexte(e.horizon, "fr"));
     return '<article class="lettre">' +
       '<div class="record-meta">' + entete + (e.pilote ? bilingue(" · pilot issue", " · édition pilote") : "") + "</div>" +
       '<h2 class="lettre-titre">' + texte(e, "titre") + "</h2>" +
@@ -124,43 +135,53 @@
     zone.innerHTML = '<div class="empty">' + bilingue(en, fr) + "</div>";
   }
 
+  /* Une édition par jour de bourse : on n'affiche que les plus récentes
+     repliées, le fichier complet reste téléchargeable. */
+  var ANCIENNES_AFFICHEES = 30;
+
   function afficher(donnees) {
-    var zone = document.getElementById("lettre");
+    var zone = document.getElementById("newsletter");
     if (!zone) return;
     var liste = (donnees && Array.isArray(donnees.editions)) ? donnees.editions.slice() : [];
     if (!liste.length) {
-      message(zone, "The first letter is on its way. It comes out on Monday mornings.",
-                    "La première lettre arrive. Elle paraît le lundi matin.");
+      message(zone, "The first newsletter is on its way. It comes out every trading day before the open.",
+                    "La première newsletter arrive. Elle paraît chaque jour de bourse avant l’ouverture.");
       return;
     }
     liste.sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
 
     var html = edition(liste[0]);
     if (liste.length > 1) {
-      html += '<h3 class="corr-h">' + bilingue("Previous letters", "Lettres précédentes") + "</h3>" +
-        liste.slice(1).map(function (e) {
+      var anciennes = liste.slice(1, 1 + ANCIENNES_AFFICHEES);
+      html += '<h3 class="corr-h">' + bilingue("Previous issues", "Éditions précédentes") + "</h3>" +
+        anciennes.map(function (e) {
           return '<details class="lettre-ancienne"><summary>' +
             bilingue(dateLisible(e.date, "en"), dateLisible(e.date, "fr")) + " · " + texte(e, "titre") +
             "</summary>" + edition(e) + "</details>";
-        }).join("");
+        }).join("") +
+        (liste.length - 1 > ANCIENNES_AFFICHEES
+          ? '<p class="corr-n">' + bilingue(
+              "Older issues are in the full file: ", "Les éditions plus anciennes sont dans le fichier complet : ") +
+            '<a href="newsletter.json">newsletter.json</a></p>'
+          : "");
     }
     zone.innerHTML = html;
   }
 
   function demarrer() {
-    var zone = document.getElementById("lettre");
+    var zone = document.getElementById("newsletter");
     if (!zone) return;
-    /* no-cache : la lettre du lundi doit apparaître dès sa publication. */
-    fetch("lettres.json", { cache: "no-cache" })
+    /* no-cache : l'édition du matin doit apparaître dès sa publication. */
+    fetch("newsletter.json", { cache: "no-cache" })
       .then(function (r) {
         if (!r.ok) throw new Error("HTTP " + r.status);
         return r.json();
       })
       .then(afficher)
       .catch(function (e) {
-        if (window.console) console.warn("Brier-Labs, lettre :", e.message);
-        message(zone, "The letter could not be loaded right now. Please try again in a moment.",
-                      "La lettre n’a pas pu être chargée pour l’instant. Réessaie dans un moment.");
+        if (window.console) console.warn("Brier-Labs, newsletter :", e.message);
+        message(zone, "The newsletter could not be loaded right now. Please try again in a moment.",
+                      "La newsletter n’a pas pu être chargée pour l’instant. Réessaie dans un moment.");
       });
   }
 

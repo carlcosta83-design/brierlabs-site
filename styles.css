@@ -302,7 +302,7 @@ footer{background:var(--navy);color:#a8bbdd;padding:56px 0 44px;font-size:14.5px
 .foot-links a:hover{color:#fff}
 .disclaimer{margin-top:24px;max-width:84ch;line-height:1.62;font-size:13.5px;color:#8ea4cc}
 
-/* ---------------------------- Lettre du lundi ---------------------------- */
+/* ------------------------------- Newsletter ------------------------------ */
 .lettre-titre{margin-top:10px;font-size:clamp(1.7rem,3.4vw,2.3rem);max-width:34ch}
 .nouvelle{padding:30px 0;border-bottom:1px solid var(--rule)}
 .nouvelle:first-of-type{border-top:1px solid var(--rule);margin-top:30px}

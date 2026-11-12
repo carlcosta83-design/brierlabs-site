@@ -3,15 +3,15 @@
     {
       "date": "2026-11-12",
       "horizon": {
-        "du": "2026-11-16",
-        "au": "2026-11-20"
+        "du": "2026-11-13",
+        "au": "2026-11-13"
       },
       "pilote": true,
       "redige_par": "Claude (Anthropic)",
       "titre_fr": "Inflation tenace, pétrole suspendu à l’Iran, Nvidia sans patron",
       "titre_en": "Sticky inflation, oil hanging on Iran, Nvidia without its chief",
-      "intro_fr": "Édition pilote, publiée un jeudi pour tester le format avant le premier lundi. Trois nouvelles ont dominé la semaine : une inflation américaine plus forte que prévu, un pétrole ballotté entre espoir de paix et attaques dans le détroit d’Ormuz, et le départ soudain du patron de Nvidia. Les prévisions portent sur la semaine du 16 au 20 novembre.",
-      "intro_en": "Pilot issue, published on a Thursday to test the format before the first Monday. Three stories dominated the week: hotter than expected US inflation, oil swinging between hopes of peace and attacks in the Strait of Hormuz, and the sudden departure of Nvidia’s chief executive. The calls cover the week of 16 to 20 November.",
+      "intro_fr": "Édition pilote, publiée jeudi midi pour tester le format. Dès lundi, la newsletter paraîtra chaque jour de bourse avant l’ouverture. Trois nouvelles dominent : une inflation américaine plus forte que prévu, un pétrole ballotté entre espoir de paix et attaques dans le détroit d’Ormuz, et le départ soudain du patron de Nvidia. Les prévisions portent sur la séance de vendredi 13 novembre.",
+      "intro_en": "Pilot issue, published at Thursday lunchtime to test the format. From Monday, the newsletter will come out every trading day before the open. Three stories dominate: hotter than expected US inflation, oil swinging between hopes of peace and attacks in the Strait of Hormuz, and the sudden departure of Nvidia’s chief executive. The calls cover the session of Friday 13 November.",
       "nouvelles": [
         {
           "titre_fr": "L’inflation américaine accélère, la Fed pourrait relever ses taux en décembre",
@@ -32,8 +32,8 @@
             {
               "etf": "XLRE",
               "direction": "baisse",
-              "raison_fr": "L’immobilier coté vit d’emprunts et de loyers stables : avec des obligations qui rapportent près de 5 %, il coûte plus cher à financer et paraît moins attrayant.",
-              "raison_en": "Listed real estate runs on borrowing and steady rents: with bonds paying close to 5%, it costs more to finance and looks less attractive."
+              "raison_fr": "L’immobilier coté vit d’emprunts et de loyers stables : avec des obligations qui rapportent près de 5 %, il coûte plus cher à financer. Les prix à la production publiés vendredi matin peuvent confirmer cette pression.",
+              "raison_en": "Listed real estate runs on borrowing and steady rents: with bonds paying close to 5%, it costs more to finance. The producer prices due on Friday morning could confirm that pressure."
             },
             {
               "etf": "XLU",
@@ -50,10 +50,10 @@
           ]
         },
         {
-          "titre_fr": "Pétrole : l’espoir d’un accord avec l’Iran fait plonger le baril, Ormuz le fait rebondir",
-          "titre_en": "Oil: hopes of a deal with Iran sink the price, Hormuz pushes it back up",
-          "resume_fr": "Le Brent, qui avait frôlé 118 dollars, est tombé sous 95 dollars, son plus bas niveau en deux mois, sur une proposition de paix soutenue par le Qatar pour mettre fin à la guerre entre les États-Unis et l’Iran. Il a rebondi mercredi après que des responsables iraniens ont refusé de laisser sortir leur uranium enrichi du pays. Les frappes iraniennes contre des pétroliers dans le détroit d’Ormuz se poursuivent, sans perturber l’approvisionnement jusqu’ici, et l’OPEP a augmenté sa production de 2 millions de barils par jour en octobre.",
-          "resume_en": "Brent, which had come close to $118, fell below $95, a two-month low, on a Qatari-backed peace proposal to end the war between the United States and Iran. It rebounded on Wednesday after Iranian officials refused to let their enriched uranium leave the country. Iranian strikes on tankers in the Strait of Hormuz continue, so far without disrupting supply, and OPEC raised output by 2 million barrels a day in October.",
+          "titre_fr": "Pétrole : l’espoir d’un accord avec l’Iran fait plonger le baril, Ormuz et Washington le font rebondir",
+          "titre_en": "Oil: hopes of a deal with Iran sink the price, Hormuz and Washington push it back up",
+          "resume_fr": "Le Brent, qui avait frôlé 118 dollars, est tombé sous 95 dollars, son plus bas niveau en deux mois, sur une proposition de paix soutenue par le Qatar pour mettre fin à la guerre entre les États-Unis et l’Iran. Il a rebondi mercredi après que des responsables iraniens ont refusé de laisser sortir leur uranium enrichi du pays, puis jeudi après que Donald Trump a écrit que les États-Unis n’avaient « pas besoin d’un accord » avec l’Iran. Les frappes iraniennes contre des pétroliers dans le détroit d’Ormuz se poursuivent, sans perturber l’approvisionnement jusqu’ici, et l’OPEP a augmenté sa production de 2 millions de barils par jour en octobre.",
+          "resume_en": "Brent, which had come close to $118, fell below $95, a two-month low, on a Qatari-backed peace proposal to end the war between the United States and Iran. It rebounded on Wednesday after Iranian officials refused to let their enriched uranium leave the country, and again on Thursday after Donald Trump wrote that the United States did not “need a deal” with Iran. Iranian strikes on tankers in the Strait of Hormuz continue, so far without disrupting supply, and OPEC raised output by 2 million barrels a day in October.",
           "sources": [
             {
               "nom": "DTN",
@@ -62,14 +62,18 @@
             {
               "nom": "SWBC",
               "url": "https://blog.swbc.com/investmenthub/market-commentary-week-of-november-9-2026"
+            },
+            {
+              "nom": "Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-12-sp-500-nasdaq-dow-nvidia-invest-110027430.html"
             }
           ],
           "impacts": [
             {
               "etf": "XLE",
-              "direction": "baisse",
-              "raison_fr": "L’OPEP pompe davantage et les attaques n’ont pas réduit l’approvisionnement : sans nouvelle escalade, le baril a plus de place pour baisser que pour monter. Un échec des pourparlers renverserait cette prévision.",
-              "raison_en": "OPEC is pumping more and the attacks have not reduced supply: barring a new escalation, oil has more room to fall than to rise. A collapse of the talks would reverse this call."
+              "direction": "incertain",
+              "raison_fr": "Deux forces s’opposent : l’OPEP pompe davantage, ce qui pousse le baril vers le bas, mais chaque déclaration de Washington ou de Téhéran le fait bondir dans un sens ou dans l’autre. Sur une seule séance, ces déclarations l’emportent, et elles ne se prévoient pas.",
+              "raison_en": "Two forces pull against each other: OPEC is pumping more, which pushes oil down, but every statement from Washington or Tehran jolts it one way or the other. Over a single session those statements win out, and they cannot be predicted."
             }
           ]
         },
@@ -92,19 +96,19 @@
             {
               "etf": "XLK",
               "direction": "baisse",
-              "raison_fr": "Nvidia est l’un des plus gros poids du fonds technologique : une direction intérimaire et les doutes sur les dépenses en intelligence artificielle devraient peser sur le secteur. De bons résultats d’autres entreprises du secteur pourraient le relancer.",
-              "raison_en": "Nvidia is one of the largest holdings in the technology fund: interim leadership and doubts about artificial intelligence spending should weigh on the sector. Strong results from other companies in the sector could revive it."
+              "raison_fr": "Nvidia est l’un des plus gros poids du fonds technologique, et sa succession reste ouverte : l’incertitude devrait continuer de peser sur le secteur. Les résultats de Cisco et d’Applied Materials, publiés jeudi soir, peuvent changer la donne.",
+              "raison_en": "Nvidia is one of the largest holdings in the technology fund, and its succession is still open: the uncertainty should keep weighing on the sector. Results from Cisco and Applied Materials, due on Thursday evening, could change the picture."
             }
           ]
         }
       ],
       "a_surveiller_fr": [
-        "Vendredi 13 novembre : les prix à la production d’octobre, un autre indicateur d’inflation.",
-        "Les pourparlers entre les États-Unis et l’Iran, qui décideront de la direction du pétrole."
+        "Jeudi soir : les résultats de Cisco et d’Applied Materials, deux poids lourds de la technologie.",
+        "Vendredi 13 novembre, 8 h 30 : les prix à la production d’octobre, un autre indicateur d’inflation."
       ],
       "a_surveiller_en": [
-        "Friday 13 November: October producer prices, another inflation gauge.",
-        "The talks between the United States and Iran, which will set the direction for oil."
+        "Thursday evening: results from Cisco and Applied Materials, two technology heavyweights.",
+        "Friday 13 November, 8:30 a.m.: October producer prices, another inflation gauge."
       ]
     }
   ]
