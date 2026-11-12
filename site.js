@@ -1,7 +1,8 @@
 /* ==========================================================================
-   Brier-Labs — comportement commun aux trois pages
+   Brier-Labs — comportement commun à toutes les pages
    1. bascule de langue FR / EN
    2. affichage de la liste des rapports (lue dans reports.js)
+   3. menus déroulants (« Résultats » et ses sous-pages)
    Tu n'as normalement jamais besoin de toucher à ce fichier.
    ========================================================================== */
 
@@ -117,8 +118,33 @@
     }).join("");
   }
 
+  /* --------------------------- menus déroulants -------------------------- */
+  /* « Résultats » ouvre la liste de ses sous-pages au clic. Un clic ailleurs
+     ou la touche Échap la referment ; le bouton annonce son état aux
+     lecteurs d'écran (aria-expanded). */
+  function menusDeroulants() {
+    var boutons = document.querySelectorAll(".nav-deroule");
+    Array.prototype.forEach.call(boutons, function (bouton) {
+      var liste = document.getElementById(bouton.getAttribute("aria-controls"));
+      if (!liste) return;
+      function fermer() { bouton.setAttribute("aria-expanded", "false"); liste.hidden = true; }
+      function ouvrir() { bouton.setAttribute("aria-expanded", "true"); liste.hidden = false; }
+      bouton.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (liste.hidden) ouvrir(); else fermer();
+      });
+      document.addEventListener("click", function (e) {
+        if (!liste.hidden && !liste.contains(e.target)) fermer();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !liste.hidden) { fermer(); bouton.focus(); }
+      });
+    });
+  }
+
   /* ---------------------------- démarrage -------------------------------- */
   function init() {
+    menusDeroulants();
     appliquer(langueChoisie());
     var btn = document.querySelector(".lang");
     if (btn) {
