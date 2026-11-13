@@ -1,6 +1,132 @@
 {
   "editions": [
     {
+      "date": "2026-11-13",
+      "horizon": {
+        "du": "2026-11-13",
+        "au": "2026-11-13"
+      },
+      "redige_par": "Claude (Anthropic)",
+      "titre_fr": "Cisco et Applied Materials rassurent, le pétrole retrouve un surplus, les taux restent hauts",
+      "titre_en": "Cisco and Applied Materials reassure, oil returns to surplus, rates stay high",
+      "intro_fr": "Trois nouvelles pour la séance de ce vendredi 13 novembre. Les résultats de Cisco et d’Applied Materials redonnent de l’élan aux valeurs de l’intelligence artificielle, malgré une panne géante chez Microsoft. L’Agence internationale de l’énergie annonce le retour d’un surplus de pétrole, et la hausse des taux continue de peser sur les secteurs sensibles au crédit, avant les prix à la production d’octobre.",
+      "intro_en": "Three stories for the session of Friday 13 November. Results from Cisco and Applied Materials give artificial intelligence stocks fresh momentum, despite a massive Microsoft outage. The International Energy Agency says the oil market is returning to surplus, and rising interest rates keep weighing on credit-sensitive sectors ahead of October producer prices.",
+      "nouvelles": [
+        {
+          "titre_fr": "Cisco et Applied Materials dépassent les attentes, Microsoft en panne",
+          "titre_en": "Cisco and Applied Materials beat expectations, Microsoft suffers an outage",
+          "resume_fr": "Cisco a publié jeudi soir un chiffre d’affaires trimestriel record de 18,5 milliards de dollars, en hausse de 24 %, et relevé sa prévision annuelle à 74,8 à 75,8 milliards. Le groupe attend désormais 9 milliards de dollars de ventes d’équipements pour l’intelligence artificielle auprès des géants du cloud, plus du double de l’an dernier. Applied Materials, qui fabrique des machines pour produire des puces, a vu ses ventes bondir de 53 % à 10,4 milliards et prévoit 11,1 milliards pour le trimestre en cours. En face, une panne d’environ 12 heures a touché Outlook, Teams et Copilot, et l’action Microsoft reculait de plus de 2 % avant l’ouverture, tandis que Nvidia progressait d’environ 1,8 %.",
+          "resume_en": "Cisco reported record quarterly revenue of $18.5 billion on Thursday evening, up 24%, and raised its full-year forecast to $74.8 to $75.8 billion. The company now expects $9 billion in artificial intelligence equipment sales to the big cloud providers, more than double last year. Applied Materials, which makes chipmaking machines, saw sales jump 53% to $10.4 billion and guides to $11.1 billion for the current quarter. On the other side, an outage of about 12 hours hit Outlook, Teams and Copilot, and Microsoft shares were down more than 2% before the open, while Nvidia was up about 1.8%.",
+          "sources": [
+            {
+              "nom": "Cisco",
+              "url": "https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2026/m11/cisco-reports-first-quarter-earnings.html"
+            },
+            {
+              "nom": "Applied Materials (SEC)",
+              "url": "https://www.sec.gov/Archives/edgar/data/0000006951/000162828026073360/exhibit991q42026earningsre.htm"
+            },
+            {
+              "nom": "TradingKey",
+              "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262304391-microsoft-outage-msft-outlook-teams-microsoft-365-tradingkey"
+            },
+            {
+              "nom": "Reuters via MarketScreener",
+              "url": "https://www.marketscreener.com/news/nasdaq-futures-dip-as-nvidia-tumult-keeps-investors-on-edge-ce785ed9dc8ff726"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLK",
+              "direction": "hausse",
+              "raison_fr": "Deux résultats solides confirment que les dépenses pour l’intelligence artificielle continuent, et Nvidia se reprend avant l’ouverture. Le risque : Microsoft, l’un des plus gros poids du fonds, si la panne inquiète ses clients professionnels.",
+              "raison_en": "Two strong reports confirm that artificial intelligence spending is still going, and Nvidia is recovering before the open. The risk is Microsoft, one of the fund’s largest holdings, if the outage worries its business customers."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Pétrole : l’Agence internationale de l’énergie annonce le retour d’un surplus",
+          "titre_en": "Oil: the International Energy Agency says the market is returning to surplus",
+          "resume_fr": "Dans son rapport mensuel publié vendredi, l’Agence internationale de l’énergie estime que le marché pétrolier repassera en surplus au quatrième trimestre 2026, avec un excédent plus important en 2027. La production mondiale a augmenté de 2,3 millions de barils par jour en octobre, à 105,4 millions, et les exportations du Golfe remontent, même si elles restent 26 % sous leur niveau d’avant la guerre. Les stocks mondiaux observés ont progressé de 52 millions de barils en octobre, leur première hausse depuis juin. Le Brent glissait vers 95,6 dollars avant l’ouverture, après trois séances de hausse liées aux propos de Donald Trump sur l’Iran. L’agence prévient que les attaques contre les navires peuvent menacer cette reprise de l’offre.",
+          "resume_en": "In its monthly report published on Friday, the International Energy Agency says the oil market will return to surplus in the fourth quarter of 2026, with a larger surplus in 2027. World output rose by 2.3 million barrels a day in October, to 105.4 million, and Gulf exports are recovering, although they remain 26% below pre-war levels. Observed global stocks rose by 52 million barrels in October, their first increase since June. Brent was slipping towards $95.6 before the open, after three sessions of gains driven by Donald Trump’s comments on Iran. The agency warns that attacks on shipping could threaten this supply recovery.",
+          "sources": [
+            {
+              "nom": "ANI",
+              "url": "https://www.aninews.in/news/business/global-oil-market-to-return-to-surplus-in-q4-2026-larger-supply-build-expected-in-2027-iea20261113165213/"
+            },
+            {
+              "nom": "TipRanks",
+              "url": "https://www.tipranks.com/news/stock-market-today-nov-13-u-s-stocks-wobble-ahead-of-ppi-data"
+            },
+            {
+              "nom": "Reuters via MarketScreener",
+              "url": "https://www.marketscreener.com/news/nasdaq-futures-dip-as-nvidia-tumult-keeps-investors-on-edge-ce785ed9dc8ff726"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLE",
+              "direction": "baisse",
+              "raison_fr": "Plus de pétrole que de demande, c’est un baril qui a tendance à baisser, et donc moins de recettes pour les producteurs. Une nouvelle attaque contre des navires ou une déclaration de Washington sur l’Iran peut renverser la tendance en quelques minutes.",
+              "raison_en": "More oil than demand means a barrel price that tends to fall, and so less revenue for producers. A new attack on shipping or a statement from Washington on Iran could reverse that within minutes."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Taux au plus haut avant les prix à la production, l’or chute",
+          "titre_en": "Rates at highs ahead of producer prices, gold tumbles",
+          "resume_fr": "Le taux des obligations américaines à 10 ans a fini jeudi autour de 5,1 %, contre 4,84 % une semaine plus tôt, car le marché tient pour acquise une hausse des taux de la Fed en décembre, avec environ 12 % de chances qu’elle atteigne un demi-point. Le dollar est à son plus haut depuis début avril 2025 et l’or a perdu environ 3,1 %, vers 3 880 dollars, son plus bas depuis octobre 2025. Les prix à la production d’octobre, publiés ce vendredi, sont attendus en hausse de 0,4 %, après 1,3 % en septembre. Les trois grands indices ont reculé d’environ 0,4 % jeudi.",
+          "resume_en": "The 10-year US Treasury yield ended Thursday around 5.1%, up from 4.84% a week earlier, as markets treat a Fed rate rise in December as a given, with about a 12% chance of a half-point move. The dollar is at its highest since early April 2025, and gold lost about 3.1%, to around $3,880, its lowest since October 2025. October producer prices, due this Friday, are expected to rise 0.4%, after 1.3% in September. The three main indexes fell about 0.4% on Thursday.",
+          "sources": [
+            {
+              "nom": "Investopedia via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nasdaq-p-131805045.html"
+            },
+            {
+              "nom": "TipRanks",
+              "url": "https://www.tipranks.com/news/stock-market-today-nov-13-u-s-stocks-wobble-ahead-of-ppi-data"
+            },
+            {
+              "nom": "Reuters via MarketScreener",
+              "url": "https://www.marketscreener.com/news/nasdaq-futures-dip-as-nvidia-tumult-keeps-investors-on-edge-ce785ed9dc8ff726"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLRE",
+              "direction": "baisse",
+              "raison_fr": "L’immobilier coté emprunte beaucoup : des taux à plus de 5 % renchérissent son financement. Des prix à la production plus faibles que prévu feraient baisser les taux et pourraient renverser la prévision.",
+              "raison_en": "Listed real estate borrows heavily: rates above 5% make its financing more expensive. Producer prices softer than expected would pull rates down and could reverse this call."
+            },
+            {
+              "etf": "XLU",
+              "direction": "baisse",
+              "raison_fr": "Les services publics sont achetés pour leur dividende, que des obligations à plus de 5 % concurrencent directement. Même risque : un chiffre d’inflation rassurant.",
+              "raison_en": "Utilities are bought for their dividends, which bonds paying more than 5% compete with directly. Same risk: a reassuring inflation figure."
+            },
+            {
+              "etf": "XLF",
+              "direction": "hausse",
+              "raison_fr": "Les banques gagnent davantage sur leurs prêts quand les taux montent, tant que l’économie tient. Un chiffre d’inflation très élevé, qui ferait craindre un ralentissement, peut changer la donne.",
+              "raison_en": "Banks earn more on their loans when rates rise, as long as the economy holds up. A very high inflation figure, raising fears of a slowdown, could change the picture."
+            },
+            {
+              "etf": "XLB",
+              "direction": "baisse",
+              "raison_fr": "Le fonds des matériaux contient des producteurs d’or, pénalisés par la chute du métal, et un dollar fort renchérit les matières premières pour les acheteurs étrangers.",
+              "raison_en": "The materials fund includes gold miners, hurt by the metal’s slide, and a strong dollar makes raw materials more expensive for foreign buyers."
+            }
+          ]
+        }
+      ],
+      "a_surveiller_fr": [
+        "Vendredi 13 novembre : les prix à la production d’octobre, attendus en hausse de 0,4 % sur un mois."
+      ],
+      "a_surveiller_en": [
+        "Friday 13 November: October producer prices, expected to rise 0.4% on the month."
+      ]
+    },
+    {
       "date": "2026-11-12",
       "horizon": {
         "du": "2026-11-13",
