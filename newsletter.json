@@ -1,6 +1,134 @@
 {
   "editions": [
     {
+      "date": "2026-11-16",
+      "horizon": {
+        "du": "2026-11-16",
+        "au": "2026-11-16"
+      },
+      "redige_par": "Claude (Anthropic)",
+      "titre_fr": "Les puces d’IA reculent avant Nvidia et Anthropic, le pétrole hésite, la Fed parle",
+      "titre_en": "AI chips slide ahead of Nvidia and Anthropic, oil wavers, the Fed speaks",
+      "intro_fr": "Trois nouvelles pour la séance de ce lundi 16 novembre. Les valeurs de l’intelligence artificielle reculent avant les résultats de Nvidia mardi et l’entrée en Bourse d’Anthropic jeudi. Le pétrole est tiraillé entre un surplus annoncé et de nouvelles tensions autour de l’Iran, tandis que le président de la Fed, Kevin Warsh, s’exprime à midi.",
+      "intro_en": "Three stories for the session of Monday 16 November. Artificial intelligence stocks are falling ahead of Nvidia’s results on Tuesday and Anthropic’s stock market debut on Thursday. Oil is torn between a forecast surplus and fresh tensions around Iran, while Fed Chair Kevin Warsh speaks at noon.",
+      "nouvelles": [
+        {
+          "titre_fr": "Les valeurs de l’IA sous pression avant Nvidia et l’entrée en Bourse d’Anthropic",
+          "titre_en": "AI stocks under pressure ahead of Nvidia and Anthropic’s market debut",
+          "resume_fr": "Vers 5 h du matin à New York, les contrats à terme sur le Nasdaq 100 perdaient 0,97 % et ceux sur le S&P 500 0,36 %, alors que le Dow Jones était stable. Nvidia reculait d’environ 2 % avant l’ouverture, après sa plus longue série de semaines de baisse depuis octobre 2012, marquée par le départ de Jensen Huang du poste de PDG. Intel, AMD, Broadcom et Micron perdaient 3,5 % à 5 %, et Dell et HP environ 5 %. Nvidia publie ses résultats mardi soir, les premiers depuis ce départ, et Anthropic doit faire son entrée en Bourse jeudi, avec une valorisation visée d’environ 1 400 milliards de dollars. Selon un analyste de Swissquote cité par Reuters, des investisseurs pourraient vendre d’autres valeurs technologiques pour financer leurs achats d’actions Anthropic.",
+          "resume_en": "Around 5 a.m. New York time, Nasdaq 100 futures were down 0.97% and S&P 500 futures down 0.36%, while the Dow was flat. Nvidia was down about 2% before the open, after its longest weekly losing streak since October 2012, marked by Jensen Huang’s exit as chief executive. Intel, AMD, Broadcom and Micron were down 3.5% to 5%, and Dell and HP about 5%. Nvidia reports results on Tuesday evening, its first since that exit, and Anthropic is due to start trading on Thursday, targeting a valuation of around $1.4 trillion. A Swissquote analyst quoted by Reuters says some investors may sell other tech stocks to fund purchases of Anthropic shares.",
+          "sources": [
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/p-500-nasdaq-futures-slide-104351968.html"
+            },
+            {
+              "nom": "Yahoo Finance via AOL",
+              "url": "https://www.aol.com/articles/stock-market-today-dow-p-091631000.html"
+            },
+            {
+              "nom": "FXEmpire",
+              "url": "https://www.fxempire.com/forecasts/article/the-week-ahead-nvidia-earnings-anthropic-ipo-test-ai-trade-1644719"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLK",
+              "direction": "baisse",
+              "raison_fr": "Les fabricants de puces et de serveurs, très présents dans le fonds, reculent nettement avant l’ouverture. Un rebond de Nvidia avant ses résultats, ou des achats à bon compte, peut renverser la prévision.",
+              "raison_en": "Chip and server makers, heavily weighted in the fund, are falling sharply before the open. A Nvidia rebound ahead of its results, or bargain hunting, could reverse this call."
+            },
+            {
+              "etf": "XLC",
+              "direction": "baisse",
+              "raison_fr": "Alphabet et Meta, gros poids du fonds, sont aussi des valeurs de l’IA que des investisseurs pourraient vendre pour acheter de l’Anthropic. Le fonds souffre toutefois moins que les fabricants de puces, ce qui peut le garder proche du marché.",
+              "raison_en": "Alphabet and Meta, large holdings in the fund, are also AI stocks that investors might sell to buy Anthropic. The fund is less exposed than chipmakers, though, which could keep it close to the market."
+            },
+            {
+              "etf": "XLP",
+              "direction": "hausse",
+              "raison_fr": "Quand la technologie recule, l’argent se replie souvent vers les valeurs jugées sûres, comme l’alimentation et les produits du quotidien. Tyson Foods publie ses résultats ce matin : une déception pèserait sur le secteur.",
+              "raison_en": "When tech falls, money often moves to stocks seen as safe, such as food and everyday goods. Tyson Foods reports this morning: a disappointment would weigh on the sector."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Pétrole : un surplus annoncé, mais de nouvelles tensions autour de l’Iran",
+          "titre_en": "Oil: a surplus is forecast, but tensions around Iran flare again",
+          "resume_fr": "Le Brent reculait de 1 % à 94,86 dollars le baril tôt lundi, et le pétrole américain WTI de 0,7 % à 87,9 dollars, avant de se reprendre en partie dans la matinée européenne. L’Agence internationale de l’énergie prévoit un marché en surplus au quatrième trimestre, avec une production d’environ 105 millions de barils par jour, supérieure de 1,7 million à la demande. En face, des médias rapportent une attaque iranienne dimanche contre une base d’hélicoptères américaine à Bahreïn, et la télévision d’État iranienne affirme que des navires ont heurté des mines, ce qui n’a pas été vérifié de façon indépendante. Téhéran dit avoir proposé un plan pour mettre fin aux hostilités et rouvrir le détroit d’Ormuz.",
+          "resume_en": "Brent fell 1% to $94.86 a barrel early on Monday, and US crude (WTI) fell 0.7% to $87.9, before partly recovering during the European morning. The International Energy Agency expects a market surplus in the fourth quarter, with output of about 105 million barrels a day, 1.7 million more than demand. On the other side, media report an Iranian attack on Sunday on a US helicopter base in Bahrain, and Iranian state TV says ships hit mines, which has not been independently verified. Tehran says it has proposed a plan to end hostilities and reopen the Strait of Hormuz.",
+          "sources": [
+            {
+              "nom": "HDFC Sky (Oilprice.com)",
+              "url": "https://hdfcsky.com/news/brent-crude-oil-price-today-november-16-2026-brent-falls-1percent-to-94-86-wti-slips-below-88-as-supply-surplus-looms"
+            },
+            {
+              "nom": "Angel One",
+              "url": "https://www.angelone.in/news/commodities/crude-oil-prices-holds-steady-despite-renewed-middle-east-attacks-november-16-2026"
+            },
+            {
+              "nom": "FinanceFeeds",
+              "url": "https://financefeeds.com/brent-crude-oil-price-96-28-monday-iran-bahrain-strike-bull-98-bear-91/"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLE",
+              "direction": "baisse",
+              "raison_fr": "Avec plus de pétrole que de demande, le prix du baril a tendance à glisser, ce qui réduit les recettes des producteurs. Une nouvelle attaque confirmée dans le Golfe ferait au contraire bondir le baril et le secteur.",
+              "raison_en": "With more oil than demand, the barrel price tends to slide, cutting producers’ revenue. A new confirmed attack in the Gulf would instead send oil and the sector higher."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Taux : une hausse de la Fed en décembre jugée acquise, Kevin Warsh s’exprime",
+          "titre_en": "Rates: a December Fed hike seen as a given, Kevin Warsh speaks",
+          "resume_fr": "Selon Reuters, les marchés considèrent comme certaine une hausse des taux de la Fed en décembre, avec environ 8 % de chances qu’elle atteigne un demi-point, après des chiffres d’inflation plus forts que prévu la semaine dernière. Le taux à 2 ans reculait de plus de 0,02 point lundi, après sa plus forte hausse hebdomadaire depuis plus de deux ans. Le président de la Fed, Kevin Warsh, prend la parole à midi à San Francisco, après le président de la Fed de New York, John Williams, à 9 h 05. Le compte rendu de la dernière réunion de la Fed sera publié mercredi.",
+          "resume_en": "According to Reuters, markets see a Fed rate rise in December as certain, with about an 8% chance of a half-point move, after hotter-than-expected inflation data last week. The 2-year yield was down more than 2 basis points on Monday, after its biggest weekly rise in more than two years. Fed Chair Kevin Warsh speaks at noon in San Francisco, after New York Fed President John Williams at 9:05 a.m. The minutes of the Fed’s last meeting come out on Wednesday.",
+          "sources": [
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/p-500-nasdaq-futures-slide-104351968.html"
+            },
+            {
+              "nom": "Thrive in Markets",
+              "url": "https://thriveinmarkets.com/market-insights/week-ahead-2026-11-16/"
+            },
+            {
+              "nom": "FXEmpire",
+              "url": "https://www.fxempire.com/forecasts/article/the-week-ahead-nvidia-earnings-anthropic-ipo-test-ai-trade-1644719"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLRE",
+              "direction": "baisse",
+              "raison_fr": "L’immobilier coté emprunte beaucoup et souffre de taux qui restent hauts. Un discours de Kevin Warsh moins ferme que prévu ferait baisser les taux et pourrait renverser la prévision.",
+              "raison_en": "Listed real estate borrows heavily and suffers when rates stay high. A softer-than-expected speech from Kevin Warsh would pull rates down and could reverse this call."
+            },
+            {
+              "etf": "XLF",
+              "direction": "hausse",
+              "raison_fr": "Les banques profitent de taux élevés sur leurs prêts, et le fonds est peu exposé à l’intelligence artificielle, ce qui l’aide un jour de baisse de la technologie. Des craintes de ralentissement économique pourraient le freiner.",
+              "raison_en": "Banks benefit from high rates on their loans, and the fund has little exposure to artificial intelligence, which helps on a day when tech falls. Fears of an economic slowdown could hold it back."
+            }
+          ]
+        }
+      ],
+      "a_surveiller_fr": [
+        "Avant l’ouverture : résultats trimestriels de Tyson Foods, avec une conférence à 9 h (heure de New York).",
+        "8 h 30 : indice manufacturier Empire State de la Fed de New York (25,5 le mois dernier).",
+        "9 h 05 : discours de John Williams, président de la Fed de New York.",
+        "12 h : discours de Kevin Warsh, président de la Fed."
+      ],
+      "a_surveiller_en": [
+        "Before the open: Tyson Foods quarterly results, with a call at 9 a.m. New York time.",
+        "8:30 a.m.: New York Fed Empire State manufacturing index (25.5 last month).",
+        "9:05 a.m.: speech by John Williams, New York Fed President.",
+        "12 p.m.: speech by Fed Chair Kevin Warsh."
+      ]
+    },
+    {
       "date": "2026-11-13",
       "horizon": {
         "du": "2026-11-13",
