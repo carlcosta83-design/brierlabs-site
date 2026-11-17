@@ -1,6 +1,164 @@
 {
   "editions": [
     {
+      "date": "2026-11-17",
+      "horizon": {
+        "du": "2026-11-17",
+        "au": "2026-11-17"
+      },
+      "redige_par": "Claude (Anthropic)",
+      "titre_fr": "Nvidia publie ce soir sous la menace de nouvelles limites vers la Chine, le pétrole glisse encore",
+      "titre_en": "Nvidia reports tonight under new China curbs, oil keeps sliding",
+      "intro_fr": "Quatre nouvelles pour la séance de ce mardi 17 novembre. Les contrats à terme reculent avant les résultats de Nvidia ce soir, au lendemain d’un durcissement des règles américaines sur les puces d’IA vendues à la Chine. Le pétrole continue de baisser, et les ventes au détail d’octobre, Home Depot et Disney donnent ce matin des nouvelles du consommateur américain.",
+      "intro_en": "Four stories for the session of Tuesday 17 November. Futures are down ahead of Nvidia’s results tonight, a day after the US tightened rules on AI chips sold to China. Oil keeps falling, and October retail sales, Home Depot and Disney give a read on the US consumer this morning.",
+      "nouvelles": [
+        {
+          "titre_fr": "Nvidia publie ses résultats ce soir, après de nouvelles restrictions sur les puces vers la Chine",
+          "titre_en": "Nvidia reports tonight, after new curbs on chip sales to China",
+          "resume_fr": "À 5 h 23 à New York, les contrats à terme sur le Dow Jones perdaient 0,45 %, et ceux sur le S&P 500 et le Nasdaq 100 0,34 %, selon Reuters. Lundi, les États-Unis ont durci leurs restrictions sur l’accès de la Chine aux puces d’IA avancées, au moment où Donald Trump se rend en Chine pour rencontrer Xi Jinping. Nvidia, qui publie après la clôture ses premiers résultats sans Jensen Huang, reculait de 0,4 % avant l’ouverture et a perdu environ 410 milliards de dollars de valeur depuis son départ. Intel perdait 3,3 % après que Nvidia a réduit de 25 % sa participation dans le groupe. Nvidia vise un chiffre d’affaires d’environ 108 milliards de dollars, contre environ 109 milliards attendus par les analystes selon TradingKey.",
+          "resume_en": "At 5:23 a.m. New York time, Dow futures were down 0.45%, and S&P 500 and Nasdaq 100 futures down 0.34%, according to Reuters. On Monday, the US tightened curbs on China’s access to advanced AI chips, as Donald Trump heads to China to meet Xi Jinping. Nvidia, which reports after the close its first results without Jensen Huang, was down 0.4% before the open and has lost about $410 billion in market value since his exit. Intel was down 3.3% after Nvidia cut its stake in the company by 25%. Nvidia guided for revenue of about $108 billion, against about $109 billion expected by analysts according to TradingKey.",
+          "sources": [
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/us-stock-futures-slip-ahead-105311659.html"
+            },
+            {
+              "nom": "Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-17-dow-sp-500-nasdaq-nvidia-earnings-091546152.html"
+            },
+            {
+              "nom": "TradingKey",
+              "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262305825-week-ahead-nvidia-q3-earnings-us-october-retail-sales-fomc-minutes-walmart-tradingkey"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLK",
+              "direction": "baisse",
+              "raison_fr": "Les nouvelles limites vers la Chine et la chute d’Intel pèsent sur les fabricants de puces, très présents dans le fonds, et les investisseurs hésitent à acheter avant les chiffres de Nvidia. Des achats à bon compte avant la publication peuvent renverser la prévision.",
+              "raison_en": "The new China curbs and Intel’s drop weigh on chipmakers, heavily weighted in the fund, and investors are reluctant to buy before Nvidia’s numbers. Bargain hunting ahead of the release could reverse this call."
+            },
+            {
+              "etf": "XLV",
+              "direction": "hausse",
+              "raison_fr": "Quand la technologie hésite, l’argent se tourne souvent vers la santé, peu dépendante de l’IA et de la Chine. Une remontée nette des taux pourrait freiner ce mouvement.",
+              "raison_en": "When tech wavers, money often turns to healthcare, which depends little on AI or China. A sharp rise in rates could slow that shift."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Le pétrole poursuit sa baisse, le surplus l’emporte sur les attaques dans le Golfe",
+          "titre_en": "Oil extends its fall as the surplus outweighs Gulf attacks",
+          "resume_fr": "Selon Reuters, cité par FinanceFeeds, le Brent valait 91,66 dollars le baril à 4 h 30 GMT, en baisse de 0,8 %, et le pétrole américain WTI 84,99 dollars. Lundi, le Brent avait déjà chuté de 3,55 %. L’Agence internationale de l’énergie prévoit au quatrième trimestre une production d’environ 105 millions de barils par jour, supérieure de 1,7 million à la demande, et Goldman Sachs voit le Brent à 88 dollars en moyenne en 2027. Les marchés passent outre de nouvelles attaques contre des pétroliers près du détroit d’Ormuz, alors que les exportations du Moyen-Orient reprennent. La réunion de l’OPEP+ sur la production de 2027 aura lieu le 29 novembre.",
+          "resume_en": "According to Reuters, cited by FinanceFeeds, Brent was at $91.66 a barrel at 4:30 GMT, down 0.8%, and US crude (WTI) at $84.99. On Monday, Brent had already fallen 3.55%. The International Energy Agency expects fourth-quarter supply of about 105 million barrels a day, 1.7 million more than demand, and Goldman Sachs sees Brent averaging $88 in 2027. Markets are looking past new attacks on tankers near the Strait of Hormuz, as Middle East exports recover. OPEC+ meets on 29 November to set 2027 output.",
+          "sources": [
+            {
+              "nom": "FinanceFeeds",
+              "url": "https://financefeeds.com/brent-crude-oil-price-91-66-tuesday-goldman-glut-warning-bull-96-bear-88/"
+            },
+            {
+              "nom": "SpazioCrypto",
+              "url": "https://en.spaziocrypto.com/macroeconomics/brent-falls-below-92-hormuz-attacks-oil-price/"
+            },
+            {
+              "nom": "HDFC Sky (Oilprice.com)",
+              "url": "https://hdfcsky.com/news/brent-crude-oil-price-today-november-17-2026-brent-falls-0-7percent-to-91-8-wti-slips-to-85-2-as-surplus-looms"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLE",
+              "direction": "baisse",
+              "raison_fr": "Un baril qui glisse réduit les recettes des producteurs de pétrole et de gaz. Une attaque majeure confirmée dans le Golfe ferait au contraire remonter le baril et le secteur.",
+              "raison_en": "A sliding oil price cuts oil and gas producers’ revenue. A major confirmed attack in the Gulf would instead lift oil and the sector."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Ventes au détail d’octobre et hausse des taux de la Fed jugée quasi certaine",
+          "titre_en": "October retail sales, and a Fed hike seen as near certain",
+          "resume_fr": "Les ventes au détail d’octobre sont publiées à 8 h 30 : les économistes attendent une hausse de 0,2 % sur un mois, après 0,8 % en septembre. La production industrielle d’octobre suit à 9 h 15, avec 0,1 % attendu. Selon l’outil FedWatch du CME cité par Reuters, les marchés voient 97,4 % de chances d’une hausse des taux de 0,25 point en décembre, et plusieurs responsables de la Fed se sont montrés ouverts la semaine dernière à des hausses plus rapides. Christopher Waller, Beth Hammack et John Williams, de la Fed, s’expriment dans la journée, et le compte rendu de la dernière réunion paraît mercredi.",
+          "resume_en": "October retail sales come out at 8:30 a.m.: economists expect a 0.2% monthly rise, after 0.8% in September. October industrial production follows at 9:15 a.m., with 0.1% expected. According to CME FedWatch, cited by Reuters, markets see a 97.4% chance of a quarter-point Fed rate rise in December, and several Fed officials signaled openness last week to faster hikes. Fed officials Christopher Waller, Beth Hammack and John Williams speak during the day, and the minutes of the last meeting come out on Wednesday.",
+          "sources": [
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/us-stock-futures-slip-ahead-105311659.html"
+            },
+            {
+              "nom": "Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-17-dow-sp-500-nasdaq-nvidia-earnings-091546152.html"
+            },
+            {
+              "nom": "TradingKey",
+              "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262305825-week-ahead-nvidia-q3-earnings-us-october-retail-sales-fomc-minutes-walmart-tradingkey"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLRE",
+              "direction": "baisse",
+              "raison_fr": "L’immobilier coté emprunte beaucoup et souffre quand une hausse des taux se rapproche. Des ventes au détail faibles et des discours plus prudents de la Fed feraient baisser les taux et pourraient renverser la prévision.",
+              "raison_en": "Listed real estate borrows heavily and suffers as a rate rise draws near. Weak retail sales and more cautious Fed speeches would pull rates down and could reverse this call."
+            },
+            {
+              "etf": "XLF",
+              "direction": "hausse",
+              "raison_fr": "Les banques gagnent davantage sur leurs prêts quand les taux montent, et le fonds est peu exposé à l’IA un jour où la technologie recule. Des chiffres qui feraient craindre un ralentissement pourraient le freiner.",
+              "raison_en": "Banks earn more on loans when rates rise, and the fund has little AI exposure on a day when tech falls. Data pointing to a slowdown could hold it back."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Home Depot et Disney publient avant l’ouverture",
+          "titre_en": "Home Depot and Disney report before the open",
+          "resume_fr": "Home Depot publie ses résultats avant l’ouverture, avec un bénéfice attendu de 3,87 dollars par action selon Zacks, cité par Heygotrade, et une conférence à 9 h. Le groupe doit dire si les particuliers continuent de dépenser pour leurs travaux, alors que l’indice de confiance des constructeurs NAHB est attendu à 29, un niveau bas. Disney publie aussi avant l’ouverture ses résultats annuels, et les analystes attendent une croissance des parcs et du streaming, selon Yahoo Finance. Ces chiffres arrivent le même matin que les ventes au détail.",
+          "resume_en": "Home Depot reports before the open, with expected earnings of $3.87 per share according to Zacks, cited by Heygotrade, and a call at 9 a.m. The company should say whether homeowners keep spending on projects, while the NAHB homebuilder confidence index is expected at 29, a low level. Disney also reports its annual results before the open, and analysts expect growth in parks and streaming, according to Yahoo Finance. These numbers land the same morning as retail sales.",
+          "sources": [
+            {
+              "nom": "Heygotrade",
+              "url": "https://www.heygotrade.com/en/news/weekly-economic-outlook-2026-11-16/"
+            },
+            {
+              "nom": "Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-17-dow-sp-500-nasdaq-nvidia-earnings-091546152.html"
+            },
+            {
+              "nom": "TradingKey",
+              "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262305825-week-ahead-nvidia-q3-earnings-us-october-retail-sales-fomc-minutes-walmart-tradingkey"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLY",
+              "direction": "baisse",
+              "raison_fr": "Avec des taux élevés et un marché du logement morose, Home Depot, gros poids du fonds, risque de rester prudent sur les dépenses de travaux. Des résultats meilleurs que prévu et des ventes au détail solides renverseraient la prévision.",
+              "raison_en": "With high rates and a gloomy housing market, Home Depot, a large holding in the fund, is likely to stay cautious on home project spending. Better-than-expected results and solid retail sales would reverse this call."
+            },
+            {
+              "etf": "XLC",
+              "direction": "hausse",
+              "raison_fr": "Disney, présent dans le fonds, est attendu en croissance dans les parcs et le streaming, et le fonds est moins exposé aux puces que la technologie. Une déception de Disney ou une vente des valeurs de l’IA comme Alphabet et Meta pourrait le faire reculer.",
+              "raison_en": "Disney, held in the fund, is expected to show growth in parks and streaming, and the fund is less exposed to chips than tech. A Disney disappointment or selling of AI names such as Alphabet and Meta could pull it lower."
+            }
+          ]
+        }
+      ],
+      "a_surveiller_fr": [
+        "Avant l’ouverture : résultats de Home Depot (conférence à 9 h) et de Disney.",
+        "8 h 30 : ventes au détail d’octobre (0,2 % attendu, après 0,8 %) et prix à l’importation.",
+        "9 h 15 : production industrielle d’octobre (0,1 % attendu).",
+        "10 h : stocks des entreprises de septembre.",
+        "Après la clôture : résultats de Nvidia, documents vers 16 h 20 et conférence à 17 h."
+      ],
+      "a_surveiller_en": [
+        "Before the open: Home Depot (call at 9 a.m.) and Disney results.",
+        "8:30 a.m.: October retail sales (0.2% expected, after 0.8%) and import prices.",
+        "9:15 a.m.: October industrial production (0.1% expected).",
+        "10 a.m.: September business inventories.",
+        "After the close: Nvidia results, materials around 4:20 p.m. and a call at 5 p.m."
+      ]
+    },
+    {
       "date": "2026-11-16",
       "horizon": {
         "du": "2026-11-16",
