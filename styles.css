@@ -417,7 +417,8 @@ footer{background:var(--navy);color:#a8bbdd;padding:56px 0 44px;font-size:14.5px
 .lettre-ancienne .lettre{margin-top:12px}
 
 /* ------------------------------ Mises à jour ----------------------------- */
-.maj{padding-bottom:40px;border-bottom:1px solid var(--rule);margin-bottom:40px}
+.maj{padding-bottom:40px;border-bottom:1px solid var(--rule);margin-bottom:40px;scroll-margin-top:100px}
+@media (max-width:760px){.maj{scroll-margin-top:140px}}
 .maj h2{margin:10px 0 18px;max-width:30ch}
 .maj h3{margin:30px 0 8px;font-size:1.05rem}
 .maj p{margin-bottom:14px;max-width:68ch}

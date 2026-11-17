@@ -343,6 +343,9 @@
     var assez = paires.length >= MIN_CORRELATION;
 
     var dates = lignes.map(function (l) { return l.prediction_date; }).filter(Boolean).sort();
+    /* La période affichée à côté du taux de réussite est celle des appels
+       NOTÉS : le lot du matin, pas encore noté, ne doit pas l'allonger. */
+    var datesNotees = evaluees.map(function (l) { return l.prediction_date; }).filter(Boolean).sort();
 
     var parHorizon = HORIZONS.map(function (h) {
       return statsHorizon(lignes, h, 2);
@@ -363,6 +366,11 @@
       quintiles: assez ? quintiles(paires) : [],
       premiere: dates[0] || null,
       derniere: dates[dates.length - 1] || null,
+      notees: {
+        premiere: datesNotees[0] || null,
+        derniere: datesNotees[datesNotees.length - 1] || null,
+        titres: Object.keys(evaluees.reduce(function (acc, l) { acc[l.ticker] = 1; return acc; }, {})).length
+      },
       titres: Object.keys(lignes.reduce(function (acc, l) { acc[l.ticker] = 1; return acc; }, {})).length
     };
   }
@@ -391,10 +399,11 @@
       { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
   }
 
-  function periode(s, l) {
-    return s.premiere === s.derniere
-      ? dateLisible(s.derniere, l)
-      : dateLisible(s.premiere, l) + " – " + dateLisible(s.derniere, l);
+  /* `p` porte premiere et derniere : la période des appels notés. */
+  function periode(p, l) {
+    return p.premiere === p.derniere
+      ? dateLisible(p.derniere, l)
+      : dateLisible(p.premiere, l) + " – " + dateLisible(p.derniere, l);
   }
 
   /* Version texte brut, à utiliser à l'intérieur d'une chaîne qui sera
@@ -441,9 +450,15 @@
   }
 
   function entete(s) {
+    if (!s.notees.premiere) {
+      /* Des appels produits, aucun encore noté : pas de période à afficher. */
+      return bilingue(
+        "Record started " + dateLisible(s.premiere, "en") + " · no call scored yet",
+        "Relevé commencé le " + dateLisible(s.premiere, "fr") + " · aucun appel encore noté");
+    }
     return bilingue(
-      periode(s, "en") + " · " + s.evaluees + " calls scored · " + s.titres + " tickers",
-      periode(s, "fr") + " · " + s.evaluees + " appels notés · " + s.titres + " titres"
+      periode(s.notees, "en") + " · " + s.evaluees + " calls scored · " + s.notees.titres + " tickers",
+      periode(s.notees, "fr") + " · " + s.evaluees + " appels notés · " + s.notees.titres + " titres"
     );
   }
 
