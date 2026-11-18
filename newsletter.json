@@ -1,6 +1,174 @@
 {
   "editions": [
     {
+      "date": "2026-11-18",
+      "horizon": {
+        "du": "2026-11-18",
+        "au": "2026-11-18"
+      },
+      "redige_par": "Claude (Anthropic)",
+      "titre_fr": "Nvidia ranime l’IA avant l’ouverture, Target et Lowe’s relèvent leurs prévisions",
+      "titre_en": "Nvidia revives the AI trade before the open, Target and Lowe’s raise their outlooks",
+      "intro_fr": "Quatre nouvelles pour la séance de ce mercredi 18 novembre. Les contrats à terme remontent après les prévisions de Nvidia, au lendemain d’une nette baisse de Wall Street. Target et Lowe’s relèvent leurs objectifs, le pétrole recule, et le compte rendu de la Fed est attendu à 14 h alors qu’une hausse des taux en décembre paraît presque acquise.",
+      "intro_en": "Four stories for the session of Wednesday 18 November. Futures are rising after Nvidia’s forecast, a day after a sharp drop on Wall Street. Target and Lowe’s raise their targets, oil is falling, and the Fed minutes are due at 2 p.m. with a December rate rise seen as almost certain.",
+      "nouvelles": [
+        {
+          "titre_fr": "Nvidia prévoit plus de ventes qu’attendu, les contrats à terme remontent",
+          "titre_en": "Nvidia forecasts higher sales than expected, futures climb",
+          "resume_fr": "Nvidia a réalisé 115,8 milliards de dollars de chiffre d’affaires au dernier trimestre, en hausse de 103 % sur un an, et prévoit environ 130 milliards pour le trimestre en cours, à 3 % près, contre 125,25 milliards attendus selon LSEG. L’action gagnait 3,7 % avant l’ouverture, AMD 3 %, Broadcom 2,5 % et Micron 3,4 %, selon Reuters. À 4 h 53 à New York, les contrats à terme sur le Nasdaq 100 montaient de 1,17 %, ceux sur le S&P 500 de 0,62 % et ceux sur le Dow Jones de 0,28 %. Mardi, le Dow avait perdu 1,64 % et le S&P 500 1,03 %. Anthropic, l’entreprise qui développe Claude, l’auteur de cette newsletter, doit fixer ce soir le prix de son entrée en Bourse, pour une valorisation pouvant atteindre 1 400 milliards de dollars selon Reuters.",
+          "resume_en": "Nvidia posted revenue of $115.8 billion last quarter, up 103% from a year earlier, and forecasts about $130 billion for the current quarter, plus or minus 3%, against $125.25 billion expected according to LSEG. The stock was up 3.7% before the open, AMD 3%, Broadcom 2.5% and Micron 3.4%, according to Reuters. At 4:53 a.m. New York time, Nasdaq 100 futures were up 1.17%, S&P 500 futures 0.62% and Dow futures 0.28%. On Tuesday, the Dow lost 1.64% and the S&P 500 1.03%. Anthropic, the company that develops Claude, the author of this newsletter, is due to price its stock market debut tonight, at a valuation of up to $1.4 trillion according to Reuters.",
+          "sources": [
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-futures-jump-nvidia-forecast-103531610.html"
+            },
+            {
+              "nom": "Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-18-dow-sp-500-nasdaq-nvidia-anthropic-ipo-090613569.html"
+            },
+            {
+              "nom": "ATFX",
+              "url": "https://atfxcapital.com/en/analysis/market-news/20261118-daily-market-highlight"
+            },
+            {
+              "nom": "Reuters via Finwire",
+              "url": "https://finwire.io/news/stock-markets-news/premarket-us-futures-point-to-a-higher-open-after-nvidia-earnings-anthropic-ipo-to-test-ai-boom"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLK",
+              "direction": "hausse",
+              "raison_fr": "Des prévisions nettement au-dessus des attentes soutiennent Nvidia et les autres fabricants de puces, très présents dans le fonds. Si les investisseurs profitent de la hausse pour vendre, ou doutent encore de la rentabilité des dépenses d’IA, le gain peut s’effacer pendant la séance.",
+              "raison_en": "A forecast well above expectations supports Nvidia and other chipmakers, heavily weighted in the fund. If investors sell into the rise, or still doubt the payoff from AI spending, the gain could fade during the session."
+            },
+            {
+              "etf": "XLV",
+              "direction": "baisse",
+              "raison_fr": "Quand l’argent revient vers l’IA, les secteurs jugés prudents comme la santé attirent moins d’acheteurs. Un retournement de la technologie en cours de séance ramènerait les investisseurs vers ce fonds.",
+              "raison_en": "When money flows back to AI, defensive sectors such as healthcare draw fewer buyers. A reversal in tech during the session would bring investors back to this fund."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Target et Lowe’s relèvent leurs objectifs, aidés par les remboursements de droits de douane",
+          "titre_en": "Target and Lowe’s raise their targets, helped by tariff refunds",
+          "resume_fr": "Target a publié un bénéfice de 2,65 dollars par action, contre 2,03 à 2,08 dollars attendus selon Nasdaq et TipRanks. Ses ventes montent de 7,1 % à 27,07 milliards de dollars, et de 5,6 % à magasins comparables. Il vise désormais environ 6 % de croissance sur l’année. Lowe’s annonce 3,10 dollars par action hors coûts liés à ses acquisitions, contre 2,86 à 2,88 attendus, et des ventes de 22,8 milliards, en hausse de 9,3 %, mais de 1,8 % seulement à magasins comparables. Il relève son objectif de ventes annuelles à 92,5 milliards et abaisse un peu sa marge prévue. Sans les remboursements de droits de douane, le bénéfice serait de 2,15 dollars chez Target et de 2,76 dollars chez Lowe’s.",
+          "resume_en": "Target reported earnings of $2.65 per share, against $2.03 to $2.08 expected according to Nasdaq and TipRanks. Sales rose 7.1% to $27.07 billion, and 5.6% at comparable stores. It now targets about 6% growth for the year. Lowe’s reported $3.10 per share excluding acquisition costs, against $2.86 to $2.88 expected, and sales of $22.8 billion, up 9.3%, but only 1.8% at comparable stores. It raised its annual sales target to $92.5 billion and slightly cut its expected margin. Without tariff refunds, earnings would be $2.15 per share at Target and $2.76 at Lowe’s.",
+          "sources": [
+            {
+              "nom": "Target (communiqué, PR Newswire)",
+              "url": "https://www.prnewswire.com/news-releases/target-corporation-reports-third-quarter-earnings-302942872.html"
+            },
+            {
+              "nom": "Lowe’s (communiqué, StockTitan)",
+              "url": "https://www.stocktitan.net/news/LOW/lowe-s-reports-third-quarter-2026-sales-and-earnings-1dcu9fqyhwws.html"
+            },
+            {
+              "nom": "StockTitan (consensus Nasdaq)",
+              "url": "https://www.stocktitan.net/articles/earnings-calendar-week-of-november-16-2026"
+            },
+            {
+              "nom": "TipRanks",
+              "url": "https://tipranks.com/news/these-are-the-stocks-reporting-earnings-today-november-18-2026"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLY",
+              "direction": "hausse",
+              "raison_fr": "Lowe’s, présent dans le fonds, relève son objectif de ventes, et les chiffres de Target montrent des clients qui dépensent encore. Si le marché retient surtout la marge abaissée de Lowe’s et le poids des remboursements, le fonds peut décevoir.",
+              "raison_en": "Lowe’s, held in the fund, raised its sales target, and Target’s numbers show shoppers still spending. If the market focuses on Lowe’s lower margin and the role of refunds, the fund could disappoint."
+            },
+            {
+              "etf": "XLP",
+              "direction": "incertain",
+              "raison_fr": "Target, présent dans le fonds, publie de bons chiffres, mais l’argent qui revient vers l’IA délaisse souvent les valeurs prudentes de la consommation courante. Les deux forces s’équilibrent avant les résultats de Walmart jeudi.",
+              "raison_en": "Target, held in the fund, posted good numbers, but money returning to AI often leaves defensive consumer staples behind. The two forces balance out ahead of Walmart’s results on Thursday."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Le compte rendu de la Fed arrive alors qu’une hausse des taux en décembre paraît presque acquise",
+          "titre_en": "Fed minutes arrive with a December rate rise seen as almost certain",
+          "resume_fr": "La Fed publie à 14 h le compte rendu de sa réunion des 27 et 28 octobre, où elle a maintenu ses taux entre 3,75 % et 4 % par 10 voix contre 2 : Lisa Cook et Beth Hammack voulaient une hausse d’un quart de point. Les marchés voient 95 % de chances d’une telle hausse en décembre, selon TokenPost. Mardi, John Williams, président de la Fed de New York, a jugé qu’une nouvelle hausse serait sans doute nécessaire, tout en écartant un rythme agressif, selon Reuters. Tôt mercredi, le taux à 10 ans était à 5,092 %, celui à 30 ans à 5,443 % et celui à 2 ans à 4,791 %. Les mises en chantier d’octobre paraissent à 8 h 30, avec environ 1,25 million attendu selon Investing.com.",
+          "resume_en": "The Fed publishes at 2 p.m. the minutes of its 27-28 October meeting, where it held rates at 3.75% to 4% in a 10-2 vote: Lisa Cook and Beth Hammack wanted a quarter-point rise. Markets see a 95% chance of such a rise in December, according to TokenPost. On Tuesday, New York Fed President John Williams said another rise would likely be needed, while pushing back on an aggressive pace, according to Reuters. Early Wednesday, the 10-year yield was 5.092%, the 30-year 5.443% and the 2-year 4.791%. October housing starts come out at 8:30 a.m., with about 1.25 million expected according to Investing.com.",
+          "sources": [
+            {
+              "nom": "TokenPost",
+              "url": "https://www.tokenpost.com/news/investing/60291"
+            },
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-futures-jump-nvidia-forecast-103531610.html"
+            },
+            {
+              "nom": "Investing.com via Finwire",
+              "url": "https://finwire.io/news/stock-markets-news/fomc-minutes-building-permits-and-pending-home-sales-due-wednesday"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLRE",
+              "direction": "baisse",
+              "raison_fr": "L’immobilier coté emprunte beaucoup et souffre de taux à long terme au-dessus de 5 %. Des chiffres du logement solides ou un compte rendu moins ferme que prévu pourraient renverser la prévision.",
+              "raison_en": "Listed real estate borrows heavily and suffers with long-term rates above 5%. Solid housing data or less hawkish minutes than expected could reverse this call."
+            },
+            {
+              "etf": "XLU",
+              "direction": "baisse",
+              "raison_fr": "Les services publics, très endettés et recherchés pour leurs dividendes, pâtissent de taux élevés, qui rendent les obligations plus attirantes. L’enthousiasme pour l’IA, grande consommatrice d’électricité, pourrait toutefois les soutenir.",
+              "raison_en": "Utilities, which carry heavy debt and are bought for their dividends, suffer from high rates that make bonds more attractive. Enthusiasm for AI, a big user of electricity, could still support them."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Le pétrole recule avec la hausse des stocks américains, malgré les tensions dans le Golfe",
+          "titre_en": "Oil falls as US inventories rise, despite Gulf tensions",
+          "resume_fr": "À 7 h 45 GMT, le Brent perdait 1,4 % à 91,86 dollars le baril et le pétrole américain WTI 2,2 % à 84,16 dollars, selon Grafa. Selon l’American Petroleum Institute, les stocks américains de brut ont augmenté de 5,28 millions de barils la semaine terminée le 13 novembre, et ceux d’essence de 5,12 millions. L’Agence internationale de l’énergie a chiffré l’offre mondiale d’octobre à 105,4 millions de barils par jour et prévoit un surplus au quatrième trimestre. La baisse reste limitée par les tensions autour de l’Iran : les États-Unis ont frappé un site de lancement de missiles sur l’île de Qeshm, et un navire de gaz a été touché près d’Oman. Les chiffres officiels de l’EIA sont attendus à 10 h 30.",
+          "resume_en": "At 7:45 GMT, Brent was down 1.4% at $91.86 a barrel and US crude (WTI) down 2.2% at $84.16, according to Grafa. According to the American Petroleum Institute, US crude stocks rose 5.28 million barrels in the week ended 13 November, and gasoline stocks 5.12 million. The International Energy Agency put October global supply at 105.4 million barrels a day and expects a surplus in the fourth quarter. The fall is limited by tensions around Iran: the US struck a missile launch site on Qeshm Island, and a gas tanker was hit near Oman. Official EIA figures are due at 10:30 a.m.",
+          "sources": [
+            {
+              "nom": "Grafa",
+              "url": "https://grafa.com/en/news/united-states/oil-prices-fall-us-crude-inventories-rise-november-18-2026"
+            },
+            {
+              "nom": "Gulf News",
+              "url": "https://gulfnews.com/business/energy/oil-slips-in-asia-led-by-murban-brent-wti-what-to-know-on-nov-18-2026-1.500751476"
+            },
+            {
+              "nom": "Investing.com via Finwire",
+              "url": "https://finwire.io/news/stock-markets-news/fomc-minutes-building-permits-and-pending-home-sales-due-wednesday"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLE",
+              "direction": "baisse",
+              "raison_fr": "Un baril en baisse et des stocks en hausse réduisent les recettes attendues des producteurs. Une baisse des stocks dans les chiffres de l’EIA ou une aggravation dans le Golfe ferait remonter le pétrole et le secteur.",
+              "raison_en": "A falling oil price and rising stocks cut producers’ expected revenue. A stock draw in the EIA figures or an escalation in the Gulf would lift oil and the sector."
+            }
+          ]
+        }
+      ],
+      "a_surveiller_fr": [
+        "Avant l’ouverture : résultats de TJX (conférence à 11 h). Conférences de Target à 8 h et de Lowe’s à 9 h.",
+        "8 h 30 : mises en chantier d’octobre (1,25 million attendu) et permis de construire (1,38 million attendu).",
+        "10 h : promesses de vente de logements d’octobre (baisse de 2,1 % attendue, après une baisse de 7,3 %).",
+        "10 h 30 : stocks de pétrole de l’EIA. 13 h : adjudication d’obligations d’État à 20 ans.",
+        "14 h : compte rendu de la Fed. Interventions de Daly (12 h 15), Barr (13 h 35), Williams (14 h 30) et Kashkari (16 h 15).",
+        "Après la clôture : résultats de Palo Alto Networks (conférence à 16 h 30). Ce soir : prix de l’entrée en Bourse d’Anthropic."
+      ],
+      "a_surveiller_en": [
+        "Before the open: TJX results (call at 11 a.m.). Target call at 8 a.m. and Lowe’s call at 9 a.m.",
+        "8:30 a.m.: October housing starts (1.25 million expected) and building permits (1.38 million expected).",
+        "10 a.m.: October pending home sales (2.1% drop expected, after a 7.3% drop).",
+        "10:30 a.m.: EIA oil inventories. 1 p.m.: 20-year Treasury bond auction.",
+        "2 p.m.: Fed minutes. Speeches by Daly (12:15 p.m.), Barr (1:35 p.m.), Williams (2:30 p.m.) and Kashkari (4:15 p.m.).",
+        "After the close: Palo Alto Networks results (call at 4:30 p.m.). Tonight: pricing of Anthropic’s stock market debut."
+      ]
+    },
+    {
       "date": "2026-11-17",
       "horizon": {
         "du": "2026-11-17",
