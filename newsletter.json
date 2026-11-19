@@ -1,6 +1,174 @@
 {
   "editions": [
     {
+      "date": "2026-11-19",
+      "horizon": {
+        "du": "2026-11-19",
+        "au": "2026-11-19"
+      },
+      "redige_par": "Claude (Anthropic)",
+      "titre_fr": "Anthropic fait ses débuts en Bourse, Walmart relève ses prévisions",
+      "titre_en": "Anthropic makes its market debut, Walmart raises its outlook",
+      "intro_fr": "Cinq nouvelles pour la séance de ce jeudi 19 novembre. Les contrats à terme sur le Nasdaq bondissent de plus de 2 % avant l’entrée en Bourse record d’Anthropic, après cinq séances de baisse du S&P 500. Walmart relève ses objectifs, la Fed prépare une hausse des taux en décembre, les assureurs santé restent sous pression et le pétrole se stabilise.",
+      "intro_en": "Five stories for the session of Thursday 19 November. Nasdaq futures jump more than 2% ahead of Anthropic’s record stock market debut, after five losing sessions for the S&P 500. Walmart raises its targets, the Fed is preparing a December rate rise, health insurers remain under pressure and oil steadies.",
+      "nouvelles": [
+        {
+          "titre_fr": "Anthropic entre en Bourse à 83 dollars, les contrats sur le Nasdaq bondissent de 2 %",
+          "titre_en": "Anthropic lists at $83 a share, Nasdaq futures jump 2%",
+          "resume_fr": "Anthropic, l’entreprise qui développe Claude, l’auteur de cette newsletter, a fixé le prix de son action à 83 dollars, au-dessus de la fourchette de 70 à 78 dollars, et lève 81 milliards de dollars, la plus grosse introduction en Bourse jamais réalisée selon Reuters. Valorisée environ 1 500 milliards de dollars, elle doit commencer à s’échanger aujourd’hui sur le Nasdaq sous le symbole ANT. À 5 h 48 à New York, les contrats à terme sur le Nasdaq 100 gagnaient 2,15 %, ceux sur le S&P 500 1,25 % et ceux sur le Dow Jones 0,67 %. Avant l’ouverture, Alphabet prenait 3,9 %, Amazon 2,2 %, Nvidia 1,8 %, et Intel, AMD, Micron et Marvell de 3,2 % à 4,6 %. Palo Alto Networks bondissait de 10 % après avoir relevé ses prévisions.",
+          "resume_en": "Anthropic, the company that develops Claude, the author of this newsletter, priced its shares at $83, above the $70 to $78 range, raising $81 billion, the largest listing on record according to Reuters. Valued at about $1.5 trillion, it is due to start trading today on the Nasdaq under the ticker ANT. At 5:48 a.m. New York time, Nasdaq 100 futures were up 2.15%, S&P 500 futures 1.25% and Dow futures 0.67%. Before the open, Alphabet was up 3.9%, Amazon 2.2%, Nvidia 1.8%, and Intel, AMD, Micron and Marvell between 3.2% and 4.6%. Palo Alto Networks jumped 10% after raising its forecast.",
+          "sources": [
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-futures-jump-anthropics-record-090243474.html"
+            },
+            {
+              "nom": "Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-19-dow-sp-500-nasdaq-anthropic-ipo-090910916.html"
+            },
+            {
+              "nom": "StockTitan",
+              "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-18-2026"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLK",
+              "direction": "hausse",
+              "raison_fr": "L’engouement autour d’Anthropic relance les puces, les logiciels de sécurité et l’IA, très présents dans le fonds. Si l’action ANT déçoit à ses débuts, ou si les investisseurs vendent pour financer leurs achats d’ANT, l’élan peut retomber, comme mercredi avec Nvidia.",
+              "raison_en": "Enthusiasm around Anthropic is reviving chips, security software and AI, heavily weighted in the fund. If ANT disappoints at its debut, or investors sell to fund ANT purchases, the momentum could fade, as it did with Nvidia on Wednesday."
+            },
+            {
+              "etf": "XLC",
+              "direction": "hausse",
+              "raison_fr": "Alphabet, poids lourd du fonds et investisseur dans Anthropic, gagne 3,9 % avant l’ouverture. Un début de cotation décevant pour ANT effacerait cet avantage.",
+              "raison_en": "Alphabet, a heavyweight in the fund and an investor in Anthropic, is up 3.9% before the open. A disappointing debut for ANT would erase this edge."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Walmart dépasse les attentes et relève ses prévisions annuelles",
+          "titre_en": "Walmart beats expectations and raises its full-year outlook",
+          "resume_fr": "Walmart a publié ce matin un chiffre d’affaires trimestriel de 188,8 milliards de dollars, en hausse de 5,2 %, et un bénéfice ajusté de 0,65 dollar par action, contre 0,64 dollar et 186,52 milliards de revenus attendus selon Earnings Whispers, cité par Admirals. Aux États-Unis, les ventes à magasins comparables progressent de 2,9 % et le commerce en ligne de 23 %. Le groupe relève sa prévision de bénéfice annuel ajusté à 2,84 à 2,89 dollars par action, contre 2,80 à 2,87 dollars en août, et vise désormais une croissance des ventes de 4,9 % à 5,2 %. Une conférence avec les analystes est prévue à 8 h.",
+          "resume_en": "Walmart reported this morning quarterly revenue of $188.8 billion, up 5.2%, and adjusted earnings of $0.65 per share, against $0.64 and $186.52 billion in revenue expected according to Earnings Whispers, cited by Admirals. In the US, comparable store sales rose 2.9% and online sales 23%. The group raised its full-year adjusted earnings forecast to $2.84 to $2.89 per share, from $2.80 to $2.87 in August, and now targets sales growth of 4.9% to 5.2%. A call with analysts is scheduled at 8 a.m.",
+          "sources": [
+            {
+              "nom": "Walmart (présentation des résultats, SEC)",
+              "url": "https://www.sec.gov/Archives/edgar/data/0000104169/000010416926000168/earningspresentationfy27.htm"
+            },
+            {
+              "nom": "Admirals",
+              "url": "https://admiralmarkets.com/analytics/traders-blog/walmart-earnings-preview-q3-fiscal-2027"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLP",
+              "direction": "hausse",
+              "raison_fr": "Walmart, l’un des plus gros poids du fonds, bat les attentes et relève ses objectifs. Mais un jour où l’argent court vers l’IA, les valeurs de consommation courante peuvent être délaissées, ce qui renverserait la prévision.",
+              "raison_en": "Walmart, one of the fund’s largest holdings, beat expectations and raised its targets. But on a day when money rushes to AI, consumer staples can be left behind, which would reverse this call."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Compte rendu de la Fed : presque tous les responsables veulent relever les taux",
+          "titre_en": "Fed minutes: nearly all officials see more rate rises",
+          "resume_fr": "Le compte rendu de la réunion des 27 et 28 octobre, publié mercredi, montre que presque tous les responsables de la Fed jugent de nouvelles hausses de taux probablement nécessaires si l’économie évolue comme prévu. Deux d’entre eux ont évoqué une hausse de plus d’un quart de point si l’inflation déçoit. Selon l’agence AP, les investisseurs voient près de 95 % de chances d’une hausse en décembre, et Christopher Waller a redit sur CNBC son soutien à une hausse d’un demi-point. Selon LSEG, cité par Reuters, une hausse d’un quart de point est presque certaine et une hausse d’un demi-point a environ 8 % de chances. La prochaine réunion a lieu les 8 et 9 décembre.",
+          "resume_en": "The minutes of the 27-28 October meeting, released on Wednesday, show that nearly all Fed officials see further rate rises as likely appropriate if the economy performs as expected. Two of them raised a rise of more than a quarter point if inflation disappoints. According to AP, investors see a nearly 95% chance of a December rise, and Christopher Waller repeated on CNBC his support for a half-point rise. According to LSEG, cited by Reuters, a quarter-point rise is a near certainty and a half-point move has about an 8% chance. The next meeting is on 8-9 December.",
+          "sources": [
+            {
+              "nom": "AP via Yahoo Finance",
+              "url": "https://ca.finance.yahoo.com/news/fed-minutes-higher-interest-rates-191215222.html"
+            },
+            {
+              "nom": "TraderFactor",
+              "url": "https://traderfactor.com/hawkish-fomc-minutes-lift-dollar-as-gold-plunges/"
+            },
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-futures-jump-anthropics-record-090243474.html"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLRE",
+              "direction": "baisse",
+              "raison_fr": "L’immobilier coté emprunte beaucoup et souffre quand les hausses de taux se précisent, surtout un jour où l’argent file vers la technologie. Des chiffres de l’emploi faibles à 8 h 30 feraient baisser les taux et aideraient le secteur.",
+              "raison_en": "Listed real estate borrows heavily and suffers as rate rises become clearer, especially on a day when money flows to tech. Weak jobs data at 8:30 a.m. would push rates down and help the sector."
+            },
+            {
+              "etf": "XLU",
+              "direction": "baisse",
+              "raison_fr": "Les services publics, endettés et achetés pour leurs dividendes, perdent de l’attrait quand les taux montent et que les investisseurs préfèrent le risque. Les besoins d’électricité de l’IA pourraient toutefois les soutenir.",
+              "raison_en": "Utilities, indebted and bought for their dividends, lose appeal when rates rise and investors favor risk. AI’s electricity needs could still support them."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Les assureurs santé chutent pour la deuxième séance après un projet de contrôles de Medicare",
+          "titre_en": "Health insurers fall for a second session on a Medicare audit proposal",
+          "resume_fr": "Les CMS, l’agence qui gère Medicare, ont proposé lundi d’étendre les contrôles des plans Medicare Advantage, gérés par des assureurs privés, pour lutter contre la fraude et les paiements indus. Mercredi, UnitedHealth a perdu 10,21 %, Humana 12,98 %, Elevance 7,63 % et Centene 7,03 % à la clôture, selon StockTitan. La relance par Bernie Sanders d’un projet d’assurance santé publique pour tous a pesé aussi. Oppenheimer juge cette chute excessive et s’attend à des recours en justice contre la règle.",
+          "resume_en": "The CMS, the agency that runs Medicare, proposed on Monday expanding audits of Medicare Advantage plans, run by private insurers, to fight fraud and improper payments. On Wednesday, UnitedHealth lost 10.21%, Humana 12.98%, Elevance 7.63% and Centene 7.03% at the close, according to StockTitan. Bernie Sanders’ renewed push for public health insurance for all also weighed. Oppenheimer sees the selloff as an overreaction and expects legal challenges to the rule.",
+          "sources": [
+            {
+              "nom": "Rallies.ai",
+              "url": "https://rallies.ai/news/health-insurers-extend-decline-on-proposed-new-rule-to-curb-fraud-73c041727c3585ed"
+            },
+            {
+              "nom": "StockTitan",
+              "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-18-2026"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLV",
+              "direction": "baisse",
+              "raison_fr": "La menace sur les marges des assureurs n’est pas levée, et l’argent qui part vers l’IA délaisse les valeurs prudentes comme la santé. Un rebond des assureurs, après deux jours de forte baisse, pourrait renverser la prévision.",
+              "raison_en": "The threat to insurers’ margins remains, and money flowing to AI leaves defensive sectors such as healthcare behind. A rebound in insurers after two days of steep losses could reverse this call."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Le pétrole se stabilise après une forte hausse des stocks américains",
+          "titre_en": "Oil steadies after a big rise in US inventories",
+          "resume_fr": "Selon l’EIA, les stocks américains de brut ont augmenté de 3,4 millions de barils la semaine terminée le 13 novembre, à 417,8 millions, alors qu’une hausse de 58 000 barils seulement était attendue, et ceux d’essence de 5,2 millions. Mercredi, le WTI américain a perdu 3,2 % à 83,26 dollars, sa plus basse clôture depuis le 26 août, et le Brent 1,28 % à 91,95 dollars. Jeudi à 2 h 37 GMT, le Brent remontait de 0,18 % à 92,12 dollars : l’Iran affirme que trois pétroliers ont été touchés par des mines à l’est du détroit d’Ormuz, mais les livraisons par ce passage sont revenues à peu près à leur niveau d’avant-guerre, selon Reuters.",
+          "resume_en": "According to the EIA, US crude stocks rose 3.4 million barrels in the week ended 13 November, to 417.8 million, against an expected rise of only 58,000 barrels, and gasoline stocks rose 5.2 million. On Wednesday, US crude (WTI) fell 3.2% to $83.26, its lowest close since 26 August, and Brent 1.28% to $91.95. On Thursday at 2:37 GMT, Brent was up 0.18% at $92.12: Iran says three tankers were hit by mines east of the Strait of Hormuz, but shipments through the strait are back to roughly pre-war levels, according to Reuters.",
+          "sources": [
+            {
+              "nom": "FinanceFeeds",
+              "url": "https://financefeeds.com/brent-crude-oil-price-92-12-thursday-eia-build-hormuz-mines-bull-96-bear-88/"
+            },
+            {
+              "nom": "TraderFactor",
+              "url": "https://traderfactor.com/hawkish-fomc-minutes-lift-dollar-as-gold-plunges/"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLE",
+              "direction": "baisse",
+              "raison_fr": "Des stocks qui gonflent et un baril proche de ses plus bas depuis août pèsent sur les producteurs, et la hausse attendue de la technologie leur laisse peu de place. Une aggravation autour d’Ormuz ferait remonter le pétrole et le secteur.",
+              "raison_en": "Swelling inventories and oil near its lowest since August weigh on producers, and the expected tech rally leaves them little room. An escalation around Hormuz would lift oil and the sector."
+            }
+          ]
+        }
+      ],
+      "a_surveiller_fr": [
+        "Avant l’ouverture : résultats d’Alibaba, PDD et NetEase. 8 h : conférence de Walmart.",
+        "8 h 30 : inscriptions hebdomadaires au chômage (198 000 attendues, après 200 000) et indice manufacturier de la Fed de Philadelphie (20,9 le mois dernier).",
+        "Interventions de responsables de la Fed : Hammack (8 h 50), Jefferson (9 h 25), Goolsbee (12 h 30), Barr (14 h 15) et Barkin (16 h).",
+        "10 h 30 : stocks de gaz naturel (25 milliards de pieds cubes attendus).",
+        "Dans la journée : premiers échanges de l’action Anthropic (ANT) sur le Nasdaq. Après la clôture : résultats d’Intuit."
+      ],
+      "a_surveiller_en": [
+        "Before the open: Alibaba, PDD and NetEase results. 8 a.m.: Walmart call.",
+        "8:30 a.m.: weekly jobless claims (198,000 expected, after 200,000) and Philadelphia Fed manufacturing index (20.9 last month).",
+        "Fed speakers: Hammack (8:50 a.m.), Jefferson (9:25 a.m.), Goolsbee (12:30 p.m.), Barr (2:15 p.m.) and Barkin (4 p.m.).",
+        "10:30 a.m.: natural gas inventories (25 billion cubic feet expected).",
+        "During the day: first trades of Anthropic (ANT) shares on the Nasdaq. After the close: Intuit results."
+      ]
+    },
+    {
       "date": "2026-11-18",
       "horizon": {
         "du": "2026-11-18",
