@@ -1,6 +1,176 @@
 {
   "editions": [
     {
+      "date": "2026-11-20",
+      "horizon": {
+        "du": "2026-11-20",
+        "au": "2026-11-20"
+      },
+      "redige_par": "Claude (Anthropic)",
+      "titre_fr": "Anthropic recule, la peur autour de l’IA fait encore glisser le Nasdaq",
+      "titre_en": "Anthropic slips as AI fears drag the Nasdaq lower again",
+      "intro_fr": "Cinq nouvelles pour la séance de ce vendredi 20 novembre. Après une chute de 1 101 points du Dow Jones jeudi, les contrats à terme sur le Nasdaq reculaient encore de 1,6 % tôt ce matin, avec l’action Anthropic en baisse de près de 7 %. La Fed reste prête à relever ses taux, le pétrole file vers une troisième semaine de baisse et Intuit déçoit.",
+      "intro_en": "Five stories for the session of Friday 20 November. After a 1,101-point drop in the Dow on Thursday, Nasdaq futures were down another 1.6% early this morning, with Anthropic shares down nearly 7%. The Fed remains ready to raise rates, oil is heading for a third weekly loss and Intuit disappoints.",
+      "nouvelles": [
+        {
+          "titre_fr": "Anthropic perd près de 7 % avant l’ouverture, les valeurs de l’IA restent sous pression",
+          "titre_en": "Anthropic drops nearly 7% before the open, AI stocks stay under pressure",
+          "resume_fr": "Après avoir ouvert jeudi à 111,50 dollars puis clôturé à 97,17 dollars, en hausse de 17 % sur son prix d’introduction de 83 dollars, l’action Anthropic reculait de 6,8 % avant l’ouverture vendredi, selon Reuters. À 4 h 57 à New York, les contrats à terme sur le Nasdaq 100 perdaient 1,63 %, ceux sur le S&P 500 0,76 % et ceux sur le Dow Jones 0,2 %. Nvidia cédait 2,6 %, et AMD, Broadcom, Marvell et Micron de 3,5 % à 5,5 %. Reuters cite les craintes d’un ralentissement des centres de données, des taux plus élevés et le départ du patron de Nvidia, Jensen Huang. Le Nasdaq est 13,6 % sous son record du 6 octobre.",
+          "resume_en": "After opening on Thursday at $111.50 and closing at $97.17, up 17% on its $83 offer price, Anthropic shares were down 6.8% before the open on Friday, according to Reuters. At 4:57 a.m. New York time, Nasdaq 100 futures were down 1.63%, S&P 500 futures 0.76% and Dow futures 0.2%. Nvidia was down 2.6%, and AMD, Broadcom, Marvell and Micron between 3.5% and 5.5%. Reuters cites fears of slower data center growth, higher borrowing costs and the departure of Nvidia CEO Jensen Huang. The Nasdaq is 13.6% below its 6 October record.",
+          "sources": [
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/wall-st-futures-slip-anthropic-104746137.html"
+            },
+            {
+              "nom": "Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/article/anthropic-stock-dives-after-rip-roaring-ipo-095411951.html"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLK",
+              "direction": "baisse",
+              "raison_fr": "Les puces et les géants de l’IA, très présents dans le fonds, reculent avant l’ouverture, et Anthropic n’a pas rassuré. Après une semaine de fortes baisses, des achats à bon compte pourraient toutefois provoquer un rebond.",
+              "raison_en": "Chips and AI giants, heavily weighted in the fund, are falling before the open, and Anthropic has not reassured investors. After a week of steep losses, bargain hunting could still trigger a rebound."
+            },
+            {
+              "etf": "XLC",
+              "direction": "baisse",
+              "raison_fr": "Meta recule de plus de 1,8 % avant l’ouverture et le fonds dépend beaucoup des grands groupes liés à l’IA. Alphabet, stable avant l’ouverture, pourrait limiter la baisse.",
+              "raison_en": "Meta is down more than 1.8% before the open and the fund depends heavily on large AI-linked groups. Alphabet, flat before the open, could limit the decline."
+            }
+          ]
+        },
+        {
+          "titre_fr": "La Fed se prépare à relever ses taux en décembre",
+          "titre_en": "The Fed is getting ready to raise rates in December",
+          "resume_fr": "Selon l’outil FedWatch du CME, cité par Reuters, les investisseurs voient 98,4 % de chances d’une hausse des taux lors de la réunion de décembre. Jeudi, la présidente de la Fed de Philadelphie, Anna Paulson, a déclaré que la Fed devra relever à nouveau ses taux parce que l’inflation est trop élevée. Le taux à dix ans de l’État américain évoluait autour de 5,05 %. Les chiffres de l’inflation PCE de la semaine prochaine sont attendus comme le prochain repère. Deux gouverneurs de la Fed, Christopher Waller et Michael Barr, s’expriment aujourd’hui.",
+          "resume_en": "According to CME FedWatch, cited by Reuters, investors see a 98.4% chance of a rate rise at the December meeting. On Thursday, Philadelphia Fed President Anna Paulson said the Fed will need to raise rates again because inflation is too high. The 10-year US Treasury yield was around 5.05%. Next week’s PCE inflation figures are seen as the next marker. Two Fed governors, Christopher Waller and Michael Barr, speak today.",
+          "sources": [
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/wall-st-futures-slip-anthropic-104746137.html"
+            },
+            {
+              "nom": "XTB",
+              "url": "https://www.xtb.com/en/market-analysis/economic-calendar-final-us-consumer-sentiment-data-and-speeches-by-fed-officials"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLRE",
+              "direction": "baisse",
+              "raison_fr": "L’immobilier coté emprunte beaucoup et souffre quand une hausse des taux se confirme, avec un taux à dix ans au-dessus de 5 %. Un discours plus prudent de Waller ou de Barr ferait baisser les taux et aiderait le secteur.",
+              "raison_en": "Listed real estate borrows heavily and suffers when a rate rise is confirmed, with the 10-year yield above 5%. A more cautious tone from Waller or Barr would push rates down and help the sector."
+            },
+            {
+              "etf": "XLU",
+              "direction": "hausse",
+              "raison_fr": "Un jour où les investisseurs fuient la technologie, les services publics, jugés sûrs, devraient faire mieux que l’ensemble du marché. Des taux qui grimpent encore pourraient effacer cet avantage.",
+              "raison_en": "On a day when investors flee tech, utilities, seen as safe, should beat the broader market. Rates climbing further could erase this edge."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Le pétrole vers une troisième semaine de baisse, Trump repousse sa décision sur l’Iran",
+          "titre_en": "Oil heads for a third weekly loss as Trump delays his Iran decision",
+          "resume_fr": "Interrogé par Reuters sur de nouvelles frappes contre l’Iran, Donald Trump a répondu qu’il en parlerait après le début de l’année, et il a donné le même calendrier à Fox News et Axios, selon Engine. Le Brent perdait 1,58 dollar à 90,88 dollars à 9 h GMT. Selon The National, le Brent se dirige vers une baisse de plus de 3 % sur la semaine et le WTI américain de plus de 6 %, une troisième baisse hebdomadaire de suite. Selon Reuters, les livraisons par le détroit d’Ormuz sont revenues à peu près à leur niveau d’avant-guerre, malgré des pétroliers touchés par des mines selon l’Iran et des missiles houthis tirés sur Riyad.",
+          "resume_en": "Asked by Reuters about new strikes on Iran, Donald Trump said he would talk about it after the start of the year, and gave the same timeline to Fox News and Axios, according to Engine. Brent was down $1.58 at $90.88 at 9:00 GMT. According to The National, Brent is heading for a weekly loss of more than 3% and US crude (WTI) more than 6%, a third straight weekly decline. According to Reuters, shipments through the Strait of Hormuz are back to roughly pre-war levels, despite tankers hit by mines according to Iran and Houthi missiles fired at Riyadh.",
+          "sources": [
+            {
+              "nom": "Engine",
+              "url": "https://www.engine.online/news/brent-declines-as-trump-pushes-iran-strike-decision-into-next-year-845d"
+            },
+            {
+              "nom": "The National",
+              "url": "https://www.thenationalnews.com/business/energy/2026/11/20/oil-on-track-to-post-weekly-decline-despite-middle-east-tension/"
+            },
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/wall-st-futures-slip-anthropic-104746137.html"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLE",
+              "direction": "baisse",
+              "raison_fr": "Le report d’une décision sur l’Iran éloigne la menace sur l’offre et fait reculer le baril, ce qui pèse sur les producteurs. Une nouvelle attaque dans le Golfe ferait remonter le pétrole et le secteur.",
+              "raison_en": "Delaying a decision on Iran eases the supply threat and pushes oil lower, weighing on producers. A new attack in the Gulf would lift oil and the sector."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Intuit et Ross Stores chutent après leurs résultats, Gap progresse",
+          "titre_en": "Intuit and Ross Stores fall after results, Gap gains",
+          "resume_fr": "Intuit, l’éditeur de TurboTax et QuickBooks, a publié jeudi un chiffre d’affaires trimestriel de 4,4 milliards de dollars, en hausse de 12 %, et un bénéfice ajusté de 2,91 dollars par action. Il prévoit une croissance des revenus de 6 % à 7 % au trimestre suivant et vend Mailchimp à Bending Spoons pour environ 3,68 milliards de dollars. Son action perdait 9,52 % après la clôture à 18 h 01, selon StockTitan. Ross Stores reculait de 5,18 % malgré des ventes en hausse et un objectif de bénéfice relevé. Gap gagnait 3,62 % après la clôture, puis 2,5 % avant l’ouverture selon Reuters, grâce aux ventes de Old Navy, mais prévoit des ventes annuelles à peu près stables.",
+          "resume_en": "Intuit, the maker of TurboTax and QuickBooks, reported on Thursday quarterly revenue of $4.4 billion, up 12%, and adjusted earnings of $2.91 per share. It expects revenue growth of 6% to 7% next quarter and is selling Mailchimp to Bending Spoons for about $3.68 billion. Its shares were down 9.52% after the close at 6:01 p.m., according to StockTitan. Ross Stores was down 5.18% despite higher sales and a raised earnings target. Gap was up 3.62% after the close, then 2.5% before the open according to Reuters, thanks to Old Navy sales, but expects roughly flat annual sales.",
+          "sources": [
+            {
+              "nom": "Intuit (communiqué, SEC)",
+              "url": "https://www.sec.gov/Archives/edgar/data/0000896878/000089687826000043/fy27q1earningspressrelease.htm"
+            },
+            {
+              "nom": "StockTitan",
+              "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-19-2026"
+            },
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/wall-st-futures-slip-anthropic-104746137.html"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLY",
+              "direction": "baisse",
+              "raison_fr": "La chute de Ross Stores et les ventes de Gap jugées seulement stables sur l’année montrent un consommateur prudent, et Amazon, poids lourd du fonds, recule avec l’IA. Un rebond d’Amazon renverserait la prévision.",
+              "raison_en": "Ross Stores’ fall and Gap’s roughly flat annual sales point to a cautious consumer, and Amazon, a heavyweight in the fund, is falling with AI. An Amazon rebound would reverse this call."
+            }
+          ]
+        },
+        {
+          "titre_fr": "L’indice manufacturier de Philadelphie plonge à 6,3",
+          "titre_en": "Philadelphia manufacturing index plunges to 6.3",
+          "resume_fr": "Jeudi, l’indice de l’activité manufacturière de la Fed de Philadelphie est tombé à 6,3 en novembre, contre 20,9 en octobre, alors que les économistes interrogés par Dow Jones attendaient 18, selon StockTitan. Les nouvelles inscriptions au chômage ont atteint 203 000, en hausse de 1 000. Le même jour, le Dow Jones a perdu 1 101,11 points, soit 2,19 %, le S&P 500 2,02 % et le Nasdaq 2,25 %, et l’indice de la peur VIX a approché 29, son plus haut depuis mars.",
+          "resume_en": "On Thursday, the Philadelphia Fed manufacturing index fell to 6.3 in November from 20.9 in October, while economists surveyed by Dow Jones expected 18, according to StockTitan. Initial jobless claims reached 203,000, up 1,000. The same day, the Dow lost 1,101.11 points, or 2.19%, the S&P 500 2.02% and the Nasdaq 2.25%, and the VIX fear gauge neared 29, its highest since March.",
+          "sources": [
+            {
+              "nom": "StockTitan",
+              "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-19-2026"
+            },
+            {
+              "nom": "MadeForTrade",
+              "url": "https://madefortrade.in/t/us-market-pulse-for-20-nov-2026/96160"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLI",
+              "direction": "baisse",
+              "raison_fr": "Un net ralentissement des usines dans la région de Philadelphie, couplé à des taux élevés, pèse sur les industriels. Comme le secteur a moins d’IA que le marché, il pourrait malgré tout mieux résister si la technologie chute encore.",
+              "raison_en": "A sharp slowdown in factories in the Philadelphia region, combined with high rates, weighs on industrials. Since the sector has less AI exposure than the market, it could still hold up better if tech falls further."
+            },
+            {
+              "etf": "XLB",
+              "direction": "baisse",
+              "raison_fr": "Les matériaux dépendent de l’activité industrielle, et l’or a chuté jeudi, ce qui pèse sur les mines. Un rebond des métaux renverserait la prévision.",
+              "raison_en": "Materials depend on industrial activity, and gold fell on Thursday, weighing on miners. A rebound in metals would reverse this call."
+            }
+          ]
+        }
+      ],
+      "a_surveiller_fr": [
+        "7 h 25 : discours de Christopher Waller, gouverneur de la Fed.",
+        "10 h : moral des consommateurs de l’Université du Michigan, version finale de novembre (51,0 attendu, après 51,6).",
+        "11 h 15 : discours de Michael Barr, gouverneur de la Fed."
+      ],
+      "a_surveiller_en": [
+        "7:25 a.m.: speech by Fed Governor Christopher Waller.",
+        "10 a.m.: final November University of Michigan consumer sentiment (51.0 expected, after 51.6).",
+        "11:15 a.m.: speech by Fed Governor Michael Barr."
+      ]
+    },
+    {
       "date": "2026-11-19",
       "horizon": {
         "du": "2026-11-19",
