@@ -1,6 +1,154 @@
 {
   "editions": [
     {
+      "date": "2026-11-23",
+      "horizon": {
+        "du": "2026-11-23",
+        "au": "2026-11-23"
+      },
+      "redige_par": "Claude (Anthropic)",
+      "titre_fr": "Rebond de la tech après sept séances de baisse, les taux reculent",
+      "titre_en": "Tech rebounds after seven losing sessions as yields ease",
+      "intro_fr": "Quatre nouvelles pour la séance de ce lundi 23 novembre, début d’une semaine raccourcie par Thanksgiving. Après un vendredi noir pour les valeurs de l’IA, les contrats à terme sur le Nasdaq 100 gagnaient environ 3 % dans la nuit. Les taux d’intérêt reculent, le pétrole glisse et le cuivre passe sous 12 000 dollars la tonne.",
+      "intro_en": "Four stories for the session of Monday 23 November, the start of a week shortened by Thanksgiving. After a black Friday for AI stocks, Nasdaq 100 futures were up about 3% overnight. Interest rates are easing, oil is slipping and copper has dropped below $12,000 a ton.",
+      "nouvelles": [
+        {
+          "titre_fr": "Les contrats à terme rebondissent après la déroute des valeurs de l’IA",
+          "titre_en": "Futures rebound after the rout in AI stocks",
+          "resume_fr": "À 2 h 29 à New York, les contrats à terme sur le Nasdaq 100 gagnaient 3,02 %, ceux sur le S&P 500 2,24 % et ceux sur le Dow Jones 1,58 %, selon Reuters. Vendredi, le Nasdaq a chuté de 5,3 % et est passé en baisse sur l’année, le Dow Jones a perdu 1,9 %, et le S&P 500, en baisse pour la septième séance de suite, est entré en correction, à plus de 10 % sous son record du 6 octobre, selon AP et Bloomberg. Nvidia a perdu 14 % vendredi et Anthropic 8,5 % lors de sa deuxième séance en Bourse. Les investisseurs s’inquiètent du coût élevé des investissements dans l’IA et de leur rentabilité.",
+          "resume_en": "At 2:29 a.m. New York time, Nasdaq 100 futures were up 3.02%, S&P 500 futures 2.24% and Dow futures 1.58%, according to Reuters. On Friday, the Nasdaq fell 5.3% and turned negative for the year, the Dow lost 1.9%, and the S&P 500, down for a seventh straight session, entered a correction, more than 10% below its 6 October record, according to AP and Bloomberg. Nvidia lost 14% on Friday and Anthropic 8.5% in its second trading session. Investors are worried about the high cost of AI spending and whether it will pay off.",
+          "sources": [
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/wall-street-futures-rebound-rough-075444520.html"
+            },
+            {
+              "nom": "AP via CP24",
+              "url": "https://www.cp24.com/news/money/2026/11/23/us-futures-climb-and-world-shares-are-mixed-as-big-tech-stocks-fall-in-asia/"
+            },
+            {
+              "nom": "Bloomberg via swissinfo.ch",
+              "url": "https://www.swissinfo.ch/eng/stock-futures-rally-after-ai-rout,-havens-decline:-markets-wrap/92421262"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLK",
+              "direction": "hausse",
+              "raison_fr": "Les puces et les géants de l’IA, très présents dans le fonds, ont le plus baissé et devraient le plus rebondir. Si les ventes reprennent après l’ouverture, comme souvent après un rebond de nuit, la prévision tomberait.",
+              "raison_en": "Chips and AI giants, heavily weighted in the fund, fell the most and should rebound the most. If selling resumes after the open, as often happens after an overnight bounce, this call would fail."
+            },
+            {
+              "etf": "XLU",
+              "direction": "baisse",
+              "raison_fr": "Les services publics, achetés comme refuge pendant la chute, devraient être délaissés quand les investisseurs reviennent vers la technologie. Un rebond qui s’essouffle ramènerait les achats prudents.",
+              "raison_en": "Utilities, bought as a safe haven during the fall, should be left behind as investors return to tech. A fading rebound would bring cautious buying back."
+            },
+            {
+              "etf": "XLP",
+              "direction": "baisse",
+              "raison_fr": "Les produits de consommation courante, jugés sûrs, font en général moins bien que le marché un jour de fort rebond. Une rechute de l’IA inverserait cet effet.",
+              "raison_en": "Consumer staples, seen as safe, usually lag the market on a day of strong rebound. A relapse in AI stocks would reverse this."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Bessent met en garde la Fed, les taux reculent",
+          "titre_en": "Bessent warns the Fed as yields fall",
+          "resume_fr": "Dimanche, le secrétaire au Trésor Scott Bessent a averti la Fed qu’un resserrement excessif de sa politique monétaire pourrait mettre en danger l’économie américaine, selon Investing.com. Il a aussi déclaré que l’État examinera les ventes de puces de Nvidia à la Chine. Les investisseurs ont cessé de parier à coup sûr sur une hausse d’au moins un quart de point des taux de la Fed en décembre. Le taux à deux ans de l’État américain a connu sa plus forte baisse depuis août 2025 et le taux à dix ans est repassé sous 5 %. John Williams, président de la Fed de New York, parle de l’économie et de la politique monétaire à 16 h.",
+          "resume_en": "On Sunday, Treasury Secretary Scott Bessent warned the Fed that overtightening monetary policy could imperil the US economy, according to Investing.com. He also said the government will look into Nvidia’s chip sales to China. Investors stopped fully pricing in a rate rise of at least a quarter point at the Fed’s December meeting. The 2-year US Treasury yield logged its biggest drop since August 2025 and the 10-year yield slid back below 5%. New York Fed President John Williams speaks on the economy and monetary policy at 4 p.m.",
+          "sources": [
+            {
+              "nom": "Investing.com",
+              "url": "https://uk.investing.com/news/economy-news/futures-bounce-after-ai-selloff-bessent-on-nvidia-probe--whats-moving-markets-4998661"
+            },
+            {
+              "nom": "Fed de New York",
+              "url": "https://www.newyorkfed.org/newsevents/mediaadvisory/2026/1113-2026"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLRE",
+              "direction": "hausse",
+              "raison_fr": "L’immobilier coté emprunte beaucoup et profite de taux plus bas, avec un taux à dix ans repassé sous 5 %. Une remontée des taux pendant la séance effacerait cet avantage.",
+              "raison_en": "Listed real estate borrows heavily and benefits from lower rates, with the 10-year yield back below 5%. Rates climbing again during the session would erase this edge."
+            },
+            {
+              "etf": "XLF",
+              "direction": "incertain",
+              "raison_fr": "Le retour de l’appétit pour le risque aide les banques, mais la baisse des taux réduit ce qu’elles gagnent sur leurs prêts. Les deux forces s’équilibrent.",
+              "raison_en": "Returning risk appetite helps banks, but falling rates cut what they earn on loans. The two forces balance out."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Le pétrole recule, l’offre continue de se rétablir",
+          "titre_en": "Oil slips as supply keeps recovering",
+          "resume_fr": "Tôt lundi, le Brent perdait 0,6 % à 92,02 dollars le baril et le pétrole américain 0,4 % à 83,04 dollars, selon AP. AP explique la baisse par le rétablissement de l’offre, même si les États-Unis et l’Iran n’ont pas encore conclu d’accord durable sur la guerre. La semaine dernière, le Brent a perdu 4 % et le pétrole américain 5 %, selon Investing.com. Les Houthis ont revendiqué une attaque contre une raffinerie saoudienne pendant le week-end.",
+          "resume_en": "Early Monday, Brent was down 0.6% at $92.02 a barrel and US crude 0.4% at $83.04, according to AP. AP attributes the decline to recovering supply, even though the United States and Iran have yet to reach a lasting deal over the war. Last week, Brent lost 4% and US crude 5%, according to Investing.com. Houthi militants claimed an attack on a Saudi refinery over the weekend.",
+          "sources": [
+            {
+              "nom": "AP via CP24",
+              "url": "https://www.cp24.com/news/money/2026/11/23/us-futures-climb-and-world-shares-are-mixed-as-big-tech-stocks-fall-in-asia/"
+            },
+            {
+              "nom": "Investing.com",
+              "url": "https://uk.investing.com/news/economy-news/futures-bounce-after-ai-selloff-bessent-on-nvidia-probe--whats-moving-markets-4998661"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLE",
+              "direction": "baisse",
+              "raison_fr": "Un baril en baisse pèse sur les producteurs, et l’énergie profite peu d’un rebond tiré par la technologie. Une nouvelle attaque dans le Golfe ferait remonter le pétrole et le secteur.",
+              "raison_en": "A falling oil price weighs on producers, and energy gains little from a tech-led rebound. A new attack in the Gulf would lift oil and the sector."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Le cuivre passe sous 12 000 dollars, l’or rebondit",
+          "titre_en": "Copper drops below $12,000 as gold rebounds",
+          "resume_fr": "Le cuivre est tombé sous 12 000 dollars la tonne à la Bourse des métaux de Londres, selon Bloomberg. L’or rebondissait autour de 3 620 dollars l’once, les investisseurs réduisant leurs paris sur une hausse rapide des taux de la Fed. En Asie, la Chine a assoupli les règles sur les achats d’actions à crédit et la Corée du Sud a assoupli les limites sur les rachats d’actions. Le cuivre sert dans la construction, l’électricité et l’industrie, et son prix est souvent vu comme un signe de la santé de l’économie.",
+          "resume_en": "Copper fell below $12,000 a ton on the London Metal Exchange, according to Bloomberg. Gold was rebounding to around $3,620 an ounce as traders scaled back bets on a near-term Fed rate rise. In Asia, China eased rules on buying shares with borrowed money and South Korea eased limits on share buybacks. Copper is used in construction, power and industry, and its price is often seen as a sign of economic health.",
+          "sources": [
+            {
+              "nom": "Bloomberg via swissinfo.ch",
+              "url": "https://www.swissinfo.ch/eng/stock-futures-rally-after-ai-rout,-havens-decline:-markets-wrap/92421262"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLB",
+              "direction": "baisse",
+              "raison_fr": "La baisse du cuivre pèse sur les producteurs de métaux, et les matériaux profitent peu d’un rebond tiré par l’IA. Le rebond de l’or, qui aide les mines d’or, pourrait limiter la baisse.",
+              "raison_en": "Falling copper weighs on metal producers, and materials gain little from an AI-led rebound. Gold’s rebound, which helps gold miners, could limit the decline."
+            },
+            {
+              "etf": "XLI",
+              "direction": "baisse",
+              "raison_fr": "Un cuivre en baisse signale une demande industrielle plus faible, et les industriels suivent moins le rebond de la technologie. Un bon indice PMI à 9 h 45 renverserait la prévision.",
+              "raison_en": "Weaker copper signals softer industrial demand, and industrials follow the tech rebound less. A strong PMI at 9:45 a.m. would reverse this call."
+            }
+          ]
+        }
+      ],
+      "a_surveiller_fr": [
+        "8 h 30 : indice national d’activité d’octobre.",
+        "9 h 45 : indices PMI S&P Global de novembre (industrie, services, ensemble), premières estimations.",
+        "13 h : le Trésor vend 69 milliards de dollars d’emprunts à deux ans.",
+        "16 h : intervention de John Williams, président de la Fed de New York.",
+        "Après la clôture : résultats de Hewlett Packard Enterprise, Zoom et Agilent."
+      ],
+      "a_surveiller_en": [
+        "8:30 a.m.: October National Activity Index.",
+        "9:45 a.m.: S&P Global November flash PMIs (manufacturing, services, composite).",
+        "1 p.m.: the Treasury sells $69 billion of 2-year notes.",
+        "4 p.m.: remarks by New York Fed President John Williams.",
+        "After the close: results from Hewlett Packard Enterprise, Zoom and Agilent."
+      ]
+    },
+    {
       "date": "2026-11-20",
       "horizon": {
         "du": "2026-11-20",
