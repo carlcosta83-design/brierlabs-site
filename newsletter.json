@@ -1,6 +1,154 @@
 {
   "editions": [
     {
+      "date": "2026-11-24",
+      "horizon": {
+        "du": "2026-11-24",
+        "au": "2026-11-24"
+      },
+      "redige_par": "Claude (Anthropic)",
+      "titre_fr": "Les puces reprennent leur souffle après le bond historique de Nvidia",
+      "titre_en": "Chip stocks catch their breath after Nvidia’s historic jump",
+      "intro_fr": "Quatre nouvelles pour la séance de ce mardi 24 novembre. Après la meilleure journée depuis avril 2025 pour le S&P 500 et le Nasdaq, les contrats à terme reculent, menés par les valeurs des semi-conducteurs. Les taux à court terme montent encore, une hausse des taux de la Fed en décembre étant désormais jugée certaine, et le pétrole reste près de son plus bas depuis trois mois.",
+      "intro_en": "Four stories for the session of Tuesday 24 November. After the best day since April 2025 for the S&P 500 and the Nasdaq, futures are slipping, led by chip stocks. Short-term yields are rising again as a Fed rate hike in December is now seen as a certainty, and oil stays near a three-month low.",
+      "nouvelles": [
+        {
+          "titre_fr": "Les contrats à terme reculent, les puces rendent une partie de leurs gains",
+          "titre_en": "Futures slip as chip stocks give back some gains",
+          "resume_fr": "À 5 h 26 à New York, les contrats à terme sur le Nasdaq 100 perdaient 1,11 %, ceux sur le S&P 500 0,46 % et ceux sur le Dow Jones 0,14 %, selon Reuters. Lundi, Nvidia a bondi de 31,5 %, sa plus forte hausse en un jour depuis 23 ans, après que son conseil d’administration a réintégré à l’unanimité Jensen Huang comme PDG. Mardi avant l’ouverture, Nvidia reculait de 4,4 %, et Micron, AMD et Marvell de 3,3 % à 4,3 %. Hewlett Packard Enterprise chutait de 11,1 % après ses résultats trimestriels.",
+          "resume_en": "At 5:26 a.m. New York time, Nasdaq 100 futures were down 1.11%, S&P 500 futures 0.46% and Dow futures 0.14%, according to Reuters. On Monday, Nvidia jumped 31.5%, its biggest one-day gain in 23 years, after its board unanimously reinstated Jensen Huang as CEO. Before Tuesday’s open, Nvidia was down 4.4%, and Micron, AMD and Marvell were down between 3.3% and 4.3%. Hewlett Packard Enterprise fell 11.1% after its quarterly results.",
+          "sources": [
+            {
+              "nom": "Reuters via SRN News",
+              "url": "https://srnnews.com/wall-st-futures-dip-as-chip-stocks-cool-after-nvidia-fueled-rally/"
+            },
+            {
+              "nom": "Nvidia (dépôt SEC)",
+              "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000090/nov23pressrelease.htm"
+            },
+            {
+              "nom": "Fox Business",
+              "url": "https://www.foxbusiness.com/markets/stocks-november-23-2026"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLK",
+              "direction": "baisse",
+              "raison_fr": "Les fabricants de puces, très présents dans le fonds, ont le plus monté lundi et sont les premiers à être vendus ce matin. Si les acheteurs reviennent après l’ouverture pour prolonger le rebond, la prévision tomberait.",
+              "raison_en": "Chipmakers, heavily weighted in the fund, rose the most on Monday and are the first to be sold this morning. If buyers return after the open to extend the rebound, this call would fail."
+            },
+            {
+              "etf": "XLP",
+              "direction": "hausse",
+              "raison_fr": "Les produits de consommation courante, jugés sûrs, font en général mieux que le marché un jour de prises de bénéfices sur la technologie. Une reprise des achats sur l’IA les laisserait à la traîne.",
+              "raison_en": "Consumer staples, seen as safe, usually beat the market on a day of profit-taking in tech. A renewed rush into AI stocks would leave them behind."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Williams (Fed) juge l’inflation trop élevée, les taux à court terme montent",
+          "titre_en": "Fed’s Williams says inflation is too high as short-term yields rise",
+          "resume_fr": "Lundi, John Williams, président de la Fed de New York, a jugé l’inflation « trop élevée » et a laissé entendre qu’il soutient une hausse des taux à la réunion des 8 et 9 décembre, selon Reuters. Il ne s’interdit pas de relever les taux à plusieurs réunions de suite si nécessaire. Il prévoit une inflation de 3,5 % fin 2026 et le retour à l’objectif de 2 % en 2028. Le taux directeur est aujourd’hui entre 3,75 % et 4 %. Les marchés jugent désormais certaine une hausse d’un quart de point en décembre, contre 89 % vendredi, et le taux à deux ans de l’État américain monte pour la deuxième séance, à 4,68 %.",
+          "resume_en": "On Monday, New York Fed President John Williams called inflation “too high” and signaled he supports a rate hike at the 8-9 December meeting, according to Reuters. He did not rule out raising rates at consecutive meetings if needed. He expects inflation at 3.5% at the end of 2026 and back to the 2% target in 2028. The policy rate currently stands at 3.75% to 4%. Markets now see a quarter-point hike in December as certain, up from 89% on Friday, and the 2-year US Treasury yield is rising for a second session, to 4.68%.",
+          "sources": [
+            {
+              "nom": "Reuters via Kitco",
+              "url": "https://www.kitco.com/news/off-the-wire/2026-11-23/feds-williams-says-inflation-still-too-high-signals-more-rate-hikes"
+            },
+            {
+              "nom": "Reuters via The Irish Times",
+              "url": "https://www.irishtimes.com/business/markets/2026/11/24/asian-stocks-rally-as-huangs-return-to-nvidia-revives-ai-trade/"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLRE",
+              "direction": "baisse",
+              "raison_fr": "L’immobilier coté emprunte beaucoup et souffre quand les taux montent et que la Fed promet de les relever encore. Une détente des taux pendant la séance renverserait la prévision.",
+              "raison_en": "Listed real estate borrows heavily and suffers when rates rise and the Fed signals more hikes. Yields easing during the session would reverse this call."
+            },
+            {
+              "etf": "XLU",
+              "direction": "baisse",
+              "raison_fr": "Les services publics versent des dividendes réguliers, moins attrayants quand les obligations rapportent davantage. Un repli marqué de la technologie pourrait toutefois attirer vers eux des achats prudents.",
+              "raison_en": "Utilities pay steady dividends, which look less attractive when bonds pay more. A sharp drop in tech could still draw cautious buying toward them."
+            },
+            {
+              "etf": "XLF",
+              "direction": "hausse",
+              "raison_fr": "Des taux plus élevés augmentent ce que les banques gagnent sur leurs prêts, et le secteur dépend peu des puces. Une forte baisse générale du marché pèserait aussi sur les banques.",
+              "raison_en": "Higher rates boost what banks earn on loans, and the sector has little exposure to chips. A broad market slide would weigh on banks too."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Le pétrole reste près de son plus bas depuis trois mois",
+          "titre_en": "Oil stays near a three-month low",
+          "resume_fr": "Mardi matin en Asie, le Brent perdait 0,6 % à 88,80 dollars le baril, après avoir chuté de 3,5 % lundi à 89,37 dollars, son plus bas depuis trois mois, selon Reuters. Reuters explique la baisse par la hausse de l’offre au Moyen-Orient, qui l’emporte sur les inquiétudes liées aux attaques contre des navires et des raffineries dans la région. Le pétrole américain cédait 0,3 % à 79,90 dollars, selon AP. Depuis l’attaque des États-Unis et d’Israël contre l’Iran en février, le Brent a oscillé entre 72 et 114 dollars.",
+          "resume_en": "Early Tuesday in Asia, Brent was down 0.6% at $88.80 a barrel, after falling 3.5% on Monday to $89.37, a three-month low, according to Reuters. Reuters attributes the decline to rising Middle East supply, which outweighs worries about attacks on ships and refineries in the region. US crude was down 0.3% at $79.90, according to AP. Since the United States and Israel attacked Iran in February, Brent has swung between $72 and $114.",
+          "sources": [
+            {
+              "nom": "Reuters via The Irish Times",
+              "url": "https://www.irishtimes.com/business/markets/2026/11/24/asian-stocks-rally-as-huangs-return-to-nvidia-revives-ai-trade/"
+            },
+            {
+              "nom": "AP via The Korea Times",
+              "url": "https://www.koreatimes.co.kr/world/20261124/asian-stocks-rally-after-wall-street-rebound-as-jensen-huang-returns-as-nvidias-ceo"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLE",
+              "direction": "baisse",
+              "raison_fr": "Un baril proche de son plus bas depuis trois mois pèse sur les revenus des producteurs. Une nouvelle attaque dans le Golfe ou un blocage des discussions entre Washington et Téhéran ferait remonter le pétrole et le secteur.",
+              "raison_en": "A barrel near a three-month low weighs on producers’ revenue. A new attack in the Gulf or a stall in US-Iran talks would lift oil and the sector."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Confiance des ménages et résultats des distributeurs avant Thanksgiving",
+          "titre_en": "Consumer confidence and retailer results ahead of Thanksgiving",
+          "resume_fr": "À 10 h, le Conference Board publie son indice de confiance des consommateurs de novembre, attendu à 92,1 après 91,7 en octobre, selon Investing.com. Avant l’ouverture, Best Buy, Medtronic et Analog Devices publient leurs résultats ; Dell, Workday, Autodesk et HP suivront après la clôture. Ces chiffres arrivent à deux jours de Thanksgiving, qui ouvre la saison des achats de fin d’année. La Bourse sera fermée jeudi et fermera à 13 h vendredi.",
+          "resume_en": "At 10 a.m., the Conference Board releases its November consumer confidence index, expected at 92.1 after 91.7 in October, according to Investing.com. Before the open, Best Buy, Medtronic and Analog Devices report results; Dell, Workday, Autodesk and HP follow after the close. The figures come two days before Thanksgiving, which kicks off the holiday shopping season. The stock market is closed on Thursday and closes at 1 p.m. on Friday.",
+          "sources": [
+            {
+              "nom": "Investing.com",
+              "url": "https://www.investing.com/news/stock-market-news/cb-consumer-confidence-highlights-economic-data-due-tuesday-93CH-5046246"
+            },
+            {
+              "nom": "Gotrade",
+              "url": "https://heygotrade.com/en/news/weekly-economic-outlook-2026-11-23"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLY",
+              "direction": "baisse",
+              "raison_fr": "Des taux qui montent renchérissent le crédit des ménages, et la confiance reste basse. Une confiance nettement meilleure que prévu à 10 h, ou de bons chiffres de Best Buy, renverserait la prévision.",
+              "raison_en": "Rising rates make household credit more expensive, and confidence remains low. Confidence well above forecasts at 10 a.m., or strong numbers from Best Buy, would reverse this call."
+            }
+          ]
+        }
+      ],
+      "a_surveiller_fr": [
+        "Avant l’ouverture : résultats de Best Buy, Medtronic et Analog Devices.",
+        "8 h 15 : emplois privés ADP, chiffre hebdomadaire.",
+        "9 h : prix des logements (S&P Case-Shiller et FHFA).",
+        "10 h : confiance des consommateurs du Conference Board (attendue à 92,1) et indice manufacturier de la Fed de Richmond.",
+        "13 h : le Trésor vend des emprunts à cinq ans.",
+        "Après la clôture : résultats de Dell, Workday, Autodesk et HP."
+      ],
+      "a_surveiller_en": [
+        "Before the open: results from Best Buy, Medtronic and Analog Devices.",
+        "8:15 a.m.: ADP weekly private payrolls.",
+        "9 a.m.: house prices (S&P Case-Shiller and FHFA).",
+        "10 a.m.: Conference Board consumer confidence (expected 92.1) and Richmond Fed manufacturing index.",
+        "1 p.m.: the Treasury sells 5-year notes.",
+        "After the close: results from Dell, Workday, Autodesk and HP."
+      ]
+    },
+    {
       "date": "2026-11-23",
       "horizon": {
         "du": "2026-11-23",
