@@ -1,6 +1,164 @@
 {
   "editions": [
     {
+      "date": "2026-11-25",
+      "horizon": {
+        "du": "2026-11-25",
+        "au": "2026-11-25"
+      },
+      "redige_par": "Claude (Anthropic)",
+      "titre_fr": "Les doutes sur l’IA font plonger les contrats à terme avant l’inflation",
+      "titre_en": "AI doubts sink futures ahead of inflation data",
+      "intro_fr": "Quatre nouvelles pour la séance de ce mercredi 25 novembre, la dernière complète avant Thanksgiving. Les contrats à terme sur le Nasdaq 100 reculent de plus de 2 % : les doutes sur la rentabilité de l’IA pèsent sur Nvidia et même sur Dell, malgré des résultats record. À 8 h 30, l’indice d’inflation préféré de la Fed tombe, tandis que Washington prépare de nouveaux droits de douane et que le pétrole reste sous 91 dollars.",
+      "intro_en": "Four stories for the session of Wednesday 25 November, the last full one before Thanksgiving. Nasdaq 100 futures are down more than 2%: doubts about AI profits weigh on Nvidia and even on Dell, despite record results. At 8:30 a.m. the Fed’s preferred inflation gauge comes out, while Washington prepares new tariffs and oil stays below $91.",
+      "nouvelles": [
+        {
+          "titre_fr": "Les valeurs de l’IA chutent encore, Dell recule malgré des résultats record",
+          "titre_en": "AI stocks slide again as Dell falls despite record results",
+          "resume_fr": "À 5 h 44 à New York, les contrats à terme sur le Nasdaq 100 perdaient 2,55 %, ceux sur le S&P 500 1,54 % et ceux sur le Dow Jones 0,82 %, selon TipRanks. Mardi, le S&P 500 avait cédé 0,50 % et le Nasdaq 1,48 %, tandis que le Dow gagnait 0,85 % grâce aux distributeurs. Nvidia a perdu près de 6 % mardi et continue de baisser, selon Yahoo Finance. Dell a pourtant publié un chiffre d’affaires trimestriel de 54,9 milliards de dollars, au-dessus des 49,3 milliards attendus, et un carnet de commandes de serveurs d’IA de 132 milliards ; l’action recule avant l’ouverture, les coûts élevés de l’IA devant peser sur les marges.",
+          "resume_en": "At 5:44 a.m. New York time, Nasdaq 100 futures were down 2.55%, S&P 500 futures 1.54% and Dow futures 0.82%, according to TipRanks. On Tuesday, the S&P 500 lost 0.50% and the Nasdaq 1.48%, while the Dow gained 0.85% thanks to retailers. Nvidia lost nearly 6% on Tuesday and is still falling, according to Yahoo Finance. Dell reported quarterly revenue of $54.9 billion, above the $49.3 billion expected, and a $132 billion backlog of AI server orders; its shares are falling before the open, as high AI costs are expected to weigh on margins.",
+          "sources": [
+            {
+              "nom": "TipRanks",
+              "url": "https://www.tipranks.com/news/stock-market-today-nov-25-wall-street-braces-for-inflation-data-after-tech-led-selloff"
+            },
+            {
+              "nom": "Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-25-dow-sp-500-nasdaq-pce-inflation-data-091428237.html"
+            },
+            {
+              "nom": "Proactive Investors via Yahoo Finance",
+              "url": "https://finance.yahoo.com/technology/articles/dell-shares-rise-earnings-beat-213400130.html"
+            },
+            {
+              "nom": "InvestorsHub via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/us-stock-futures-fall-ai-095129084.html"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLK",
+              "direction": "baisse",
+              "raison_fr": "Les fabricants de puces et de serveurs, très présents dans le fonds, sont au cœur des ventes, et même de bons résultats comme ceux de Dell ne rassurent pas. Un rebond des acheteurs après l’ouverture renverserait la prévision.",
+              "raison_en": "Chip and server makers, heavily weighted in the fund, are at the center of the selling, and even strong results like Dell’s do not reassure. Buyers stepping back in after the open would reverse this call."
+            },
+            {
+              "etf": "XLP",
+              "direction": "hausse",
+              "raison_fr": "Les produits de consommation courante, jugés sûrs, résistent en général mieux un jour de fortes ventes sur la technologie. Une inflation plus forte que prévu à 8 h 30 pourrait peser aussi sur eux.",
+              "raison_en": "Consumer staples, seen as safe, usually hold up better on a day of heavy tech selling. Hotter than expected inflation at 8:30 a.m. could weigh on them too."
+            },
+            {
+              "etf": "XLU",
+              "direction": "hausse",
+              "raison_fr": "Les services publics attirent les investisseurs prudents, et le taux à dix ans recule vers 4,86 %, ce qui rend leurs dividendes plus attrayants. Une remontée des taux après les chiffres d’inflation effacerait cet avantage.",
+              "raison_en": "Utilities draw cautious investors, and the 10-year yield is easing toward 4.86%, which makes their dividends more attractive. Yields rising again after the inflation data would erase this edge."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Inflation PCE, croissance et chômage : salve de chiffres à 8 h 30",
+          "titre_en": "PCE inflation, growth and jobless claims: a burst of data at 8:30 a.m.",
+          "resume_fr": "À 8 h 30, le gouvernement publie l’indice des prix PCE d’octobre, la mesure d’inflation préférée de la Fed, selon Yahoo Finance et XTB. Il est attendu en hausse de 0,3 % sur un mois et de 3,8 % sur un an, après 3,6 % ; hors énergie et alimentation, 3,2 % sur un an après 3,1 %. Au même moment sortent la croissance du troisième trimestre (attendue à 3,5 % en rythme annuel) et les inscriptions hebdomadaires au chômage (200 000 attendues). Les marchés jugent à 98 % probable une hausse d’un quart de point des taux de la Fed en décembre, selon Yahoo Finance.",
+          "resume_en": "At 8:30 a.m., the government releases the October PCE price index, the Fed’s preferred inflation gauge, according to Yahoo Finance and XTB. It is expected to rise 0.3% on the month and 3.8% on the year, after 3.6%; excluding food and energy, 3.2% on the year after 3.1%. At the same time come third-quarter growth (expected at a 3.5% annual rate) and weekly jobless claims (200,000 expected). Markets see a 98% chance of a quarter-point Fed rate hike in December, according to Yahoo Finance.",
+          "sources": [
+            {
+              "nom": "Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-25-dow-sp-500-nasdaq-pce-inflation-data-091428237.html"
+            },
+            {
+              "nom": "XTB",
+              "url": "https://www.xtb.com/int/market-analysis/news-and-research/economic-calendar-us-pce-data-in-market-focus-25-11-2026"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLRE",
+              "direction": "baisse",
+              "raison_fr": "L’immobilier coté emprunte beaucoup et souffre si l’inflation confirme que la Fed doit relever ses taux. Une inflation plus faible que prévu ferait baisser les taux et aiderait le secteur.",
+              "raison_en": "Listed real estate borrows heavily and suffers if inflation confirms that the Fed must raise rates. Inflation below forecasts would push yields down and help the sector."
+            },
+            {
+              "etf": "XLV",
+              "direction": "hausse",
+              "raison_fr": "La santé dépend peu des taux et de l’IA : ses ventes de médicaments et de soins tiennent quelle que soit l’économie. Un fort rebond de la technologie la laisserait à la traîne.",
+              "raison_en": "Health care depends little on rates or AI: drug and care sales hold up whatever the economy does. A strong tech rebound would leave it behind."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Washington prépare de nouveaux droits de douane sur la Chine, l’UE et 14 autres économies",
+          "titre_en": "Washington readies new tariffs on China, the EU and 14 other economies",
+          "resume_fr": "Le gouvernement Trump s’apprête à annoncer de nouveaux droits de douane après une enquête sur les surcapacités industrielles lancée en mars, selon trois sources citées par Reuters mardi ; rien n’est encore officiel. Seize économies sont visées, dont la Chine, l’Union européenne, l’Inde, le Japon et la Corée du Sud. Les taux ne sont pas connus, mais la Maison Blanche devrait respecter les plafonds des accords déjà signés, comme 15 % pour l’UE, le Japon et la Corée, selon Reuters. Ces taxes remplaceraient en partie celles annulées par la Cour suprême en février ; Washington reproche notamment à la Chine d’inonder le marché d’acier, d’aluminium, de voitures électriques et d’électroménager.",
+          "resume_en": "The Trump administration is set to announce new tariffs after a probe into excess factory capacity launched in March, according to three sources cited by Reuters on Tuesday; nothing is official yet. Sixteen economies are targeted, including China, the European Union, India, Japan and South Korea. Rates are not known, but the White House is expected to honor the caps in signed trade deals, such as 15% for the EU, Japan and Korea, according to Reuters. The duties would partly replace those struck down by the Supreme Court in February; Washington accuses China in particular of flooding markets with steel, aluminum, electric vehicles and appliances.",
+          "sources": [
+            {
+              "nom": "Reuters via WHBL",
+              "url": "https://whbl.com/2026/11/24/trump-administration-set-to-unveil-new-tariffs-after-probe-on-excess-factory-capacity-sources-say/"
+            },
+            {
+              "nom": "Bloomberg via Transport Topics",
+              "url": "https://www.ttnews.com/articles/us-tariff-hike-china-eu-goods"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLY",
+              "direction": "baisse",
+              "raison_fr": "Les distributeurs et fabricants de biens de consommation importent beaucoup d’Asie, et de nouvelles taxes renchériraient leurs produits. Des taux finalement modestes, ou de bons chiffres de dépenses des ménages, renverseraient la prévision.",
+              "raison_en": "Retailers and consumer goods makers import heavily from Asia, and new duties would make their products more expensive. Modest final rates, or strong household spending data, would reverse this call."
+            },
+            {
+              "etf": "XLB",
+              "direction": "hausse",
+              "raison_fr": "Les producteurs américains d’acier et d’aluminium seraient protégés de la concurrence chinoise visée par l’enquête. Une forte baisse générale du marché pourrait toutefois entraîner aussi les matériaux.",
+              "raison_en": "US steel and aluminum producers would be shielded from the Chinese competition targeted by the probe. A broad market slide could still drag materials down too."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Le pétrole recule, la crainte d’un surplus l’emporte sur les attaques au Moyen-Orient",
+          "titre_en": "Oil slips as surplus fears outweigh Middle East attacks",
+          "resume_fr": "À 10 h 35 GMT, le Brent perdait 0,5 % à 90,96 dollars le baril et le pétrole américain 0,8 % à 81,43 dollars, après des gains de plus de 2 % mardi, selon Reuters. Les investisseurs craignent que l’offre dépasse la demande, et les stocks américains ont légèrement augmenté selon l’API, une association du secteur. Les Houthis disent avoir attaqué mercredi la raffinerie saoudienne de Ras Tanura, et un porte-conteneurs a été visé mardi près du détroit d’Ormuz. L’OPEP+ se réunit le 29 novembre pour fixer sa production de 2027.",
+          "resume_en": "At 10:35 GMT, Brent was down 0.5% at $90.96 a barrel and US crude down 0.8% at $81.43, after gains of more than 2% on Tuesday, according to Reuters. Investors fear supply will exceed demand, and US inventories rose slightly according to the API, an industry group. The Houthis said they attacked Saudi Arabia’s Ras Tanura refinery on Wednesday, and a container ship was targeted on Tuesday near the Strait of Hormuz. OPEC+ meets on 29 November to set its 2027 output.",
+          "sources": [
+            {
+              "nom": "Reuters via AOL",
+              "url": "https://www.aol.com/articles/oil-prices-fall-supply-glut-014621000.html"
+            },
+            {
+              "nom": "Reuters via Arab News",
+              "url": "https://www.arabnews.com/energy/oil-slips-over-1-as-supply-glut-prospect-offsets-middle-east-disruption-fears-3013948"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLE",
+              "direction": "baisse",
+              "raison_fr": "Un baril en repli et la crainte d’un surplus pèsent sur les revenus des producteurs. Une nouvelle attaque grave contre des installations du Golfe ferait remonter le pétrole et le secteur.",
+              "raison_en": "A falling barrel and fears of a surplus weigh on producers’ revenue. A new serious attack on Gulf facilities would lift oil and the sector."
+            }
+          ]
+        }
+      ],
+      "a_surveiller_fr": [
+        "Avant l’ouverture : résultats de Deere (bénéfice attendu à 4,07 dollars par action).",
+        "8 h 30 : inflation PCE d’octobre, croissance du troisième trimestre, inscriptions au chômage et commandes de biens durables.",
+        "10 h : ventes de logements neufs d’octobre.",
+        "10 h 30 : stocks de pétrole de l’EIA.",
+        "14 h : Livre beige de la Fed sur l’état de l’économie régionale.",
+        "Jeudi : Bourse fermée pour Thanksgiving ; vendredi, clôture à 13 h."
+      ],
+      "a_surveiller_en": [
+        "Before the open: Deere results (earnings expected at $4.07 per share).",
+        "8:30 a.m.: October PCE inflation, third-quarter GDP, jobless claims and durable goods orders.",
+        "10 a.m.: October new home sales.",
+        "10:30 a.m.: EIA oil inventories.",
+        "2 p.m.: Fed Beige Book on regional economic conditions.",
+        "Thursday: market closed for Thanksgiving; Friday, early close at 1 p.m."
+      ]
+    },
+    {
       "date": "2026-11-24",
       "horizon": {
         "du": "2026-11-24",
