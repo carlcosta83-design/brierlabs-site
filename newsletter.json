@@ -1,6 +1,158 @@
 {
   "editions": [
     {
+      "date": "2026-11-27",
+      "horizon": {
+        "du": "2026-11-27",
+        "au": "2026-11-27"
+      },
+      "redige_par": "Claude (Anthropic)",
+      "titre_fr": "Les valeurs de l’IA rebondissent pour une séance de Black Friday écourtée",
+      "titre_en": "AI stocks rebound for a shortened Black Friday session",
+      "intro_fr": "Quatre nouvelles pour la séance de ce vendredi 27 novembre, au lendemain de Thanksgiving, qui fermera dès 13 h. Les contrats à terme sur le Nasdaq 100 bondissent de près de 3 % : les investisseurs rachètent les valeurs de l’IA après leurs fortes baisses. Le pétrole grimpe après de nouvelles attaques dans le Golfe, l’or s’envole et les commerçants ouvrent la saison des achats de fin d’année.",
+      "intro_en": "Four stories for the session of Friday 27 November, the day after Thanksgiving, which closes early at 1 p.m. Nasdaq 100 futures jump nearly 3%: investors are buying back AI stocks after their steep losses. Oil climbs after new attacks in the Gulf, gold soars and retailers kick off the holiday shopping season.",
+      "nouvelles": [
+        {
+          "titre_fr": "Les investisseurs rachètent les valeurs de l’IA, Nvidia et AMD en forte hausse",
+          "titre_en": "Investors buy back AI stocks, with Nvidia and AMD sharply higher",
+          "resume_fr": "À 4 h 23 à New York, les contrats à terme sur le Nasdaq 100 gagnaient 2,87 %, ceux sur le S&P 500 1,98 % et ceux sur le Dow Jones 1,33 %, selon Reuters. Avant l’ouverture, Nvidia montait de 4,7 %, AMD de 7 % et Broadcom de 4,7 % ; Alphabet, Amazon, Microsoft, Meta et Oracle prenaient entre 2,3 % et 5,3 %. Nvidia restait pourtant plus de 37 % sous son record d’octobre. En sens inverse, Vertex Pharmaceuticals perdait 6,8 % : l’agence américaine du médicament (FDA) prolonge jusqu’à trois mois l’examen de son traitement contre une maladie des reins. Le taux à dix ans reculait vers 4,85 %, et les marchés jugent presque certaine une hausse des taux de la Fed en décembre.",
+          "resume_en": "At 4:23 a.m. New York time, Nasdaq 100 futures were up 2.87%, S&P 500 futures 1.98% and Dow futures 1.33%, according to Reuters. Before the open, Nvidia rose 4.7%, AMD 7% and Broadcom 4.7%; Alphabet, Amazon, Microsoft, Meta and Oracle gained between 2.3% and 5.3%. Nvidia was still more than 37% below its October record. On the other side, Vertex Pharmaceuticals fell 6.8% after the US drug regulator (FDA) extended its review of its kidney-disease drug by up to three months. The 10-year yield eased toward 4.85%, and markets see a Fed rate hike in December as almost certain.",
+          "sources": [
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/wall-st-futures-surge-investors-073405748.html"
+            },
+            {
+              "nom": "Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/live/stock-market-today-firday-november-27-dow-sp-500-nasdaq-black-friday-holiday-091152065.html"
+            },
+            {
+              "nom": "TipRanks",
+              "url": "https://www.tipranks.com/news/stock-market-today-nov-27-markets-reopen-for-shortened-black-friday-trading"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLK",
+              "direction": "hausse",
+              "raison_fr": "Les fabricants de puces et les géants du logiciel, très présents dans le fonds, mènent le rebond avant l’ouverture. Avec peu d’échanges un jour de demi-séance, des ventes reprenant après l’ouverture renverseraient vite la prévision.",
+              "raison_en": "Chipmakers and software giants, heavily weighted in the fund, lead the rebound before the open. With thin trading on a half day, selling resuming after the open could quickly reverse this call."
+            },
+            {
+              "etf": "XLC",
+              "direction": "hausse",
+              "raison_fr": "Alphabet et Meta, qui pèsent lourd dans ce fonds, profitent du retour des acheteurs sur les valeurs liées à l’IA. Si le rebond se limite aux fabricants de puces, le secteur suivrait seulement le marché.",
+              "raison_en": "Alphabet and Meta, which weigh heavily in this fund, benefit from buyers returning to AI-linked stocks. If the rebound stays limited to chipmakers, the sector would only track the market."
+            },
+            {
+              "etf": "XLV",
+              "direction": "baisse",
+              "raison_fr": "Un jour où les investisseurs reprennent des risques, la santé, jugée prudente, suit en général moins bien, et le recul de Vertex pèse en plus. Un essoufflement du rebond technologique lui redonnerait l’avantage.",
+              "raison_en": "On a day when investors take on risk again, health care, seen as defensive, usually lags, and Vertex’s drop adds to that. A fading tech rebound would give it the edge back."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Le pétrole grimpe après de nouvelles attaques contre des installations du Golfe",
+          "titre_en": "Oil climbs after new attacks on Gulf facilities",
+          "resume_fr": "À 11 h 30, heure des Émirats, le Brent gagnait 0,95 % à 97,49 dollars le baril et le pétrole américain 2,98 % à 86,17 dollars, selon The National. Le Brent se dirige vers sa première hausse hebdomadaire du mois, après avoir perdu près d’un cinquième en novembre, selon Bloomberg. Les Houthis ont attaqué la raffinerie saoudienne de Jazan, dont une partie de l’activité a été interrompue, après Ras Tanura plus tôt dans la semaine ; une attaque de drone au Koweït a tué deux civils italiens, et l’Iran nie en être responsable. L’OPEP+ se réunit dimanche pour fixer sa production de 2027 et envisage de garder ses quotas actuels jusqu’en janvier.",
+          "resume_en": "At 11:30 a.m. UAE time, Brent was up 0.95% at $97.49 a barrel and US crude up 2.98% at $86.17, according to The National. Brent is heading for its first weekly gain this month, after losing almost a fifth in November, according to Bloomberg. The Houthis attacked Saudi Arabia’s Jazan refinery, halting some operations, after hitting Ras Tanura earlier in the week; a drone attack in Kuwait killed two Italian civilians, and Iran denies responsibility. OPEC+ meets on Sunday to set its 2027 output and is considering keeping current quotas through January.",
+          "sources": [
+            {
+              "nom": "The National",
+              "url": "https://www.thenationalnews.com/business/energy/2026/11/27/oil-set-to-post-weekly-gain-as-middle-east-attacks-stoke-supply-concerns/"
+            },
+            {
+              "nom": "Bloomberg via Energy Connects",
+              "url": "https://www.energyconnects.com/news/oil/2026/november/oil-set-for-weekly-gain-as-mideast-attacks-keep-market-on-edge/"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLE",
+              "direction": "hausse",
+              "raison_fr": "Un baril plus cher augmente directement les revenus des producteurs de pétrole. Mais un jour où les acheteurs se ruent sur la technologie, l’énergie peut être délaissée, et une accalmie dans le Golfe ferait retomber le pétrole.",
+              "raison_en": "A pricier barrel directly lifts oil producers’ revenue. But on a day when buyers rush into tech, energy can be left behind, and calm in the Gulf would send oil back down."
+            }
+          ]
+        },
+        {
+          "titre_fr": "Black Friday : les achats en ligne progressent de 9,1 % depuis début novembre",
+          "titre_en": "Black Friday: online spending up 9.1% since early November",
+          "resume_fr": "Du 1er au 22 novembre, les Américains ont dépensé plus de 82,5 milliards de dollars en ligne, 9,1 % de plus qu’un an plus tôt, selon les données d’Adobe publiées mercredi par Digital Commerce 360. Adobe prévoit 12,9 milliards de dollars d’achats en ligne ce Black Friday, en hausse de 9,2 %, et 15,1 milliards lundi, pour le « Cyber Monday ». Les ventes payées en plusieurs fois atteignent déjà 6,1 milliards, en hausse de 6,5 %. Yahoo Finance note toutefois que des consommateurs prudents abordent cette journée avec des inquiétudes sur les prix, alors que l’inflation a accéléré en octobre selon Reuters.",
+          "resume_en": "From 1 to 22 November, Americans spent more than $82.5 billion online, up 9.1% from a year earlier, according to Adobe data published Wednesday by Digital Commerce 360. Adobe expects $12.9 billion of online spending this Black Friday, up 9.2%, and $15.1 billion on Cyber Monday. Buy now, pay later purchases have already reached $6.1 billion, up 6.5%. Yahoo Finance notes, however, that cautious consumers approach the day worried about prices, as inflation accelerated in October according to Reuters.",
+          "sources": [
+            {
+              "nom": "Digital Commerce 360",
+              "url": "https://www.digitalcommerce360.com/2026/11/25/adobe-online-holiday-spending-data/"
+            },
+            {
+              "nom": "Adobe",
+              "url": "https://news.adobe.com/news/2026/09/adobe-us-holiday-shopping-season-to-hit-record"
+            },
+            {
+              "nom": "Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/live/stock-market-today-firday-november-27-dow-sp-500-nasdaq-black-friday-holiday-091152065.html"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLY",
+              "direction": "hausse",
+              "raison_fr": "Amazon, poids lourd du fonds, monte avant l’ouverture, et des dépenses en ligne solides soutiennent les distributeurs. Des premiers comptes de fréquentation décevants dans les magasins renverseraient la prévision.",
+              "raison_en": "Amazon, a heavyweight in the fund, is rising before the open, and solid online spending supports retailers. Disappointing early store traffic counts would reverse this call."
+            },
+            {
+              "etf": "XLP",
+              "direction": "baisse",
+              "raison_fr": "Les produits de consommation courante attirent moins un jour où les investisseurs préfèrent les secteurs plus dynamiques. Une rechute de la technologie ramènerait les acheteurs vers ces valeurs sûres.",
+              "raison_en": "Consumer staples draw less interest on a day when investors favor faster-growing sectors. A tech relapse would bring buyers back to these safe stocks."
+            }
+          ]
+        },
+        {
+          "titre_fr": "L’or s’envole et la Chine promet de soutenir sa Bourse",
+          "titre_en": "Gold soars and China pledges to support its stock market",
+          "resume_fr": "L’or gagnait environ 4 % vers 3 700 dollars l’once selon les cotations de Yahoo Finance, et le mineur d’or Newmont montait de 5,6 % avant l’ouverture, selon Reuters ; un fonds de mines d’argent gagnait 6,3 %. En Asie, Shanghai a pris 3,73 % et Shenzhen 6,3 %, après que les médias d’État ont annoncé des mesures du gouvernement pour enrayer la longue baisse des marchés chinois, selon TipRanks. Hong Kong et Tokyo ont gagné 2,11 % chacun.",
+          "resume_en": "Gold was up about 4% near $3,700 an ounce according to Yahoo Finance quotes, and gold miner Newmont rose 5.6% before the open, according to Reuters; a silver miners fund gained 6.3%. In Asia, Shanghai rose 3.73% and Shenzhen 6.3% after state media announced government steps to stem the long slide in Chinese markets, according to TipRanks. Hong Kong and Tokyo each gained 2.11%.",
+          "sources": [
+            {
+              "nom": "Reuters via Yahoo Finance",
+              "url": "https://finance.yahoo.com/markets/stocks/articles/wall-st-futures-surge-investors-073405748.html"
+            },
+            {
+              "nom": "TipRanks",
+              "url": "https://www.tipranks.com/news/stock-market-today-nov-27-markets-reopen-for-shortened-black-friday-trading"
+            }
+          ],
+          "impacts": [
+            {
+              "etf": "XLB",
+              "direction": "hausse",
+              "raison_fr": "Les mineurs d’or comme Newmont profitent directement de la flambée du métal, et un soutien de Pékin à son économie aiderait la demande de matières premières. Un repli rapide de l’or effacerait cet avantage.",
+              "raison_en": "Gold miners like Newmont benefit directly from the metal’s surge, and Beijing support for its economy would help demand for raw materials. A quick pullback in gold would erase this edge."
+            },
+            {
+              "etf": "XLU",
+              "direction": "baisse",
+              "raison_fr": "Les services publics, prisés les jours d’inquiétude, sont souvent délaissés quand les marchés mondiaux repartent à la hausse. Une nouvelle baisse du taux à dix ans pourrait toutefois les soutenir.",
+              "raison_en": "Utilities, favored on worried days, are often sold when global markets rally. A further drop in the 10-year yield could still support them."
+            }
+          ]
+        }
+      ],
+      "a_surveiller_fr": [
+        "Séance écourtée : la Bourse de New York ferme à 13 h, le marché obligataire à 14 h.",
+        "Dans la journée : stocks des distributeurs et des grossistes d’octobre ; aucun résultat d’entreprise important prévu.",
+        "Dimanche : réunion de l’OPEP+ sur la production de 2027."
+      ],
+      "a_surveiller_en": [
+        "Shortened session: the New York Stock Exchange closes at 1 p.m., the bond market at 2 p.m.",
+        "During the day: October retail and wholesale inventories; no major company earnings scheduled.",
+        "Sunday: OPEC+ meeting on 2027 output."
+      ]
+    },
+    {
       "date": "2026-11-25",
       "horizon": {
         "du": "2026-11-25",
